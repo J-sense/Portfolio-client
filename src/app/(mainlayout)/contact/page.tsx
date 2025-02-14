@@ -1,5 +1,11 @@
-const page = () => {
-  return <div>contact</div>;
+import Connect from "@/components/Connect";
+
+const Contact = () => {
+  return (
+    <div>
+      <Connect />
+    </div>
+  );
 };
 
-export default page;
+export default Contact;

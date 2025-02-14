@@ -20,4 +20,10 @@ export type ArticleData = {
   image: string;
   category: string;
   _id?: string;
+  createdAt?: Date;
+};
+export type TMessage = {
+  name: string;
+  email: string;
+  message: string;
 };

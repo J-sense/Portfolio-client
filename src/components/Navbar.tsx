@@ -5,18 +5,19 @@ import { FaBars } from "react-icons/fa"; // Using FaBars from the correct icon s
 // import { LINKS } from "@/lib/data";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link"; // Correct Link from Next.js
-const user = true; // This can be any condition based on whether the user exists or not
+import { TUser } from "@/types/types";
 
-export const LINKS = [
-  { id: "projects", name: "projects" },
-  { id: "about", name: "about" },
-  ...(user ? [{ id: "dashboard", name: "dashboard" }] : []), // Conditionally add 'experience' link
-  { id: "contact", name: "Contact" },
-];
+const Navbar = ({ session }: { session: TUser }) => {
+  const user = session?.user; // This can be any condition based on whether the user exists or not
 
-console.log(LINKS);
+  const LINKS = [
+    { id: "projects", name: "projects" },
+    { id: "about", name: "about" },
+    ...(user ? [{ id: "dashboard", name: "dashboard" }] : []), // Conditionally add 'experience' link
+    { id: "blogs", name: "Blogs" },
+    { id: "contact", name: "Contact" },
+  ];
 
-const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -74,7 +75,7 @@ const Navbar = () => {
                   <Link
                     href={`${link.id}`} // Use 'href' with anchor link for Next.js routing
                     onClick={toggleMenu}
-                    className="text-3xl font-semibold uppercase tracking-wide hover:text-lime-300 lg:text-9xl"
+                    className="text-xl font-semibold uppercase tracking-wide hover:text-lime-300 lg:text-6xl"
                   >
                     {link.name}
                   </Link>
