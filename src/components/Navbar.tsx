@@ -1,85 +1,90 @@
 "use client";
-import { useState } from "react";
-import Link from "next/link";
-import { Menu, X } from "lucide-react"; // Icons for menu toggle
+import React, { useEffect, useState } from "react";
+import { FaTimes } from "react-icons/fa";
+import { FaBars } from "react-icons/fa"; // Using FaBars from the correct icon source
+// import { LINKS } from "@/lib/data";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link"; // Correct Link from Next.js
+const user = true; // This can be any condition based on whether the user exists or not
+
+export const LINKS = [
+  { id: "projects", name: "projects" },
+  { id: "about", name: "about" },
+  ...(user ? [{ id: "dashboard", name: "dashboard" }] : []), // Conditionally add 'experience' link
+  { id: "contact", name: "Contact" },
+];
+
+console.log(LINKS);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: "100%" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const linkVariants = {
+    hidden: { opacity: 0, y: "50%" },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <nav className="bg-gray-900 text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold">
-            MyPortfolio
-          </Link>
+    <div>
+      <nav className="fixed top-0 right-0 z-30 p-4">
+        <button onClick={toggleMenu} className="rounded-md p-2">
+          {isOpen ? (
+            <FaTimes className="h-6 w-6" />
+          ) : (
+            <FaBars className="h-6 w-6" />
+          )}
+        </button>
+      </nav>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
-            <Link href="/" className="hover:text-green-400">
-              Home
-            </Link>
-            <Link href="/projects" className="hover:text-green-400">
-              Projects
-            </Link>
-            <Link href="/about" className="hover:text-green-400">
-              About
-            </Link>
-            <Link href="/contact" className="hover:text-green-400">
-              Contact
-            </Link>
-            <Link href="/dashboard" className="hover:text-green-400">
-              Dashboard
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden focus:outline-none"
-            onClick={() => setIsOpen(!isOpen)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={containerVariants}
+            className="fixed inset-0 z-20 flex flex-col items-center justify-center bg-black text-white"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-gray-800">
-          <div className="flex flex-col space-y-4 py-4 px-6">
-            <Link
-              href="/"
-              className="hover:text-green-400"
-              onClick={() => setIsOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/projects"
-              className="hover:text-green-400"
-              onClick={() => setIsOpen(false)}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/about"
-              className="hover:text-green-400"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="hover:text-green-400"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
+            <ul className="space-y-6 text-2xl">
+              {LINKS.map((link) => (
+                <motion.li key={link.id} variants={linkVariants}>
+                  <Link
+                    href={`${link.id}`} // Use 'href' with anchor link for Next.js routing
+                    onClick={toggleMenu}
+                    className="text-3xl font-semibold uppercase tracking-wide hover:text-lime-300 lg:text-9xl"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
