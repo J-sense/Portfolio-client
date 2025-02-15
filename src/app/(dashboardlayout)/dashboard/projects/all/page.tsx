@@ -19,7 +19,7 @@ const getProjects = async () => {
 
 const page = async () => {
   const projects = await getProjects();
-  console.log(projects);
+
   return (
     <div>
       <div>

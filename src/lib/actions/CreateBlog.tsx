@@ -4,7 +4,7 @@ import { ArticleData } from "@/types/types";
 
 const CreateBlog = async (blogData: ArticleData) => {
   try {
-    console.log("API URL:", process.env.DATABASE_URL); // Debugging log
+    // Debugging log
 
     const res = await fetch(`${process.env.DATABASE_URL}/create-blog`, {
       method: "POST",

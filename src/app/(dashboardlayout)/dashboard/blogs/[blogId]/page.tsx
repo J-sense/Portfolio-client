@@ -3,7 +3,7 @@ import UpdateContent from "@/components/updateBlog/UpdateContent";
 
 const dynamicPage = async ({ params }: { params: { blogId: string } }) => {
   const id = await params?.blogId;
-  console.log("ddd", id);
+
   //   const res = await fetch(`${process.env.DATABASE_URL}/blogs/${id}`);
   //   const singleData = await res.json();
   //   console.log(singleData);

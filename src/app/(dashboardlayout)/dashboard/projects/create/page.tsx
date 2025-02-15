@@ -21,7 +21,6 @@ export default function CreateProject() {
 
     try {
       const res = await CreateProjects(projectData);
-      console.log("Response:", res);
 
       if (res?.success) {
         alert(res.message);

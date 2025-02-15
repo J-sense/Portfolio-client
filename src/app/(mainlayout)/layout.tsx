@@ -23,7 +23,10 @@ const CommonLayout = async ({
   const session: TUser = await getServerSession(authOptions);
   console.log(session);
   return (
-    <div className={`${oswald.variable} antialiased`}>
+    <div
+      className={`${oswald.variable} antialiased bg-black`}
+      suppressHydrationWarning
+    >
       <Navbar session={session} />
       {children}
       <Contact />
