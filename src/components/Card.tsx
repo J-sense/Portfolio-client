@@ -5,6 +5,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ProjectData } from "@/types/types";
+import Link from "next/link";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -13,7 +14,7 @@ const cardVariants = {
 
 const Card = ({ project }: { project: ProjectData }) => {
   return (
-    <div className=" border border-white  rounded-md bg-zinc-900 mt-40">
+    <div className=" border border-white rounded-md bg-zinc-900 mt-40 h-64">
       <motion.div
         variants={cardVariants}
         initial="hidden"
@@ -35,7 +36,9 @@ const Card = ({ project }: { project: ProjectData }) => {
         {/* Content */}
         <div className="p-5 text-white">
           <h3 className="mb-2 text-2xl font-bold">{project.title}</h3>
-          <p className="mb-4 text-gray-400">{project.description}</p>
+          <p className="mb-4 text-gray-400">
+            {project.description.substring(0, 50)}
+          </p>
 
           {/* Technologies */}
           <div className="flex flex-wrap gap-2">
@@ -50,15 +53,25 @@ const Card = ({ project }: { project: ProjectData }) => {
           </div>
 
           {/* Live Demo Button */}
-          <motion.a
-            href={project.liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            className="mt-4 inline-block rounded-lg bg-lime-500 px-4 py-2 font-semibold text-black transition hover:bg-lime-600"
-          >
-            Live Demo
-          </motion.a>
+          <div className="flex justify-between">
+            <motion.a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              className="mt-4 inline-block rounded-lg bg-lime-500 px-4 py-2 font-semibold text-black transition hover:bg-lime-600"
+            >
+              Live Demo
+            </motion.a>
+            <motion.a
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              className="mt-4 inline-block rounded-lg bg-lime-500 px-4 py-2 font-semibold text-black transition hover:bg-lime-600"
+            >
+              <Link href={`/projects/${project._id}`}>View Details</Link>
+            </motion.a>
+          </div>
         </div>
       </motion.div>
     </div>

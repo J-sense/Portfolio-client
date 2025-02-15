@@ -1,3 +1,4 @@
+import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import { authOptions } from "@/lib/authOptions";
 import { TUser } from "@/types/types";
@@ -25,6 +26,7 @@ const CommonLayout = async ({
     <div className={`${oswald.variable} antialiased`}>
       <Navbar session={session} />
       {children}
+      <Contact />
     </div>
   );
 };

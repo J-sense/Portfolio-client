@@ -57,7 +57,7 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I&apos;m Adrian, a Next.js Developer based in Croatia.
+            Hi! I&apos;m JISHAN, a MERN Stack Developer based in BANGLADESH.
           </p>
 
           <a
@@ -66,7 +66,7 @@ const Hero = () => {
             download
           >
             <MagicButton
-              title="Show my work"
+              title="Resume.pdf"
               icon={<FaLocationArrow />}
               position="right"
             />

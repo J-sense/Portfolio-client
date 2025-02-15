@@ -1,10 +1,20 @@
+// // import {
+// //   FaXTwitter,
+// //   FaGithub,
+// //   FaLinkedin,
+// //   FaFacebook,
+// //   FaDiscord,
+// //   FaInstagram,
+
+// import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+
+// } from "react-icons/fa6";
 export const LINKS = [
   { id: "projects", name: "projects" },
   { id: "about", name: "about" },
   { id: "experience", name: "experience" },
   { id: "contact", name: "Contact" },
 ];
-
 export const MARQUEE_TEXT =
   "Html, Css, Javascript, React, Next.js, Tailwind, Bootstrap, Firebase, Redux Toolkit,";
 
@@ -79,8 +89,7 @@ export const MARQUEE_TEXT =
 // ];
 
 export const ABOUT =
-  "As a dedicated Frontend Developer, I specialize in creating dynamic and responsive web applications that provide seamless user experiences. With a strong foundation in front-end technologies. I excel in building robust and scalable solutions. My expertise includes working with JavaScript Library such as React.js. I am passionate about continuous learning and keeping up-to-date with the latest industry trends, which allows me to implement modern practices and tools in my projects.";
-
+  "As a dedicated MERN Stack Developer, I specialize in building dynamic, scalable, and responsive web applications that ensure seamless user experiences. With a strong foundation in front-end and back-end technologies, I excel in developing full-stack solutions using MongoDB, Express.js, React.js, and Node.js. My expertise includes building RESTful APIs, integrating databases, and optimizing performance for modern web applications. I am passionate about continuous learning and staying updated with industry trends, enabling me to implement the latest best practices and tools in my projects.";
 export const EXPERIENCES = [
   // {
   //   company: "BdCalling Ltd.",

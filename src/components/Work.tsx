@@ -13,16 +13,19 @@ const Work = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <motion.h2
-        className="text-5xl md:text-7xl lg:text-6xl font-extrabold text-center mb-10 relative inline-block"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <span className="bg-clip-text text-transparent text-center bg-gradient-to-r from-[#CBACF9] to-purple-500">
-          Work Experience
-        </span>
-      </motion.h2>
+      <div className="flex justify-center">
+        <motion.h2
+          className="text-5xl md:text-7xl lg:text-6xl font-extrabold text-center mb-10 relative"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#CBACF9] to-purple-500">
+            Work Experience
+          </span>
+        </motion.h2>
+      </div>
+
       <div className="mx-auto max-w-6xl">
         {EXPERIENCES.map((experience: any, id: any) => (
           <motion.div

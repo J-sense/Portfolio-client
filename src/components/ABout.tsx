@@ -7,7 +7,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative py-20 px-6 bg-gradient-to-b  text-white text-center"
+      className="relative py-20 md:px-6 bg-gradient-to-b  text-white text-center"
     >
       <div className="container mx-auto max-w-5xl text-center">
         <motion.h2

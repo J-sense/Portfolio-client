@@ -1,5 +1,5 @@
 import About from "@/components/ABout";
-import Contact from "@/components/Contact";
+// import Contact from "@/components/Contact";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import Work from "@/components/Work";
@@ -14,7 +14,7 @@ const Home = () => {
         <Grid />
         <About />
         <Work />
-        <Contact />
+        {/* <Contact /> */}
       </div>
     </main>
   );

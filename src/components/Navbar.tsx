@@ -14,6 +14,7 @@ const Navbar = ({ session }: { session: TUser }) => {
     { id: "projects", name: "projects" },
     { id: "about", name: "about" },
     ...(user ? [{ id: "dashboard", name: "dashboard" }] : []), // Conditionally add 'experience' link
+    ...(!user ? [{ id: "login", name: "Login" }] : []), // Conditionally add 'experience' link
     { id: "blogs", name: "Blogs" },
     { id: "contact", name: "Contact" },
   ];

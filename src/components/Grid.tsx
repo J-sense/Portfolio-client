@@ -45,15 +45,17 @@ const skills = [
 
 const SkillSection = () => {
   return (
-    <section className="py-12 text-white">
+    <section className="py-6 text-white">
       <div className="container mx-auto text-center">
         <motion.h2
-          className="text-6xl font-bold mb-12 text-[#CBACF9]"
+          className="text-5xl md:text-7xl lg:text-6xl font-extrabold mb-10 relative inline-block"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          My Skills
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#CBACF9] to-purple-500">
+            Skills
+          </span>
         </motion.h2>
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"

@@ -8,7 +8,7 @@ const ProjectsPage = async () => {
 
   return (
     <>
-      <div className="w-[90%] mx-auto grid grid-cols-3 gap-3">
+      <div className="w-[90%] mx-auto grid lg:grid-cols-3 gap-3 min-h-screen">
         {projects?.data.map((item: ProjectData, index: string) => (
           <Card project={item} key={index} />
         ))}

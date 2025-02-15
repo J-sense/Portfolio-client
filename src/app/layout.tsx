@@ -27,6 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         shortcut-listen="true"
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable}  antialiased `}
       >
         <ThemeProvider

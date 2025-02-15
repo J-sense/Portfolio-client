@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import CreateProjects from "@/lib/actions/CretateProjects";
-// import { ProjectData } from "@/types/types";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 export default function CreateProject() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const technologies = [];
-    technologies.push(data.technologies);
-    console.log(technologies);
+    const technologies = data.technologies
+      .split(",")
+      .map((tech: string) => tech.trim()); // Splitting input into an array
+
     const projectData = {
       title: data.title,
       image: data.image,
@@ -17,12 +18,38 @@ export default function CreateProject() {
       description: data.description,
       technologies,
     };
-    console.log(projectData);
+
     try {
       const res = await CreateProjects(projectData);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+      console.log("Response:", res);
+
+      if (res?.success) {
+        alert(res.message);
+        reset(); // Reset form after successful submission
+      } else {
+        // Handle multiple validation errors
+        if (res?.errorSource && Array.isArray(res.errorSource)) {
+          const errorMessages = res.errorSource
+            .map(
+              (err: { path: any; message: any }) =>
+                `${err.path}: ${err.message}`
+            )
+            .join("\n");
+          alert(`Validation Error:\n${errorMessages}`);
+        } else {
+          alert(res?.message || "Something went wrong!");
+        }
+      }
+    } catch (error: any) {
+      console.error("Submission Error:", error);
+
+      if (error.response) {
+        alert(error.response.data?.message || "Server error occurred!");
+      } else if (error.message) {
+        alert(error.message);
+      } else {
+        alert("Failed to submit project. Please try again.");
+      }
     }
   };
 

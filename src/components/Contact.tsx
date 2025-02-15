@@ -1,9 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
 import { CONTACT } from "@/lib/data";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+export const SOCIAL_MEDIA_LINKS = [
+  {
+    href: "https://www.facebook.com/mdnajmulhasan.jishan/",
+    icon: <FaFacebook fontSize={26} className="hover:opacity-80" />,
+  },
 
+  {
+    href: "https://github.com/j-sense/",
+    icon: <FaGithub fontSize={26} className="hover:opacity-80" />,
+  },
+  {
+    href: "https://www.linkedin.com/in/najmul-hasan-222b43273/",
+    icon: <FaLinkedin fontSize={26} className="hover:opacity-80" />,
+  },
+  {
+    href: "https://x.com/",
+    icon: <FaInstagram fontSize={26} className="hover:opacity-80" />,
+  },
+];
 const Contact = () => {
   return (
     <>
@@ -18,7 +38,7 @@ const Contact = () => {
       <section id="contact" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
           <motion.p
-            className="my-10 text-center text-3xl lg:text-8xl"
+            className="my-10 text-center text-3xl lg:text-5xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -54,7 +74,7 @@ const Contact = () => {
           </motion.p>
         </div>
 
-        {/* <motion.div
+        <motion.div
           className="mt-20 flex items-center justify-center gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -89,8 +109,6 @@ const Contact = () => {
                       | null
                       | undefined
                     >
-                  | MotionValue<number>
-                  | MotionValue<string>
                   | null
                   | undefined;
               },
@@ -112,7 +130,7 @@ const Contact = () => {
               </a>
             )
           )}
-        </motion.div> */}
+        </motion.div>
 
         <motion.p
           className="my-8 text-center text-gray-400"
