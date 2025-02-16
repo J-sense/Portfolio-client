@@ -11,15 +11,12 @@ const page = () => {
           <div
             onClick={() =>
               signIn("github", {
-                callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`,
+                callbackUrl: `https://portfolio-client-seven-phi.vercel.app/dashboard`,
               })
             }
             className="p-3 rounded-full bg-black hover:bg-zinc-900 ease-in duration-200"
           >
             <Github className="text-white" />
-          </div>
-          <div className="px-6 py-3 rounded-md bg-black hover:bg-zinc-900 ease-in duration-200">
-            <small className="text-white">Google</small>
           </div>
         </div>
       </div>

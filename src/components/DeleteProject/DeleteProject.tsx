@@ -15,9 +15,12 @@ export default function DeleteProject({
     try {
       const api = process.env.DATABASE_URL;
       console.log(api);
-      const res = await fetch(`http://localhost:5000/api/projects/${blogId}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `https://portfolio-api-six-rouge.vercel.app/api/projects/${blogId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       console.log(res);
       const data = await res.json();

@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Portfolio & Blog Website
 
-## Getting Started
+This project is a personal portfolio and blog website built using Next.js. It helps in learning dynamic routing, API integration, authentication, state management, and deployment in a practical way.
 
-First, run the development server:
+## 🔹 Features Breakdown
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1️⃣ Public Pages (Accessible to All Users)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### ✅ Home Page (`/`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Display portfolio introduction (name, bio, and profile picture).
+- Showcase skills using icons or a skill bar.
+- Highlight featured projects (static or fetched from an API).
+- Resume download button.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### ✅ Projects Page (`/projects`)
 
-## Learn More
+- List of projects with images, descriptions, and links.
+- Clicking on a project opens a detailed page (`/projects/[id]`).
 
-To learn more about Next.js, take a look at the following resources:
+#### ✅ Blog Page (`/blog`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Display a list of blogs (fetched from an API or JSON file).
+- Clicking on a blog opens a detailed blog page (`/blog/[id]`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### ✅ Contact Page (`/contact`)
 
-## Deploy on Vercel
+- Simple contact form (name, email, message).
+- Save messages in local storage or a database.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2️⃣ Dashboard (Only for Logged-in Users) 💡
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### ✅ Login (`/dashboard`)
+
+- Social login using NextAuth.
+- Only authenticated users can access the dashboard.
+
+#### ✅ Blog Management (`/dashboard/blogs`)
+
+- Create, read, edit, or delete blog posts.
+- Form with fields like title, content, image, and category.
+
+#### ✅ Project Management (`/dashboard/projects`)
+
+- CRUD operations (Create, Read, Update, Delete) for projects.
+- Upload project image, title, live link, descriptions, etc.
+
+#### ✅ Message Management (`/dashboard/messages`)
+
+- View messages submitted from the contact form.
+
+## 🔹 Technical Requirements
+
+### ✅ Frontend
+
+- Next.js with TypeScript.
+- Use Tailwind CSS for styling or any UI library/framework.
+- Implement dynamic routes (`/projects/[id]`, `/blog/[id]`).
+
+### ✅ Backend 💡
+
+- Simple backend using Node.js/Express to manage Blogs, Projects, and other essential data.
+- Backend API accessible publicly.
+
+### ✅ Database
+
+- MongoDB.
+
+### ✅ Authentication 💡
+
+- Social login using NextAuth.
+
+### ✅ Deployment
+
+- Deploy the website on Vercel.
+- Store projects and blogs in MongoDB.

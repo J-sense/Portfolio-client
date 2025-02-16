@@ -128,7 +128,7 @@ const Sidebar = () => {
         <button
           onClick={() =>
             signOut({
-              callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
+              callbackUrl: `https://portfolio-client-seven-phi.vercel.app/login`,
             })
           }
           className="flex items-center gap-3 px-4 py-2 text-red-500 hover:text-red-400 transition"

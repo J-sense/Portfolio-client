@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 export default function DeleteBlog({ blogId }: { blogId: string | undefined }) {
-  console.log(blogId);
   const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
