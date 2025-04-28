@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FaBars } from "react-icons/fa"; // Using FaBars from the correct icon source
-// import { LINKS } from "@/lib/data";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link"; // Correct Link from Next.js
 import { TUser } from "@/types/types";
@@ -10,13 +9,14 @@ import { TUser } from "@/types/types";
 const Navbar = ({ session }: { session: TUser }) => {
   const user = session?.user; // This can be any condition based on whether the user exists or not
 
+  // Define links with absolute paths
   const LINKS = [
-    { id: "projects", name: "projects" },
-    { id: "about", name: "about" },
-    ...(user ? [{ id: "dashboard", name: "dashboard" }] : []), // Conditionally add 'experience' link
-    ...(!user ? [{ id: "login", name: "Login" }] : []), // Conditionally add 'experience' link
-    { id: "blogs", name: "Blogs" },
-    { id: "contact", name: "Contact" },
+    { id: "/projects", name: "Projects" },
+    { id: "/about", name: "About" },
+    ...(user ? [{ id: "/dashboard", name: "Dashboard" }] : []),
+    ...(!user ? [{ id: "/login", name: "Login" }] : []),
+    { id: "/blogs", name: "Blogs" },
+    { id: "/contact", name: "Contact" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +74,7 @@ const Navbar = ({ session }: { session: TUser }) => {
               {LINKS.map((link) => (
                 <motion.li key={link.id} variants={linkVariants}>
                   <Link
-                    href={`${link.id}`} // Use 'href' with anchor link for Next.js routing
+                    href={link.id} // Absolute paths ensure correct routing
                     onClick={toggleMenu}
                     className="text-xl font-semibold uppercase tracking-wide hover:text-lime-300 lg:text-6xl"
                   >

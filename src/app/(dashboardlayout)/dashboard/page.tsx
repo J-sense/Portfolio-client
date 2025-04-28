@@ -7,7 +7,7 @@ import Image from "next/image";
 // import { LampContainer } from "../ui/lamp";
 const page = async () => {
   const session: TUser = await getServerSession(authOptions);
-  console.log(session);
+
   return (
     <div className="shadow-md bg-[#020617] h-screen overflow-hidden md:h-[90vh] md:border md:rounded-xl">
       <div
