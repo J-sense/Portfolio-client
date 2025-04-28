@@ -1,24 +1,22 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-
 import { motion } from "framer-motion";
 import { EXPERIENCES } from "@/lib/data/index";
 
 const Work = () => {
   return (
-    <motion.div
+    <section
       id="experience"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      className="py-24 px-4 sm:px-8 md:px-16 lg:px-24 bg-black text-white overflow-hidden"
     >
       <div className="flex justify-center">
         <motion.h2
-          className="text-5xl md:text-7xl lg:text-6xl font-extrabold text-center mb-10 relative"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl md:text-6xl font-extrabold text-center mb-16 relative inline-block"
+          initial={{ opacity: 0, y: -60 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#CBACF9] to-purple-500">
             Work Experience
@@ -26,29 +24,34 @@ const Work = () => {
         </motion.h2>
       </div>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl space-y-14">
         {EXPERIENCES.map((experience: any, id: any) => (
           <motion.div
             key={id}
-            className="mx-4 mb-20 p-6 rounded-xl border bg-zinc-900/80 shadow-lg hover:bg-zinc-950 transition-colors"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: id * 0.1 }}
+            className="relative p-8 sm:p-10 rounded-3xl border border-white/10 bg-black/30 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(155,81,224,0.25)] hover:shadow-[0_8px_64px_0_rgba(155,81,224,0.35)] transition-all duration-700 ease-out"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: id * 0.1 }}
+            viewport={{ once: true }}
           >
-            <h2 className="font-medium lg:text-2xl text-white">
+            <h2 className="font-semibold text-2xl md:text-3xl text-white mb-2">
               {experience.company}
             </h2>
-            <div className="flex justify-between items-center">
-              <p className="py-4 tracking-wide lg:text-xl text-gray-300">
+            <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
+              <p className="tracking-wide text-lg md:text-xl text-gray-300">
                 {experience.role}
               </p>
-              <p className="py-4 lg:text-xl text-gray-400">{experience.year}</p>
+              <p className="text-sm md:text-base text-gray-400">
+                {experience.year}
+              </p>
             </div>
-            <p className="font-sans text-gray-400">{experience.description}</p>
+            <p className="text-base md:text-lg text-gray-400 leading-relaxed">
+              {experience.description}
+            </p>
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </section>
   );
 };
 
