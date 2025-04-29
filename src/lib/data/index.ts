@@ -99,11 +99,11 @@ export const EXPERIENCES = [
   //     "Developing and maintaining scalable web applications using modern technologies. Collaborating with cross-functional teams to design and implement new features. Enhancing application performance and ensuring high-quality code through rigorous testing and code reviews. Contributing to the continuous improvement of development processes and best practices.",
   // },
   {
-    company: "BdCalling Ltd.",
+    company: "BdCalling Academy.",
     role: "Frontend Developer",
-    year: "01/2021 - 11/2023",
+    year: "08/2024 - 11/2024",
     description:
-      "Implemented user interfaces for web applications using React and Redux. Worked closely with designers to ensure seamless user experiences. Optimized components for maximum performance across a vast array of web-capable devices and browsers. Participated in code reviews and provided feedback to maintain high code quality.",
+      "Completed an industrial attachment at BD Calling Academy, where I developed user interfaces for web applications using React and Redux. Collaborated closely with designers to deliver seamless and responsive user experiences. Optimized components for high performance across various devices and browsers. Actively participated in code reviews, contributing feedback to maintain high code quality standards.",
   },
 ];
 

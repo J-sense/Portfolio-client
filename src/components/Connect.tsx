@@ -30,7 +30,7 @@ const Connect = () => {
       </h1>
 
       {/* Form */}
-      <div className="shadow-lg rounded-lg p-6 sm:p-10 w-full max-w-md bg-zinc-900 border border-gray-700">
+      <div className="shadow-lg rounded-lg p-6 sm:p-10 w-full max-w-md bg-zinc-950 border border-gray-700">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-6"
@@ -40,7 +40,7 @@ const Connect = () => {
             <label className="text-sm font-medium text-gray-300">Name</label>
             <input
               type="text"
-              className="p-3 bg-zinc-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+              className="p-3 bg-zinc-900 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-500 text-white"
               placeholder="Your Name"
               {...register("name", { required: "Name is required" })}
             />
@@ -51,7 +51,7 @@ const Connect = () => {
             <label className="text-sm font-medium text-gray-300">Email</label>
             <input
               type="email"
-              className="p-3 bg-zinc-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+              className="p-3 bg-zinc-900 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-500 text-white"
               placeholder="Your Email"
               {...register("email", {
                 required: "Email is required",
@@ -67,7 +67,7 @@ const Connect = () => {
           <div className="flex flex-col">
             <label className="text-sm font-medium text-gray-300">Message</label>
             <textarea
-              className="p-3 bg-zinc-800 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+              className="p-3 bg-zinc-900 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-500 text-white"
               placeholder="Write your message here..."
               rows={4}
               {...register("message", { required: "Message is required" })}
@@ -77,7 +77,7 @@ const Connect = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md"
+            className="w-full bg-lime-400 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md"
           >
             Submit
           </button>

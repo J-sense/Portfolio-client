@@ -24,7 +24,7 @@ const CommonLayout = async ({
 
   return (
     <div
-      className={`${oswald.variable} antialiased bg-black`}
+      className={`${oswald.className} antialiased bg-black`}
       suppressHydrationWarning
     >
       <Navbar session={session} />

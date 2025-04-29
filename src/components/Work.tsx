@@ -8,7 +8,7 @@ const Work = () => {
   return (
     <section
       id="experience"
-      className="py-24 px-4 sm:px-8 md:px-16 lg:px-24 bg-black text-white overflow-hidden"
+      className="py-16 px-8  md:px-16 lg:px-24 bg-black text-white overflow-hidden"
     >
       <div className="flex justify-center">
         <motion.h2

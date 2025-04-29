@@ -50,7 +50,8 @@ const Hero = () => {
           </p>
 
           <a
-            href="https://drive.google.com/uc?export=download&id=13zorA-aIBYGuyZS1jzRQv6t9KHNAA0f6"
+            href="https://drive.google.com/uc?export=download&id=1y_GKj2by5yxgD1fkXRFMtqx4aEj90oN1
+"
             download
           >
             <MagicButton

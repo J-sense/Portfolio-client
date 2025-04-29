@@ -80,7 +80,7 @@ const Projects = ({ pr }: { pr: any[] }) => {
       </div>
 
       {/* Projects Slider */}
-      <div ref={sliderRef} className="keen-slider md:gap-5 p-3">
+      <div ref={sliderRef} className="keen-slider md:gap-5 p-3 px-0 md:px-0">
         {pr.map((project, idx) => (
           <motion.div
             key={project._id || idx}

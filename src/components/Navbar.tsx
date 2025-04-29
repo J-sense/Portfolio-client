@@ -11,6 +11,7 @@ const Navbar = ({ session }: { session: TUser }) => {
 
   // Define links with absolute paths
   const LINKS = [
+    { id: "/", name: "Home" },
     { id: "/projects", name: "Projects" },
     { id: "/about", name: "About" },
     ...(user ? [{ id: "/dashboard", name: "Dashboard" }] : []),
