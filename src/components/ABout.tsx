@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
 import { ABOUT } from "@/lib/data";
-import Image from "next/image";
-import { Cpu, Zap, Target, Rocket } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Rocket, Target, Zap } from "lucide-react";
+import Image from "next/image";
+import React from "react";
 
 const MicroLabel = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <span className={cn("text-[10px] font-black uppercase tracking-[0.4em] text-white/30", className)}>

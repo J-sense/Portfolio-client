@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
-import { cn } from "@/lib/utils";
+
 
 const skillCategories = [
   {
@@ -115,7 +115,7 @@ const SkillSection = () => {
               </h3>
               
               <div className="grid grid-cols-2 gap-4">
-                {category.skills.map((skill, index) => (
+                {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
                     className="flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.08] transition-colors"

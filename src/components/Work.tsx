@@ -1,8 +1,7 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
 import { EXPERIENCES } from "@/lib/data/index";
+import { motion } from "framer-motion";
 import { Briefcase, Calendar, GraduationCap } from "lucide-react";
 
 const ExperienceCard = ({ experience, index }: { experience: any; index: number }) => {
@@ -63,12 +62,6 @@ const ExperienceCard = ({ experience, index }: { experience: any; index: number 
 };
 
 const Work = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   return (
     <section id="experience" className="relative py-40 px-6 sm:px-12 lg:px-24 bg-black overflow-hidden pointer-events-auto mt-[-100px]">
