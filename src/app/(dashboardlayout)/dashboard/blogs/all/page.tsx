@@ -9,7 +9,7 @@ import { ArticleData } from "@/types/types";
 import Link from "next/link";
 
 const getBlogs = async () => {
-  const res = await fetch(`${process.env.DATABASE_URL}/blogs`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`, {
     cache: "no-store", // Fetch fresh data every time
   });
 

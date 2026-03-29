@@ -4,10 +4,10 @@ import { ArticleData } from "@/types/types";
 
 export const updateBlog = async (
   id: string,
-  updatedData: Partial<ArticleData>
+  updatedData: Partial<ArticleData>,
 ) => {
   try {
-    const res = await fetch(`${process.env.DATABASE_URL}/blogs/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import Card from "@/components/Card";
 import { ProjectData } from "@/types/types";
 
 const ProjectsPage = async () => {
-  const res = await fetch(`${process.env.DATABASE_URL}/projects`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
   const projects = await res.json();
   console.log(projects);
 

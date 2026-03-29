@@ -4,13 +4,16 @@ import { ProjectData } from "@/types/types";
 
 const CreateProjects = async (projectData: ProjectData) => {
   try {
-    const res = await fetch(`${process.env.DATABASE_URL}/create-projects`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/create-projects`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(projectData),
       },
-      body: JSON.stringify(projectData),
-    });
+    );
 
     // if (!res.ok) {
     //   throw new Error(`Error: ${res.status} - ${res.statusText}`);

@@ -13,13 +13,13 @@ export default function DeleteProject({
   const handleDelete = async () => {
     setLoading(true);
     try {
-      const api = process.env.DATABASE_URL;
+      const api = process.env.NEXT_PUBLIC_API_URL;
       console.log(api);
       const res = await fetch(
         `https://portfolio-api-six-rouge.vercel.app/api/projects/${blogId}`,
         {
           method: "DELETE",
-        }
+        },
       );
 
       console.log(res);

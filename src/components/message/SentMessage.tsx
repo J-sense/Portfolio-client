@@ -5,7 +5,7 @@ import { TMessage } from "@/types/types";
 
 export const sentMessage = async (message: TMessage) => {
   try {
-    const res = await fetch(`${process.env.DATABASE_URL}/message`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

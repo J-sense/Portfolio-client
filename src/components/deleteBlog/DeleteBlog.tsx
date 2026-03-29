@@ -8,7 +8,7 @@ export default function DeleteBlog({ blogId }: { blogId: string | undefined }) {
   const handleDelete = async () => {
     setLoading(true);
     try {
-      const api = process.env.DATABASE_URL;
+      const api = process.env.NEXT_PUBLIC_API_URL;
       console.log(api);
       const res = await fetch(`http://localhost:5000/api/blogs/${blogId}`, {
         method: "DELETE",

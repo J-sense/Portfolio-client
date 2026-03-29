@@ -1,7 +1,7 @@
 import { TMessage } from "@/types/types";
 
 const Message = async () => {
-  const res = await fetch(`${process.env.DATABASE_URL}/messages`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages`);
   const messages = await res.json();
   const data = messages.date;
 

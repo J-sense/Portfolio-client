@@ -6,7 +6,7 @@ const CreateBlog = async (blogData: ArticleData) => {
   try {
     // Debugging log
 
-    const res = await fetch(`${process.env.DATABASE_URL}/create-blog`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/create-blog`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

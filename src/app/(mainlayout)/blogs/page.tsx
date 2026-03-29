@@ -3,7 +3,7 @@ import BlogCard from "@/components/BlogCard";
 import { ArticleData } from "@/types/types";
 
 const Blogs = async () => {
-  const res = await fetch(`${process.env.DATABASE_URL}/blogs`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
   const projects = await res.json();
   console.log(projects);
 

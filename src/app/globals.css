@@ -92,3 +92,18 @@
     background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
   }
 }
+/* Add to your global CSS file (e.g., globals.css or app.css) */
+@keyframes gradient-xy {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 200% 200%;
+  animation: gradient-xy 3s ease infinite;
+}

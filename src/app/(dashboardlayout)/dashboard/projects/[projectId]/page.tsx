@@ -9,7 +9,7 @@ const dynamicPage = async ({
 }) => {
   const id = await (await params)?.projectId;
 
-  //   const res = await fetch(`${process.env.DATABASE_URL}/blogs/${id}`);
+  //   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs/${id}`);
   //   const singleData = await res.json();
   //   console.log(singleData);
   return (
