@@ -1,11 +1,6 @@
 import Sidebar from "@/components/Sidebar";
-import { authOptions } from "@/lib/authOptions";
-import { TUser } from "@/types/types";
-import { getServerSession } from "next-auth";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const session: TUser = await getServerSession(authOptions);
-  console.log(session);
   return (
     <div className="flex min-h-screen bg-[#000000]">
       {/* Sidebar */}

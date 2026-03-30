@@ -1,13 +1,8 @@
 // import { LampContainer } from "@/components/ui/lamp";
-import { authOptions } from "@/lib/authOptions";
-import { TUser } from "@/types/types";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 // import { LampContainer } from "../ui/lamp";
 // import { LampContainer } from "../ui/lamp";
 const page = async () => {
-  const session: TUser = await getServerSession(authOptions);
-
   return (
     <div className="shadow-md bg-[#020617] h-screen overflow-hidden md:h-[90vh] md:border md:rounded-xl">
       <div
@@ -21,16 +16,19 @@ const page = async () => {
         className="mt-2  text-white py-2 bg-clip-text text-center text-2xl font-medium tracking-tight  flex flex-col justify-center items-center h-full"
       >
         <div className="h-full flex flex-col justify-center items-center">
-          <Image
-            src={session?.user?.image as string}
-            height={100}
-            width={100}
-            className="rounded-full"
-            alt="Profile"
-          />
-          <h1 className="uppercase text-3xl my-3 ">Welcome to dashboard</h1>
-          <h1 className="uppercase">{session?.user.name}</h1>
-          <h1 className="uppercase">{session?.user.email}</h1>
+          <div className="w-[100px] h-[100px] rounded-full bg-purple/20 border border-purple/40 flex items-center justify-center mb-6">
+             <Image 
+               src="/images/about-me-real.png" 
+               alt="Guest" 
+               width={100} 
+               height={100} 
+               className="rounded-full object-cover"
+             />
+          </div>
+          <h1 className="uppercase text-3xl my-3 font-bold tracking-tighter">Welcome to Dashboard</h1>
+          <div className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] opacity-40">
+             Guest_Perspective / পাবলিক_ভিউ
+          </div>
         </div>
       </div>
     </div>

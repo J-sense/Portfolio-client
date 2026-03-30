@@ -4,18 +4,14 @@ import { FaTimes } from "react-icons/fa";
 import { FaBars } from "react-icons/fa"; // Using FaBars from the correct icon source
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link"; // Correct Link from Next.js
-import { TUser } from "@/types/types";
 
-const Navbar = ({ session }: { session: TUser }) => {
-  const user = session?.user; // This can be any condition based on whether the user exists or not
-
+const Navbar = () => {
   // Define links with absolute paths
   const LINKS = [
     { id: "/", name: "Home" },
     { id: "/projects", name: "Projects" },
     { id: "/about", name: "About" },
-    ...(user ? [{ id: "/dashboard", name: "Dashboard" }] : []),
-    ...(!user ? [{ id: "/login", name: "Login" }] : []),
+    { id: "/dashboard", name: "Dashboard" },
     { id: "/blogs", name: "Blogs" },
     { id: "/contact", name: "Contact" },
   ];

@@ -1,9 +1,6 @@
 import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
-import { authOptions } from "@/lib/authOptions";
-import { TUser } from "@/types/types";
 import { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import { Oswald } from "next/font/google"; // Importing Oswald font
 
 // Apply Oswald font globally
@@ -20,14 +17,12 @@ export const metadata: Metadata = {
 const CommonLayout = async ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
-  const session: TUser = await getServerSession(authOptions);
-
   return (
     <div
       className={`${oswald.className} antialiased bg-black`}
       suppressHydrationWarning
     >
-      <Navbar session={session} />
+      <Navbar />
       <main className="min-h-screen">{children}</main>
       <Contact />
     </div>

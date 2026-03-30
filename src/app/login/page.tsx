@@ -1,6 +1,6 @@
 "use client";
-import { Github } from "lucide-react";
-import { signIn } from "next-auth/react";
+
+
 
 const page = () => {
   return (
@@ -8,16 +8,7 @@ const page = () => {
       <div className="bg-zinc-800 px-8 py-11 rounded-lg shadow-md shadow-slate-500 w-full max-w-md">
         <h1 className="text-center text-4xl text-white my-5">Login with</h1>
         <div className="flex flex-wrap justify-center gap-4">
-          <div
-            onClick={() =>
-              signIn("github", {
-                callbackUrl: `https://portfolio-client-seven-phi.vercel.app/dashboard`,
-              })
-            }
-            className="p-3 rounded-full bg-black hover:bg-zinc-900 ease-in duration-200"
-          >
-            <Github className="text-white" />
-          </div>
+       
         </div>
       </div>
     </div>
