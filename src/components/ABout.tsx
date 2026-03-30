@@ -60,7 +60,7 @@ const About = () => {
 
                 <div className="relative h-full overflow-hidden rounded-xl border border-white/5 bg-black-200 backdrop-blur-3xl group">
                    <Image
-                     src="/images/about-me-real.png"
+                     src="/images/my-profile-card.png"
                      alt="Real Portrait"
                      fill
                      className="object-contain object-bottom transition-all duration-1000 grayscale hover:grayscale-0 scale-[1.02]"

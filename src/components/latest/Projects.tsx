@@ -145,7 +145,7 @@ const Projects = ({ pr }: { pr: any[] }) => {
   return (
     <section id="projects" className="relative py-40 px-6 sm:px-12 lg:px-24 bg-black overflow-hidden pointer-events-auto">
       {/* Premium Background Effects */}
-      <div className="absolute inset-0 w-full h-full bg-grid-white/[0.02] bg-grid-small-white/[0.01] -z-10" />
+      <div className="absolute inset-0 w-full h-full bg-grid-white/[0.02] -z-10" />
       <div className="absolute inset-0 w-full h-full [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] -z-10" />
 
       <div className="container mx-auto max-w-7xl relative z-10">
