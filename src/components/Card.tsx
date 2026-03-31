@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useState, useRef } from "react";
-import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ProjectData } from "@/types/types";
-import Link from "next/link";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
-  ExternalLink,
-  Info,
-  Sparkles,
-  Zap,
   ArrowUpRight,
   Code2,
+  Info,
+  Sparkles,
+  Zap
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useRef, useState } from "react";
 // import { cn } from "@/lib/utils";
 
 const MotionLink = motion(Link);
