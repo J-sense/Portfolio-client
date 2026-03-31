@@ -99,11 +99,11 @@ export const EXPERIENCES = [
   //     "Developing and maintaining scalable web applications using modern technologies. Collaborating with cross-functional teams to design and implement new features. Enhancing application performance and ensuring high-quality code through rigorous testing and code reviews. Contributing to the continuous improvement of development processes and best practices.",
   // },
   {
-    company: "BdCalling Academy.",
+    company: "Join Venture AI.",
     role: "Frontend Developer",
-    year: "08/2024 - 11/2024",
+    year: "07/2025 – Present",
     description:
-      "Completed an industrial attachment at BD Calling Academy, where I developed user interfaces for web applications using React and Redux. Collaborated closely with designers to deliver seamless and responsive user experiences. Optimized components for high performance across various devices and browsers. Actively participated in code reviews, contributing feedback to maintain high code quality standards.",
+      "Working as a Frontend Developer, building scalable and responsive web applications using React.js and Next.js. Regularly integrate REST APIs and implement real-time features such as chat and calling systems using sockets. Experienced in working with third-party services like Cal.com and ZEGOCLOUD. Focused on delivering high-performance UI, maintaining clean code, and collaborating with the team to meet project requirements efficiently.",
   },
 ];
 
