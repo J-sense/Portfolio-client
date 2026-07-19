@@ -1,104 +1,126 @@
 "use client";
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import profile from "@/assets/profile.jpg";
-import MagicButton from "@/components/MagicButton";
-import { Coffee } from "lucide-react";
+import { Coffee, GraduationCap, Clock } from "lucide-react";
 
-const page = () => {
+const AboutPage = () => {
   return (
-    <section className="bg-black text-white py-12 px-6 md:px-16 max-w-screen-xl mx-auto">
-      <div className="flex flex-col md:flex-row items-center">
-        {/* Profile Image with animation and glowing effect */}
+    <section className="relative py-12 text-left pointer-events-auto">
+      <div className="flex flex-col gap-12 max-w-2xl">
+        
+        {/* Page Header */}
         <motion.div
-          className="mb-8 md:mb-0 md:w-1/3 flex justify-center"
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.div
-            className="glow-effect"
-            whileHover={{
-              boxShadow: "0 0 25px rgba(238, 130, 238, 1)", // Violet glowing effect when hovered
-            }}
-            transition={{
-              boxShadow: { duration: 0.6, ease: "easeInOut" },
-            }}
-          >
-            <Image
-              src={profile}
-              alt="Profile"
-              className="object-cover rounded-lg shadow-lg"
-              height={500}
-              width={350}
-            />
-          </motion.div>
+          <span className="inline-flex items-center gap-2 text-[9px] font-black tracking-[0.3em] text-[#c5ff41] uppercase mb-4 border border-[#c5ff41]/20 bg-[#c5ff41]/5 px-3 py-1 rounded-full w-fit">
+            Biography
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter text-white leading-none">
+            ACADEMIC &<br />
+            <span className="text-[#998f8f]">DEVELOPER PATH</span>
+          </h1>
         </motion.div>
 
-        {/* Text Content with animation */}
+        {/* Narrative bio snippet */}
         <motion.div
-          className="md:w-2/3"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="text-[#998f8f] text-sm leading-relaxed"
         >
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-[#CBACF9] to-purple-500 text-2xl font-bold">
-            About Me
-          </h1>
-          <p className=" text-gray-300 mb-6 text-base">
-            Hi! I’m{" "}
-            <span className="text-lime-400 text-lg">Najmul Hassan Jishan</span>,
-            a passionate software developer with a focus on frontend
-            technologies like React.js, Next.js, and the MERN stack. I started
-            my coding journey in late 2022 and since then, I’ve been dedicated
-            to building and learning web development to create seamless and
-            scalable web applications.
-          </p>
+          I started my coding journey in late 2022, focusing on frontend interfaces and full-stack solutions. Below is a summary of my academic history and technical path.
+        </motion.div>
 
-          <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-[#CBACF9] to-purple-500 text-2xl font-bold">
+        {/* Academic History */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="space-y-4"
+        >
+          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-[#f46c38] flex items-center gap-2 mb-2">
+            <GraduationCap size={16} />
             Academic Background
           </h2>
-          <p className="text-gray-400 mb-4 text-base">
-            I completed my <strong>SSC</strong> in 2020 from Captain Shamsul
-            Huda High School with a GPA of 4.61. Currently, I am pursuing a{" "}
-            <strong>Diploma in Computer Science</strong> from Feni Polytechnic
-            Institute, expecting to graduate in 2025 with a CGPA of 3.61/4. My
-            academic journey has been deeply intertwined with my passion for
-            technology, and I aim to leverage these skills to contribute to
-            innovative software solutions.
-          </p>
 
-          <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-[#CBACF9] to-purple-500 text-2xl font-bold">
+          {/* Diploma Card */}
+          <div className="p-6 rounded-3xl border border-white/[0.05] bg-[#1b1918] shadow-md">
+            <div className="flex justify-between items-start gap-4 mb-2">
+              <h3 className="text-base font-black text-white uppercase tracking-tight">
+                Diploma in Computer Science
+              </h3>
+              <span className="px-2.5 py-1 rounded-full bg-[#c5ff41]/5 border border-[#c5ff41]/15 text-[8px] font-black text-[#c5ff41] tracking-widest whitespace-nowrap">
+                CGPA 3.61/4
+              </span>
+            </div>
+            <p className="text-xs text-white/70 font-semibold mb-3 uppercase tracking-wider">
+              Feni Polytechnic Institute • Graduating 2025
+            </p>
+            <p className="text-[#998f8f] text-xs leading-relaxed">
+              Academic studies focused deeply on software methodologies, logic structures, networking systems, databases, and general computer science theory, laying the foundation for modern web engineering.
+            </p>
+          </div>
+
+          {/* SSC Card */}
+          <div className="p-6 rounded-3xl border border-white/[0.05] bg-[#1b1918] shadow-md">
+            <div className="flex justify-between items-start gap-4 mb-2">
+              <h3 className="text-base font-black text-white uppercase tracking-tight">
+                Secondary School Certificate (SSC)
+              </h3>
+              <span className="px-2.5 py-1 rounded-full bg-[#c5ff41]/5 border border-[#c5ff41]/15 text-[8px] font-black text-[#c5ff41] tracking-widest whitespace-nowrap">
+                GPA 4.61
+              </span>
+            </div>
+            <p className="text-xs text-white/70 font-semibold mb-3 uppercase tracking-wider">
+              Captain Shamsul Huda High School • Graduated 2020
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Coding Journey */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="space-y-4"
+        >
+          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-[#c5ff41] flex items-center gap-2 mb-2">
+            <Clock size={16} />
             My Coding Journey
           </h2>
-          <p className="text-gray-400 text-base">
-            I began coding at the end of 2022, diving into the world of frontend
-            development. Since then, I’ve worked on several projects, including
-            building functional web applications with React, Next.js, and
-            Tailwind CSS. I’m always eager to learn new technologies and improve
-            my skills to build impactful solutions.
-          </p>
 
-          {/* Contact Button with animation */}
-          <motion.div
-            className="mt-8 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            <Link href={"/contact"}>
-              <MagicButton
-                title="Buy me a coffee"
-                icon={<Coffee />}
-                position="right"
-              />
-            </Link>
-          </motion.div>
+          <div className="p-6 rounded-3xl border border-white/[0.05] bg-[#1b1918] shadow-md space-y-4">
+            <p className="text-[#998f8f] text-xs leading-relaxed">
+              I began coding in late 2022, diving into basic frontend structures. Through active practice, building complete interfaces, and tackling backend integrations, I transitioned into full-stack development using the MERN stack.
+            </p>
+            <p className="text-[#998f8f] text-xs leading-relaxed">
+              Since mid-2025, I have worked as a Frontend Developer at Join Venture AI, designing responsive client interfaces with React and Next.js, integrating socket-driven real-time communications, and working alongside cross-functional teams to build enterprise-grade portals.
+            </p>
+          </div>
         </motion.div>
+
+        {/* Coffee CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex justify-start mt-4"
+        >
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2.5 px-6 py-4 rounded-full border border-white/10 bg-[#1b1918] hover:bg-white hover:text-black hover:border-transparent text-white font-bold text-xs uppercase tracking-[0.15em] transition-all duration-300 group"
+          >
+            <Coffee size={14} className="text-[#c5ff41]" />
+            <span>Connect With Me</span>
+          </Link>
+        </motion.div>
+
       </div>
     </section>
   );
 };
 
-export default page;
+export default AboutPage;

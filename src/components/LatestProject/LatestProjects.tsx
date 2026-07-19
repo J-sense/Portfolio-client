@@ -1,13 +1,10 @@
+import { featuredProjects } from "@/lib/featuredProjects";
 import Projects from "../latest/Projects";
 
-const LatestProjects = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
-  const projects = await res.json();
-  const { data } = projects;
-
+const LatestProjects = () => {
   return (
     <div>
-      <Projects pr={data} />
+      <Projects pr={featuredProjects} />
     </div>
   );
 };

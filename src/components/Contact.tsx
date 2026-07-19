@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { CONTACT } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
@@ -37,11 +36,13 @@ export const SOCIAL_MEDIA_LINKS = [
 const ContactCard = ({ 
   icon: Icon, 
   label, 
-  value 
+  value,
+  color = "lime"
 }: { 
   icon: any; 
   label: string; 
   value: string; 
+  color?: "lime" | "orange";
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -51,31 +52,38 @@ const ContactCard = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const accentColor = color === "lime" ? "text-[#c5ff41]" : "text-[#f46c38]";
+  const borderHoverClass = color === "lime" ? "group-hover:border-[#c5ff41]/40" : "group-hover:border-[#f46c38]/40";
+  const bgAccent = color === "lime" ? "bg-[#c5ff41]/5 border-[#c5ff41]/10 text-[#c5ff41]" : "bg-[#f46c38]/5 border-[#f46c38]/10 text-[#f46c38]";
+
   return (
     <motion.div
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -4 }}
       className="relative group cursor-pointer w-full"
       onClick={handleCopy}
     >
-      <div className="absolute -inset-px bg-gradient-to-r from-purple/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute -inset-px bg-gradient-to-r from-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
-      <div className="relative p-8 px-10 rounded-3xl border border-white/[0.08] bg-black-200 backdrop-blur-xl flex flex-col items-center text-center transition-all duration-500 group-hover:border-purple/40 shrink-0 h-full">
-        <div className="w-16 h-16 mb-6 rounded-2xl bg-purple/10 border border-purple/20 flex items-center justify-center text-purple transition-transform duration-500 group-hover:scale-110">
-          <Icon size={32} />
+      <div className={cn(
+        "relative p-6 sm:p-8 rounded-3xl border border-white/[0.05] bg-[#1b1918] flex flex-col items-center text-center transition-all duration-500 shrink-0 h-full",
+        borderHoverClass
+      )}>
+        <div className={cn("w-12 h-12 mb-4 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 border", bgAccent)}>
+          <Icon size={20} />
         </div>
         
-        <span className="text-xs font-black uppercase tracking-[0.3em] text-white-200 mb-2 opacity-50">
+        <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#998f8f] mb-1">
           {label}
         </span>
         
         <h3 className={cn(
-          "text-xl sm:text-2xl font-bold text-white mb-6 tracking-tight transition-colors duration-300 break-all px-2",
-          copied ? "text-purple" : "group-hover:text-purple"
+          "text-base font-bold text-white mb-4 tracking-tight transition-colors duration-300 break-all px-2 uppercase",
+          copied ? accentColor : "group-hover:text-white"
         )}>
           {value}
         </h3>
 
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.05] border border-white/[0.1] text-xs font-bold text-white-100 uppercase tracking-widest transition-all duration-300 hover:bg-white/[0.1] mt-auto">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 border border-white/[0.05] text-[9px] font-bold text-[#998f8f] uppercase tracking-widest transition-all duration-300 hover:bg-black/60 mt-auto">
           <AnimatePresence mode="wait">
             {copied ? (
               <motion.div
@@ -83,9 +91,9 @@ const ContactCard = ({
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0 }}
-                className="flex items-center gap-2 text-purple"
+                className={cn("flex items-center gap-1.5", accentColor)}
               >
-                <Check size={14} />
+                <Check size={10} />
                 Copied!
               </motion.div>
             ) : (
@@ -94,9 +102,9 @@ const ContactCard = ({
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0 }}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1.5"
               >
-                <Copy size={14} />
+                <Copy size={10} />
                 Click to Copy
               </motion.div>
             )}
@@ -109,76 +117,54 @@ const ContactCard = ({
 
 const Contact = () => {
   return (
-    <section id="contact" className="relative py-40 px-6 sm:px-12 lg:px-24 bg-black overflow-hidden pointer-events-auto">
-      {/* Premium Background Effects */}
-      <div className="absolute inset-0 w-full h-full bg-grid-white/[0.02] bg-grid-small-white/[0.01] -z-10" />
-      <div className="absolute inset-0 w-full h-full [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] -z-10" />
-
-      <div className="container mx-auto max-w-6xl relative z-10 p-0">
-        <div className="flex flex-col items-center text-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="px-4 py-1.5 mb-8 rounded-full bg-purple/10 border border-purple/20 text-xs font-black tracking-[0.4em] text-purple uppercase"
-          >
-            Get In Touch
-          </motion.div>
+    <section id="contact-info" className="relative py-16 px-4 bg-transparent overflow-hidden pointer-events-auto border-t border-white/[0.05] mt-12">
+      <div className="container mx-auto max-w-4xl relative z-10 p-0">
+        <div className="flex flex-col items-center text-center mb-12">
+          <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.3em] text-[#c5ff41] uppercase mb-4 border border-[#c5ff41]/20 bg-[#c5ff41]/5 px-3 py-1 rounded-full w-fit">
+            COMMUNICATION
+          </span>
           
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-[0.9] lg:leading-[0.9]"
-          >
-            Ready to <span className="text-purple">start</span> a <br className="hidden md:block" /> project together?
-          </motion.h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 tracking-tighter uppercase">
+            DIRECT <span className="text-[#998f8f]">CHANNELS</span>
+          </h2>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white-100 text-lg md:text-2xl max-w-2xl opacity-60 leading-relaxed font-medium"
-          >
+          <p className="text-[#998f8f] text-xs max-w-md opacity-80 leading-relaxed">
             {CONTACT.text}
-          </motion.p>
+          </p>
         </div>
 
         {/* Contact Interaction Area */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 max-w-4xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 max-w-xl mx-auto items-stretch">
           <ContactCard 
             icon={Mail} 
-            label="E-mail" 
+            label="E-mail Address" 
             value={CONTACT.email} 
+            color="lime"
           />
           <ContactCard 
             icon={Phone} 
-            label="Phone" 
+            label="Phone Number" 
             value={CONTACT.phone} 
+            color="orange"
           />
         </div>
 
         {/* Social Connect Sector */}
         <div className="flex flex-col items-center">
-          <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple/50 to-transparent mb-12" />
-          
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             {SOCIAL_MEDIA_LINKS.map((link, index) => (
               <motion.a
                 key={index}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.5 }}
+                initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ y: -5, scale: 1.1 }}
+                whileHover={{ y: -3 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
                 className={cn(
-                  "p-5 text-3xl border border-white/[0.1] bg-white/[0.03] backdrop-blur-md rounded-2xl transition-all duration-300 text-white-100",
-                  link.color
+                  "p-3 text-lg border border-white/[0.05] bg-[#1b1918] rounded-xl transition-all duration-300 text-[#998f8f]"
                 )}
               >
                 {link.icon}
@@ -187,19 +173,10 @@ const Contact = () => {
           </div>
         </div>
 
-        <motion.p
-          className="mt-32 text-center text-white-100/30 text-xs font-bold uppercase tracking-[0.5em]"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          &copy; {new Date().getFullYear()} J-Sense Portfolio. All rights reserved.
-        </motion.p>
+        <p className="mt-16 text-center text-white/20 text-[9px] font-black uppercase tracking-[0.4em]">
+          &copy; {new Date().getFullYear()} JISHAN HASSAN. ALL RIGHTS RESERVED.
+        </p>
       </div>
-
-      {/* Finishing Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple/10 blur-[200px] rounded-full -z-10" />
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-purple/5 to-transparent -z-10" />
     </section>
   );
 };

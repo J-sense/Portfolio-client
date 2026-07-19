@@ -1,195 +1,192 @@
-
 "use client";
-
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Info } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 
-// MotionLink for animated Link
-const MotionLink = motion(Link);
+type Project = {
+  id: number;
+  title: string;
+  slug: string;
+  category: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  features: string[];
+  liveUrl: string;
+  githubUrl: string;
+  featured: boolean;
+  status: string;
+};
 
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
-
-  const handleMouseMove = ({ currentTarget, clientX, clientY }: React.MouseEvent) => {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    setMouseX(clientX - left);
-    setMouseY(clientY - top);
-  };
-
-  // Improved Bento Logic for 3-column balancing
-  const isLarge = index % 3 === 0;
+const ProjectRow = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
-      className={cn(
-        "group relative flex flex-col rounded-[2rem] border border-white/[0.1] bg-black-200 backdrop-blur-xl hover:border-purple/50 transition-all duration-500 overflow-hidden isolate",
-        isLarge ? "md:col-span-2" : "md:col-span-1"
-      )}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.55, delay: index * 0.1 }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group relative"
     >
-      {/* Premium Spotlight effect */}
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: `radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(203, 172, 249, 0.15), transparent 40%)`,
-        }}
-      />
+      {/* Top divider */}
+      <div className="h-px w-full bg-white/[0.07] group-hover:bg-[#c5ff41]/20 transition-colors duration-500" />
 
-      <div className="p-8 sm:p-10 flex flex-col h-full">
-        {/* Standardized Project Image Box */}
-        <div className={cn(
-          "relative w-full rounded-3xl overflow-hidden mb-10 group/img aspect-video",
-          isLarge ? "max-h-[200px]" : "max-h-[200px]"
-        )}>
+      <div className="flex items-center gap-6 py-6 cursor-default">
+        {/* Index number */}
+        <span className="text-[11px] font-black text-[#998f8f] uppercase tracking-[0.2em] w-6 shrink-0 select-none">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        {/* Thumbnail — slides in on hover */}
+        <div
+          className={`relative overflow-hidden rounded-xl shrink-0 transition-all duration-500 ease-out ${
+            hovered ? "w-28 h-16 opacity-100" : "w-0 h-16 opacity-0"
+          }`}
+        >
           <Image
             src={project.image}
             fill
             alt={project.title}
-            className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
+            className="object-cover"
+            unoptimized
           />
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-             <div className="p-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                <ExternalLink className="text-white" size={28} />
-             </div>
-          </div>
-          {/* Enhanced Badge */}
-          <div className="absolute top-5 left-5 px-4 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-[10px] uppercase font-bold text-white tracking-[0.2em]">
-            {project.technologies.length} Stack
-          </div>
         </div>
 
-        {/* Project Content */}
-        <div className="flex-1 flex flex-col">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-purple transition-all duration-300 tracking-tight line-clamp-1">
+        {/* Main content */}
+        <div className="flex flex-1 items-center gap-6 min-w-0">
+          {/* Left: category + title + description */}
+          <div className="flex-1 min-w-0">
+            <p className="text-[9px] font-black uppercase tracking-[0.25em] text-[#c5ff41] mb-1.5">
+              {project.category}
+            </p>
+            <h3
+              className={`font-black uppercase tracking-tight transition-colors duration-300 leading-none truncate ${
+                hovered ? "text-[#c5ff41]" : "text-white"
+              } text-xl md:text-2xl`}
+            >
               {project.title}
             </h3>
+            <p className="text-[#998f8f] text-[11px] leading-relaxed mt-2 line-clamp-1 max-w-sm">
+              {project.description}
+            </p>
           </div>
 
-          <p className="text-white-100 text-base sm:text-md leading-relaxed mb-8 line-clamp-3 opacity-70 group-hover:opacity-100 transition-opacity">
-            {project.description}
-          </p>
-
-          {/* Unified Technology Space */}
-          <div className="flex flex-wrap gap-2.5 mb-auto pb-8 items-start">
-            {project.technologies.slice(0, 6).map((tech: any, idx: number) => (
+          {/* Tech pills — hidden on small, visible on md+ */}
+          <div className="hidden md:flex flex-wrap gap-1.5 shrink-0 max-w-[220px]">
+            {project.technologies.slice(0, 3).map((tech, i) => (
               <span
-                key={idx}
-                className="px-4 py-1.5 text-[11px] font-bold bg-white/[0.03] border border-white/[0.05] text-purple-200 rounded-full uppercase tracking-widest shadow-sm"
+                key={i}
+                className="px-2.5 py-1 text-[8px] font-bold bg-white/[0.04] border border-white/[0.07] text-white/50 rounded-full uppercase tracking-wider"
               >
                 {tech}
               </span>
             ))}
-            {project.technologies.length > 6 && (
-              <span className="px-4 py-1.5 text-[11px] font-bold bg-white/[0.03] border border-white/[0.05] text-white-100 rounded-full">
-                +{project.technologies.length - 6}
+            {project.technologies.length > 3 && (
+              <span className="px-2 py-1 text-[8px] font-bold text-[#c5ff41] border border-[#c5ff41]/20 bg-[#c5ff41]/5 rounded-full">
+                +{project.technologies.length - 3}
               </span>
             )}
           </div>
 
-          {/* Redesigned Button Layout - Stacked with Primary/Secondary Hierarchy */}
-          <div className="space-y-3 w-full">
-            {/* Primary Action - View Live */}
-            <Link 
-              href={project.liveLink}
-              className="group/btn relative block w-full"
-            >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-30 group-hover/btn:opacity-60 transition duration-300" />
-              <div className="relative flex items-center justify-center gap-3 w-full h-14 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl font-bold text-white transition-all duration-300 group-hover/btn:shadow-lg group-hover/btn:shadow-purple/50">
-                <span className="text-base">View Live Project</span>
-                <ExternalLink size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-              </div>
-            </Link>
+          {/* Status badge */}
+          <span
+            className={`hidden lg:flex shrink-0 items-center gap-1 text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border ${
+              project.status === "Completed"
+                ? "text-[#c5ff41] border-[#c5ff41]/25 bg-[#c5ff41]/5"
+                : "text-[#f46c38] border-[#f46c38]/25 bg-[#f46c38]/5"
+            }`}
+          >
+            <span
+              className={`w-1.5 h-1.5 rounded-full ${
+                project.status === "Completed"
+                  ? "bg-[#c5ff41]"
+                  : "bg-[#f46c38] animate-pulse"
+              }`}
+            />
+            {project.status}
+          </span>
 
-            {/* Secondary Action - Details */}
-            <MotionLink
-              href={`/projects/${project._id}`}
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              className="flex items-center justify-center gap-3 w-full h-12 rounded-xl border border-white/[0.15] bg-white/[0.05] backdrop-blur-sm text-sm font-semibold text-white/90 transition-all hover:bg-white/[0.1] hover:border-white/[0.25]"
-            >
-              <Info size={18} className="text-purple" />
-              <span>View Details</span>
-            </MotionLink>
+          {/* Arrow CTA */}
+          <div className="shrink-0">
+            {project.liveUrl ? (
+              <Link
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.08] bg-[#1b1918] text-[#998f8f] group-hover:bg-[#c5ff41] group-hover:text-black group-hover:border-transparent transition-all duration-300"
+              >
+                <ArrowUpRight
+                  size={16}
+                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+                />
+              </Link>
+            ) : (
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.05] bg-[#1b1918] text-[#998f8f]/40">
+                <ArrowUpRight size={16} />
+              </div>
+            )}
           </div>
         </div>
       </div>
-
-      {/* Signature corner glow */}
-      <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-purple/10 blur-[120px] rounded-full group-hover:bg-purple/25 transition-all duration-1000 -z-10" />
     </motion.div>
   );
 };
 
-const Projects = ({ pr }: { pr: any[] }) => {
-  if (!pr || pr.length === 0) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <p className="text-white-100 text-xl font-medium">No projects to display at the moment.</p>
-      </div>
-    );
-  }
+const Projects = ({ pr, showAll = false }: { pr: Project[]; showAll?: boolean }) => {
+  if (!pr || pr.length === 0) return null;
+
+  const displayProjects = showAll ? pr : pr.slice(0, 3);
 
   return (
-    <section id="projects" className="relative py-40 px-6 sm:px-12 lg:px-24 bg-black overflow-hidden pointer-events-auto">
-      {/* Premium Background Effects */}
-      <div className="absolute inset-0 w-full h-full bg-grid-white/[0.02] -z-10" />
-      <div className="absolute inset-0 w-full h-full [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] -z-10" />
+    <section
+      id="projects"
+      className="relative py-16 bg-[#151312] overflow-hidden"
+    >
+      {/* Subtle ambient */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-[#f46c38]/[0.025] blur-[100px] rounded-full -z-10 pointer-events-none" />
 
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <motion.div
-           className="text-center mb-32"
-           initial={{ opacity: 0, y: 30 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block px-5 py-2 mb-8 text-xs font-black tracking-[0.3em] text-purple uppercase bg-purple/10 border border-purple/20 rounded-full">
-            Showcase
+      {/* Section header */}
+      <motion.div
+        className="mb-10"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="flex items-end justify-between">
+          <div>
+            <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#f46c38] uppercase bg-[#f46c38]/5 border border-[#f46c38]/20 rounded-full">
+              {showAll ? "Showcase" : "Selected Works"}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-white uppercase leading-none">
+              {showAll ? "ALL WORKS" : "RECENT PROJECTS"}
+            </h2>
+          </div>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#998f8f]">
+            {displayProjects.length} Projects
           </span>
-          <h2 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter text-white leading-none">
-            Selected <span className="text-purple">Works</span>
-          </h2>
-          <p className="text-white-100 max-w-3xl mx-auto text-xl md:text-2xl leading-relaxed opacity-60">
-            A proper collection of modern developments where design meets functional excellence.
-          </p>
-        </motion.div>
-
-        {/* Improved Bento Grid with tighter gaps and proper "Shape" */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 items-stretch">
-          {pr.map((project, index) => (
-            <ProjectCard key={project._id || index} project={project} index={index} />
-          ))}
         </div>
+      </motion.div>
 
-        {/* Footer shimmer line */}
-        <motion.div 
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           viewport={{ once: true }}
-           className="mt-40 text-center"
-        >
-          <div className="inline-flex h-[1px] w-40 bg-gradient-to-r from-transparent via-purple/40 to-transparent mb-10" />
-          <p className="text-white-200 text-sm font-semibold opacity-30 uppercase tracking-widest">
-            Always Building & Learning
-          </p>
-        </motion.div>
+      {/* Project rows */}
+      <div>
+        {displayProjects.map((project, index) => (
+          <ProjectRow key={project.id} project={project} index={index} />
+        ))}
+        {/* Bottom border */}
+        <div className="h-px w-full bg-white/[0.07]" />
       </div>
-      
-      {/* Dynamic Background Orbs */}
-      <div className="absolute top-[15%] -left-[10%] w-[500px] h-[500px] bg-purple/5 blur-[200px] rounded-full -z-10" />
-      <div className="absolute bottom-[20%] -right-[15%] w-[600px] h-[600px] bg-blue-500/5 blur-[200px] rounded-full -z-10" />
     </section>
   );
 };

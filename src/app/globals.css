@@ -4,80 +4,53 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 24 8% 7%; /* #151312 */
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 24 8% 10%; /* #1b1918 */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 24 8% 7%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 60 100% 63%; /* Neon Lime Green #c5ff41 */
+    --primary-foreground: 24 8% 7%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 17 90% 59%; /* Neon Orange #f46c38 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 0 4% 59%; /* #998f8f */
+    --muted-foreground: 0 4% 42%; /* #6a6b6e */
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 60 100% 63%;
+    --accent-foreground: 24 8% 7%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --border: 24 8% 18%; /* #2c2826 */
+    --input: 24 8% 18%;
+    --ring: 60 100% 63%;
 
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --radius: 1.5rem;
   }
 }
-/* :root {
-  font-family: "Oswald", sans-serif;
-  background-color: rgba(0, 0, 0, 0.925);
-  scroll-behavior: smooth-scroll;
-} */
 
 @layer base {
   * {
     @apply border-border !scroll-smooth;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: #151312;
+    font-family: var(--font-inter), sans-serif;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), sans-serif;
+  }
+
   button {
     @apply active:outline-none;
   }
@@ -89,15 +62,34 @@
   }
 
   .black-gradient {
-    background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
+    background: linear-gradient(90deg, #1b1918 0%, #151312 100%);
+  }
+
+  /* Custom Glow Accents */
+  .glow-lime {
+    box-shadow: 0 0 40px -10px rgba(197, 255, 65, 0.25);
+  }
+  .glow-orange {
+    box-shadow: 0 0 40px -10px rgba(244, 108, 56, 0.25);
+  }
+  
+  /* Text Shadow / Neon Style */
+  .text-neon-lime {
+    text-shadow: 0 0 15px rgba(197, 255, 65, 0.4);
+  }
+  .text-neon-orange {
+    text-shadow: 0 0 15px rgba(244, 108, 56, 0.4);
   }
 }
+
 /* Add to your global CSS file (e.g., globals.css or app.css) */
 @keyframes gradient-xy {
+
   0%,
   100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }

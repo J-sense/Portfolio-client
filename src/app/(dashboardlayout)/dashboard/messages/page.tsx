@@ -1,9 +1,11 @@
 import { TMessage } from "@/types/types";
 
+export const dynamic = "force-dynamic";
+
 const Message = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages`);
-  const messages = await res.json();
-  const data = messages.date;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/messages`, { cache: 'no-store' });
+  const messages = await res.json().catch(() => ({}));
+  const data = messages?.data || [];
 
   return (
     <div className="p-20">

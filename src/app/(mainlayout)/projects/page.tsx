@@ -1,19 +1,13 @@
-import Card from "@/components/Card";
-import { ProjectData } from "@/types/types";
+import Projects from "@/components/latest/Projects";
+import { featuredProjects } from "@/lib/featuredProjects";
 
-const ProjectsPage = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
-  const projects = await res.json();
-  console.log(projects);
+export const dynamic = "force-dynamic";
 
+const ProjectsPage = () => {
   return (
-    <>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 my-30">
-        {projects?.data.map((item: ProjectData, index: string) => (
-          <Card project={item} key={index} />
-        ))}
-      </div>
-    </>
+    <div className="w-full">
+      <Projects pr={featuredProjects} showAll={true} />
+    </div>
   );
 };
 

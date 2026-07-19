@@ -5,16 +5,22 @@ import Link from "next/link";
 import React from "react";
 
 import DeleteProject from "@/components/DeleteProject/DeleteProject";
+export const dynamic = "force-dynamic";
+
 const getProjects = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-    cache: "force-cache", // Fetch fresh data every time
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      cache: "no-store",
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch blogs");
+    if (!res.ok) {
+      return { data: [] };
+    }
+
+    return await res.json().catch(() => ({ data: [] }));
+  } catch {
+    return { data: [] };
   }
-
-  return res.json();
 };
 
 const page = async () => {

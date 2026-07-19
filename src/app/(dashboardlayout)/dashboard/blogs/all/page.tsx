@@ -8,16 +8,22 @@ import DeleteBlog from "@/components/deleteBlog/DeleteBlog";
 import { ArticleData } from "@/types/types";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const getBlogs = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`, {
-    cache: "no-store", // Fetch fresh data every time
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`, {
+      cache: "no-store",
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch blogs");
+    if (!res.ok) {
+      return { data: [] };
+    }
+
+    return await res.json().catch(() => ({ data: [] }));
+  } catch {
+    return { data: [] };
   }
-
-  return res.json();
 };
 
 export default async function Dashboard() {
