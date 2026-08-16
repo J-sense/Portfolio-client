@@ -40,14 +40,14 @@ const Connect = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-6 sm:px-12 lg:px-24 bg-[#151312] overflow-hidden pointer-events-auto">
+    <section id="contact" className="relative py-12 bg-transparent overflow-hidden pointer-events-auto w-full">
       {/* Background neon light glow */}
       <div className="absolute bottom-0 right-[-10%] w-[500px] h-[500px] bg-[#f46c38]/3 blur-[150px] rounded-full -z-10" />
 
-      <div className="container mx-auto max-w-5xl relative z-10">
+      <div className="w-full relative z-10">
         
         {/* Split Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Left Column: Contact details & Callout */}
           <div className="lg:col-span-5 flex flex-col text-left">
@@ -55,7 +55,7 @@ const Connect = () => {
               Get in Touch
             </span>
             
-            <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-white uppercase leading-none">
+            <h2 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-black mb-8 tracking-tighter text-white uppercase leading-none">
               LET&apos;S WORK<br />
               <span className="text-[#998f8f]">TOGETHER</span>
             </h2>
@@ -143,7 +143,7 @@ const Connect = () => {
                 {/* Budget Range selector */}
                 <div className="flex flex-col text-left">
                   <label className="text-[9px] font-black uppercase tracking-widest text-[#998f8f] mb-3">Project Budget</label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-2.5">
                     {budgetOptions.map((option) => {
                       const isSelected = selectedBudget === option;
                       return (
