@@ -36,8 +36,7 @@ export const SOCIAL_MEDIA_LINKS = [
 const ContactCard = ({ 
   icon: Icon, 
   label, 
-  value,
-  color = "lime"
+  value
 }: { 
   icon: any; 
   label: string; 
@@ -52,9 +51,9 @@ const ContactCard = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const accentColor = color === "lime" ? "text-[#c5ff41]" : "text-[#f46c38]";
-  const borderHoverClass = color === "lime" ? "group-hover:border-[#c5ff41]/40" : "group-hover:border-[#f46c38]/40";
-  const bgAccent = color === "lime" ? "bg-[#c5ff41]/5 border-[#c5ff41]/10 text-[#c5ff41]" : "bg-[#f46c38]/5 border-[#f46c38]/10 text-[#f46c38]";
+  const accentColor = "text-[#38bdf8]";
+  const borderHoverClass = "group-hover:border-[#38bdf8]/60";
+  const bgAccent = "bg-[#38bdf8]/10 border-[#38bdf8]/30 text-[#38bdf8]";
 
   return (
     <motion.div
@@ -65,25 +64,25 @@ const ContactCard = ({
       <div className="absolute -inset-px bg-gradient-to-r from-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className={cn(
-        "relative p-6 sm:p-8 rounded-3xl border border-white/[0.05] bg-[#1b1918] flex flex-col items-center text-center transition-all duration-500 shrink-0 h-full",
+        "relative p-6 sm:p-8 rounded-3xl border border-[#334155] bg-[#121212] flex flex-col items-center text-center transition-all duration-500 shrink-0 h-full shadow-2xl",
         borderHoverClass
       )}>
         <div className={cn("w-12 h-12 mb-4 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 border", bgAccent)}>
           <Icon size={20} />
         </div>
         
-        <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#998f8f] mb-1">
+        <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#94a3b8] mb-1">
           {label}
         </span>
         
         <h3 className={cn(
-          "text-base font-bold text-white mb-4 tracking-tight transition-colors duration-300 break-all px-2 uppercase",
+          "text-base font-bold text-[#e2e8f0] mb-4 tracking-tight transition-colors duration-300 break-all px-2 uppercase",
           copied ? accentColor : "group-hover:text-white"
         )}>
           {value}
         </h3>
 
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 border border-white/[0.05] text-[9px] font-bold text-[#998f8f] uppercase tracking-widest transition-all duration-300 hover:bg-black/60 mt-auto">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#050505] border border-[#334155] text-[9px] font-bold text-[#94a3b8] uppercase tracking-widest transition-all duration-300 hover:bg-[#121212] mt-auto">
           <AnimatePresence mode="wait">
             {copied ? (
               <motion.div
@@ -117,18 +116,18 @@ const ContactCard = ({
 
 const Contact = () => {
   return (
-    <section id="contact-info" className="relative py-16 px-4 bg-transparent overflow-hidden pointer-events-auto border-t border-white/[0.05] mt-12">
+    <section id="contact-info" className="relative py-16 px-4 bg-transparent overflow-hidden pointer-events-auto border-t border-[#334155]/60 mt-12">
       <div className="container mx-auto max-w-4xl relative z-10 p-0">
         <div className="flex flex-col items-center text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.3em] text-[#c5ff41] uppercase mb-4 border border-[#c5ff41]/20 bg-[#c5ff41]/5 px-3 py-1 rounded-full w-fit">
+          <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.3em] text-[#38bdf8] uppercase mb-4 border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-3 py-1 rounded-full w-fit">
             COMMUNICATION
           </span>
           
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 tracking-tighter uppercase">
-            DIRECT <span className="text-[#998f8f]">CHANNELS</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#e2e8f0] mb-4 tracking-tighter uppercase">
+            DIRECT <span className="text-[#94a3b8]">CHANNELS</span>
           </h2>
           
-          <p className="text-[#998f8f] text-xs max-w-md opacity-80 leading-relaxed">
+          <p className="text-[#94a3b8] text-xs max-w-md opacity-90 leading-relaxed">
             {CONTACT.text}
           </p>
         </div>
@@ -164,7 +163,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 className={cn(
-                  "p-3 text-lg border border-white/[0.05] bg-[#1b1918] rounded-xl transition-all duration-300 text-[#998f8f]"
+                  "p-3 text-lg border border-[#334155] bg-[#121212] rounded-xl transition-all duration-300 text-[#94a3b8]"
                 )}
               >
                 {link.icon}

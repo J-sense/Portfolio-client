@@ -27,6 +27,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        bricolage: ["var(--font-bricolage)", "sans-serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+      },
       colors: {
         black: {
           DEFAULT: "#000",

@@ -2,6 +2,7 @@ import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import LatestProjects from "@/components/LatestProject/LatestProjects";
 import Work from "@/components/Work";
+import WildIdeas from "@/components/WildIdeas";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ const Home = () => {
       <Grid />
       <LatestProjects />
       <Work />
+      <WildIdeas />
     </div>
   );
 };

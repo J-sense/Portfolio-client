@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import CreateProjects from "@/lib/actions/CretateProjects";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";

@@ -9,7 +9,7 @@ const CommonLayout = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <div className="antialiased bg-[#151312] text-white min-h-screen">
+    <div className="antialiased bg-[#050505] text-[#e2e8f0] min-h-screen">
       <Navbar />
       <FloatingContact />
 
@@ -19,15 +19,15 @@ const CommonLayout = ({
           {/* LEFT: Persistent Sticky Profile Sidebar */}
           <aside className="lg:col-span-4 lg:sticky lg:top-24 flex flex-col gap-6 w-full">
             {/* Portrait notch card */}
-            <div className="relative w-full aspect-[4/5] rounded-3xl border border-white/[0.05] bg-[#1b1918] p-4 overflow-hidden group shadow-lg">
+            <div className="relative w-full aspect-[4/5] rounded-3xl border border-[#334155] bg-[#121212] p-4 overflow-hidden group shadow-2xl">
               {/* Corner brackets */}
-              <div className="absolute -top-1 -left-1 w-5 h-5 border-t border-l border-[#c5ff41] z-20" />
-              <div className="absolute -top-1 -right-1 w-5 h-5 border-t border-r border-[#c5ff41] z-20" />
-              <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b border-l border-[#c5ff41] z-20" />
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b border-r border-[#c5ff41] z-20" />
+              <div className="absolute -top-1 -left-1 w-5 h-5 border-t border-l border-[#38bdf8] z-20" />
+              <div className="absolute -top-1 -right-1 w-5 h-5 border-t border-r border-[#38bdf8] z-20" />
+              <div className="absolute -bottom-1 -left-1 w-5 h-5 border-b border-l border-[#38bdf8] z-20" />
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b border-r border-[#38bdf8] z-20" />
 
               {/* Portrait image overlay */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black/35">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black/50">
                 <Image
                   src="/images/my-profile-card.png"
                   alt="Najmul Hassan Jishan"
@@ -37,37 +37,37 @@ const CommonLayout = ({
                 />
               </div>
 
-              {/* Glowing lime aura */}
-              <div className="absolute -inset-10 bg-[radial-gradient(circle_at_center,rgba(197,255,65,0.08)_0%,transparent_60%)] blur-[40px] pointer-events-none -z-10 group-hover:opacity-100 transition-opacity" />
+              {/* Glowing ice blue aura */}
+              <div className="absolute -inset-10 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.12)_0%,transparent_60%)] blur-[40px] pointer-events-none -z-10 group-hover:opacity-100 transition-opacity" />
             </div>
 
             {/* Profile Info details */}
-            <div className="rounded-3xl border border-white/[0.05] bg-[#1b1918] p-6 text-left shadow-lg">
+            <div className="rounded-3xl border border-[#334155] bg-[#121212] p-6 text-left shadow-2xl">
               <div className="flex items-center gap-2 mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c5ff41] animate-pulse" />
-                <span className="text-[9px] font-black tracking-[0.2em] text-[#c5ff41] uppercase">
-                  MERN STACK ARCHITECT
+                <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
+                <span className="text-[9px] font-black tracking-[0.2em] text-[#38bdf8] uppercase">
+                  FULL STACK ARCHITECT
                 </span>
               </div>
 
-              <h2 className="text-xl font-black uppercase tracking-tight text-white mb-1">
+              <h2 className="text-xl font-black uppercase tracking-tight text-[#e2e8f0] mb-1">
                 JISHAN HASSAN
               </h2>
-              <p className="text-[10px] font-bold text-[#998f8f] uppercase tracking-widest mb-4">
+              <p className="text-[10px] font-bold text-[#94a3b8] uppercase tracking-widest mb-4">
                 Software Engineer
               </p>
 
-              <p className="text-[#998f8f] text-[11px] leading-relaxed mb-6">
-                Specializing in full-stack web architectures, dynamic user interfaces, and high-performance MERN applications.
+              <p className="text-[#94a3b8] text-[11px] leading-relaxed mb-6">
+                Specializing in full-stack web architectures, dynamic user interfaces, and high-performance applications.
               </p>
 
               {/* Social icons */}
-              <div className="flex gap-2.5 pt-4 border-t border-white/[0.05]">
+              <div className="flex gap-2.5 pt-4 border-t border-[#334155]">
                 <a
                   href="https://github.com/j-sense/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-white/[0.05] bg-black/20 flex items-center justify-center text-[#998f8f] hover:text-[#c5ff41] hover:border-[#c5ff41]/20 transition-all"
+                  className="w-8 h-8 rounded-full border border-[#334155] bg-[#050505] flex items-center justify-center text-[#94a3b8] hover:text-[#38bdf8] hover:border-[#38bdf8]/50 transition-all"
                 >
                   <Github size={14} />
                 </a>
@@ -75,7 +75,7 @@ const CommonLayout = ({
                   href="https://www.linkedin.com/in/najmul-hasan-222b43273/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-white/[0.05] bg-black/20 flex items-center justify-center text-[#998f8f] hover:text-[#c5ff41] hover:border-[#c5ff41]/20 transition-all"
+                  className="w-8 h-8 rounded-full border border-[#334155] bg-[#050505] flex items-center justify-center text-[#94a3b8] hover:text-[#38bdf8] hover:border-[#38bdf8]/50 transition-all"
                 >
                   <Linkedin size={14} />
                 </a>
@@ -83,7 +83,7 @@ const CommonLayout = ({
                   href="https://www.facebook.com/mdnajmulhasan.jishan/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-white/[0.05] bg-black/20 flex items-center justify-center text-[#998f8f] hover:text-[#c5ff41] hover:border-[#c5ff41]/20 transition-all"
+                  className="w-8 h-8 rounded-full border border-[#334155] bg-[#050505] flex items-center justify-center text-[#94a3b8] hover:text-[#38bdf8] hover:border-[#38bdf8]/50 transition-all"
                 >
                   <Facebook size={14} />
                 </a>
@@ -91,14 +91,7 @@ const CommonLayout = ({
             </div>
 
             {/* Status Pill */}
-            <div className="rounded-full border border-white/[0.05] bg-[#1b1918] px-5 py-3 flex items-center justify-between shadow-lg text-[9px] font-black tracking-[0.2em] text-white">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c5ff41] animate-ping" />
-                <span className="w-1.5 h-1.5 absolute rounded-full bg-[#c5ff41]" />
-                <span>SYS_ONLINE</span>
-              </div>
-              <span className="text-[#998f8f]">FENI, BD</span>
-            </div>
+
           </aside>
 
           {/* RIGHT: Scrollable Content Column */}

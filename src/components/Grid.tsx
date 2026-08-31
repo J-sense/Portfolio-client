@@ -158,15 +158,13 @@ const tools = [
 
 const ProficiencyRing = ({
   level,
-  color,
 }: {
   level: number;
-  color: "lime" | "orange";
 }) => {
   const r = 18;
   const circ = 2 * Math.PI * r;
   const dash = (level / 100) * circ;
-  const accent = color === "lime" ? "#c5ff41" : "#f46c38";
+  const accent = "#38bdf8";
 
   return (
     <svg width="44" height="44" className="shrink-0 -rotate-90">
@@ -210,17 +208,12 @@ const ProficiencyRing = ({
 
 const TechCard = ({
   tech,
-  color,
   i,
 }: {
   tech: (typeof techCategories)[0]["techs"][0];
-  color: "lime" | "orange";
   i: number;
 }) => {
-  const badgeCls =
-    color === "lime"
-      ? "bg-[#c5ff41]/8 border-[#c5ff41]/20 text-[#c5ff41]"
-      : "bg-[#f46c38]/8 border-[#f46c38]/20 text-[#f46c38]";
+  const badgeCls = "bg-[#38bdf8]/10 border-[#38bdf8]/30 text-[#38bdf8]";
 
   return (
     <motion.div
@@ -228,7 +221,7 @@ const TechCard = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.35, delay: i * 0.07 }}
-      className="group flex items-center gap-4 p-4 rounded-2xl bg-[#1a1917] border border-white/[0.05] hover:border-white/10 transition-all duration-300"
+      className="group flex items-center gap-4 p-4 rounded-2xl bg-[#121212] border border-[#334155] hover:border-[#38bdf8]/50 transition-all duration-300 shadow-xl"
     >
       {/* Logo */}
       <div className="w-9 h-9 relative shrink-0 rounded-xl bg-black/30 flex items-center justify-center p-1.5">
@@ -243,10 +236,10 @@ const TechCard = ({
 
       {/* Info */}
       <div className="flex-1 min-w-0">
-        <h4 className="text-[11px] font-black text-white uppercase tracking-wide truncate">
+        <h4 className="text-[11px] font-black text-[#e2e8f0] uppercase tracking-wide truncate">
           {tech.name}
         </h4>
-        <p className="text-[9px] text-[#998f8f] uppercase tracking-wider truncate mt-0.5">
+        <p className="text-[9px] text-[#94a3b8] uppercase tracking-wider truncate mt-0.5">
           {tech.role}
         </p>
       </div>
@@ -259,7 +252,7 @@ const TechCard = ({
       </span>
 
       {/* Ring */}
-      <ProficiencyRing level={tech.level} color={color} />
+      <ProficiencyRing level={tech.level} />
     </motion.div>
   );
 };
@@ -278,7 +271,7 @@ const ToolRow = ({
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, margin: "-40px" }}
     transition={{ duration: 0.4, delay: i * 0.06 }}
-    className="group flex items-center gap-4 py-3.5 border-b border-white/[0.05] hover:bg-white/[0.015] px-2 -mx-2 rounded-lg transition-all duration-200 cursor-default"
+    className="group flex items-center gap-4 py-3.5 border-b border-[#334155]/60 hover:bg-white/[0.015] px-2 -mx-2 rounded-lg transition-all duration-200 cursor-default"
   >
     {/* Logo */}
     <div className="w-7 h-7 relative shrink-0">
@@ -293,23 +286,23 @@ const ToolRow = ({
 
     {/* Name + use case */}
     <div className="flex-1 min-w-0">
-      <span className="text-[11px] font-black text-white uppercase tracking-wide">
+      <span className="text-[11px] font-black text-[#e2e8f0] uppercase tracking-wide">
         {tool.name}
       </span>
-      <span className="hidden sm:inline text-[#998f8f] text-[10px] ml-3">
+      <span className="hidden sm:inline text-[#94a3b8] text-[10px] ml-3">
         — {tool.useCase}
       </span>
     </div>
 
     {/* Category pill */}
-    <span className="text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/[0.07] bg-white/[0.03] text-[#998f8f] shrink-0">
+    <span className="text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-[#334155] bg-[#121212] text-[#94a3b8] shrink-0">
       {tool.category}
     </span>
 
     {/* Dot indicator */}
     <CheckCircle
       size={12}
-      className="text-[#c5ff41]/40 group-hover:text-[#c5ff41] transition-colors duration-300 shrink-0"
+      className="text-[#38bdf8]/40 group-hover:text-[#38bdf8] transition-colors duration-300 shrink-0"
     />
   </motion.div>
 );
@@ -321,9 +314,9 @@ const SkillSection = () => {
   const active = techCategories.find((c) => c.id === activeTab)!;
 
   return (
-    <section id="skills" className="relative py-20 bg-[#151312] overflow-hidden">
+    <section id="skills" className="relative py-16 bg-[#050505] overflow-hidden">
       {/* Subtle background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(197,255,65,0.03)_0%,transparent_60%)] pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(56,189,248,0.03)_0%,transparent_60%)] pointer-events-none -z-10" />
 
       <div className="relative z-10">
 
@@ -335,21 +328,21 @@ const SkillSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#c5ff41] uppercase bg-[#c5ff41]/5 border border-[#c5ff41]/20 rounded-full">
+          <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase bg-[#38bdf8]/10 border border-[#38bdf8]/30 rounded-full">
             Technical Stack
           </span>
           <div className="flex items-end justify-between">
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-white uppercase leading-none">
-              ARCHITECTURE <span className="text-[#998f8f]">CANVAS</span>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">
+              ARCHITECTURE <span className="text-[#94a3b8]">CANVAS</span>
             </h2>
-            <p className="hidden sm:block text-[#998f8f] text-[11px] max-w-[260px] text-right leading-relaxed">
+            <p className="hidden sm:block text-[#94a3b8] text-[11px] max-w-[260px] text-right leading-relaxed">
               Full-stack toolchain for web, mobile & backend systems.
             </p>
           </div>
         </motion.div>
 
         {/* Tab switcher */}
-        <div className="flex gap-2 mb-6 p-1 rounded-2xl bg-[#1a1917] border border-white/[0.05] w-fit">
+        <div className="flex gap-2 mb-6 p-1.5 rounded-2xl bg-[#121212] border border-[#334155] w-fit">
           {techCategories.map((cat) => {
             const isActive = cat.id === activeTab;
             return (
@@ -358,10 +351,8 @@ const SkillSection = () => {
                 onClick={() => setActiveTab(cat.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-250 ${
                   isActive
-                    ? cat.color === "lime"
-                      ? "bg-[#c5ff41] text-black"
-                      : "bg-[#f46c38] text-black"
-                    : "text-[#998f8f] hover:text-white"
+                    ? "bg-[#38bdf8] text-[#050505]"
+                    : "text-[#94a3b8] hover:text-[#e2e8f0]"
                 }`}
               >
                 {cat.icon}
@@ -375,13 +366,13 @@ const SkillSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-16 min-h-[180px]">
           <AnimatePresence mode="wait">
             {active.techs.map((tech, i) => (
-              <TechCard key={`${activeTab}-${tech.name}`} tech={tech} color={active.color} i={i} />
+              <TechCard key={`${activeTab}-${tech.name}`} tech={tech} i={i} />
             ))}
           </AnimatePresence>
         </div>
 
         {/* ── UTILITIES MATRIX ─────────────────────────────────── */}
-        <div className="border-t border-white/[0.06] pt-12">
+        <div className="border-t border-[#334155]/60 pt-12">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -389,14 +380,14 @@ const SkillSection = () => {
             transition={{ duration: 0.55 }}
             className="mb-8"
           >
-            <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#f46c38] uppercase bg-[#f46c38]/5 border border-[#f46c38]/20 rounded-full">
+            <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase bg-[#38bdf8]/10 border border-[#38bdf8]/30 rounded-full">
               Utilities Matrix
             </span>
             <div className="flex items-end justify-between">
-              <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase leading-none">
-                DEV <span className="text-[#998f8f]">PIPELINES</span>
+              <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">
+                DEV <span className="text-[#94a3b8]">PIPELINES</span>
               </h3>
-              <span className="text-[10px] font-black uppercase tracking-widest text-[#998f8f]">
+              <span className="text-[10px] font-black uppercase tracking-widest text-[#94a3b8]">
                 {tools.length} Tools Active
               </span>
             </div>
@@ -407,7 +398,6 @@ const SkillSection = () => {
             {tools.map((tool, i) => (
               <ToolRow key={tool.name} tool={tool} i={i} />
             ))}
-            {/* last bottom border */}
           </div>
         </div>
       </div>

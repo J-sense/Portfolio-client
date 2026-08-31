@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 24 8% 7%; /* #151312 */
-    --foreground: 0 0% 100%;
+    --background: 0 0% 2%; /* #050505 Pure OLED Black */
+    --foreground: 210 40% 98%;
 
-    --card: 24 8% 10%; /* #1b1918 */
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 7%; /* #121212 Deep Charcoal */
+    --card-foreground: 210 40% 98%;
 
-    --popover: 24 8% 7%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 60 100% 63%; /* Neon Lime Green #c5ff41 */
-    --primary-foreground: 24 8% 7%;
+    --primary: 199 89% 60%; /* Ice Blue #38bdf8 */
+    --primary-foreground: 0 0% 2%;
 
-    --secondary: 17 90% 59%; /* Neon Orange #f46c38 */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 215 20% 65%; /* Slate Gray #94a3b8 */
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 0 4% 59%; /* #998f8f */
-    --muted-foreground: 0 4% 42%; /* #6a6b6e */
+    --muted: 215 20% 65%; /* Subtle Slate #94a3b8 */
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 60 100% 63%;
-    --accent-foreground: 24 8% 7%;
+    --accent: 199 89% 60%;
+    --accent-foreground: 0 0% 2%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 24 8% 18%; /* #2c2826 */
-    --input: 24 8% 18%;
-    --ring: 60 100% 63%;
+    --border: 215 25% 27%; /* Slate Border #334155 */
+    --input: 215 25% 27%;
+    --ring: 199 89% 60%;
 
     --radius: 1.5rem;
   }
@@ -43,12 +43,17 @@
 
   body {
     @apply text-foreground;
-    background-color: #151312;
+    background-color: #050505;
     font-family: var(--font-inter), sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-poppins), sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-bricolage), var(--font-poppins), sans-serif;
   }
 
   button {
@@ -62,29 +67,39 @@
   }
 
   .black-gradient {
-    background: linear-gradient(90deg, #1b1918 0%, #151312 100%);
+    background: linear-gradient(90deg, #121212 0%, #050505 100%);
   }
 
-  /* Custom Glow Accents */
-  .glow-lime {
-    box-shadow: 0 0 40px -10px rgba(197, 255, 65, 0.25);
+  /* Sleek Ice Blue Glows */
+  .glow-ice,
+  .glow-primary {
+    box-shadow: 0 0 45px -5px rgba(56, 189, 248, 0.35);
   }
-  .glow-orange {
-    box-shadow: 0 0 40px -10px rgba(244, 108, 56, 0.25);
+
+  /* Neon Text Shadow Effects */
+  .text-neon-ice {
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
   }
-  
-  /* Text Shadow / Neon Style */
-  .text-neon-lime {
-    text-shadow: 0 0 15px rgba(197, 255, 65, 0.4);
+
+  /* Fancy Display Fonts */
+  .font-bricolage {
+    font-family: var(--font-bricolage), var(--font-poppins), sans-serif;
   }
-  .text-neon-orange {
-    text-shadow: 0 0 15px rgba(244, 108, 56, 0.4);
+
+  .font-syne {
+    font-family: var(--font-syne), var(--font-poppins), sans-serif;
+  }
+
+  .font-space {
+    font-family: var(--font-space), var(--font-inter), sans-serif;
+  }
+
+  .font-outfit {
+    font-family: var(--font-outfit), var(--font-poppins), sans-serif;
   }
 }
 
-/* Add to your global CSS file (e.g., globals.css or app.css) */
 @keyframes gradient-xy {
-
   0%,
   100% {
     background-position: 0% 50%;

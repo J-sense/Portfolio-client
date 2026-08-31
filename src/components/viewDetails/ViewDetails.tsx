@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Cpu, ExternalLink, Globe, Layout } from "lucide-react";

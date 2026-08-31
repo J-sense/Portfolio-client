@@ -102,6 +102,7 @@ export const EXPERIENCES = [
     company: "Join Venture AI.",
     role: "Frontend Developer",
     year: "07/2025 – Present",
+    startDate: "2025-07-21",
     description:
       "Working as a Frontend Developer, building scalable and responsive web applications using React.js and Next.js. Regularly integrate REST APIs and implement real-time features such as chat and calling systems using sockets. Experienced in working with third-party services like Cal.com and ZEGOCLOUD. Focused on delivering high-performance UI, maintaining clean code, and collaborating with the team to meet project requirements efficiently.",
   },
