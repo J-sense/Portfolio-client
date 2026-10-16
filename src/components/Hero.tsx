@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Terminal, ArrowUpRight, Award, FolderGit, Download } from "lucide-react";
+import { ArrowUpRight, Award, FolderGit, Download } from "lucide-react";
 
 const Hero = () => {
   const [totalDays, setTotalDays] = useState<number>(0);

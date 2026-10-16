@@ -57,7 +57,6 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const recognitionRef = useRef<any>(null);
 
   // Auto-scroll to bottom
@@ -113,7 +112,6 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
   // Voice Input (Speech to text)
   const toggleVoiceInput = () => {
     if (typeof window === "undefined") return;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
@@ -134,7 +132,6 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
       recognition.lang = "en-US";
 
       recognition.onstart = () => setIsListening(true);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       recognition.onresult = (event: any) => {
         const transcript = event.results[0][0].transcript;
         setInput((prev) => (prev ? `${prev} ${transcript}` : transcript));
