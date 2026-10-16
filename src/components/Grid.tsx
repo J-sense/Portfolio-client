@@ -154,13 +154,23 @@ const tools = [
   },
 ];
 
+// ─── SECTION BADGE (neutral glass, reads cleanly on black) ─────────────────────
+
+const SectionBadge = ({ children }: { children: React.ReactNode }) => (
+  <span
+    className="inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
+      text-[10px] font-bold tracking-[0.3em] uppercase text-slate-200
+      bg-white/[0.06] border border-white/15
+      shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+  >
+    <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+    {children}
+  </span>
+);
+
 // ─── RADIAL PROFICIENCY RING ───────────────────────────────────────────────────
 
-const ProficiencyRing = ({
-  level,
-}: {
-  level: number;
-}) => {
+const ProficiencyRing = ({ level }: { level: number }) => {
   const r = 18;
   const circ = 2 * Math.PI * r;
   const dash = (level / 100) * circ;
@@ -168,7 +178,14 @@ const ProficiencyRing = ({
 
   return (
     <svg width="44" height="44" className="shrink-0 -rotate-90">
-      <circle cx="22" cy="22" r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="3" />
+      <circle
+        cx="22"
+        cy="22"
+        r={r}
+        fill="none"
+        stroke="rgba(255,255,255,0.08)"
+        strokeWidth="3"
+      />
       <motion.circle
         cx="22"
         cy="22"
@@ -213,40 +230,48 @@ const TechCard = ({
   tech: (typeof techCategories)[0]["techs"][0];
   i: number;
 }) => {
-  const badgeCls = "bg-[#38bdf8]/10 border-[#38bdf8]/30 text-[#38bdf8]";
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.35, delay: i * 0.07 }}
-      className="group flex items-center gap-4 p-4 rounded-2xl bg-[#121212] border border-[#334155] hover:border-[#38bdf8]/50 transition-all duration-300 shadow-xl"
+      className="group flex items-center gap-4 p-4 rounded-2xl select-none
+        bg-gradient-to-b from-[#1A1F29] to-[#0C0F14]
+        border border-[#334155] hover:border-[#38bdf8]/50
+        shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-3px_6px_rgba(0,0,0,0.45)]
+        transition-colors duration-300"
     >
-      {/* Logo */}
-      <div className="w-9 h-9 relative shrink-0 rounded-xl bg-black/30 flex items-center justify-center p-1.5">
+      {/* Logo tile */}
+      <div
+        className="w-10 h-10 relative shrink-0 rounded-xl flex items-center justify-center
+          bg-gradient-to-b from-white/[0.12] to-white/[0.03]
+          border border-white/10
+          shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-2px_4px_rgba(0,0,0,0.35)]"
+      >
         <Image
           src={tech.logo}
           alt={tech.name}
           fill
-          className="object-contain p-1.5 grayscale group-hover:grayscale-0 transition-all duration-500"
+          className="object-contain p-2 grayscale group-hover:grayscale-0 transition-all duration-500"
           unoptimized
         />
       </div>
 
       {/* Info */}
       <div className="flex-1 min-w-0">
-        <h4 className="text-[11px] font-black text-[#e2e8f0] uppercase tracking-wide truncate">
+        <h4 className="text-xs font-black text-[#e2e8f0] uppercase tracking-wide truncate">
           {tech.name}
         </h4>
-        <p className="text-[9px] text-[#94a3b8] uppercase tracking-wider truncate mt-0.5">
+        <p className="text-[10px] text-[#94a3b8] uppercase tracking-wider truncate mt-0.5">
           {tech.role}
         </p>
       </div>
 
-      {/* Badge */}
+      {/* Badge (neutral glass) */}
       <span
-        className={`text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border shrink-0 ${badgeCls}`}
+        className="text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
+          text-slate-300 bg-white/[0.06] border border-white/15
+          shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
       >
         {tech.badge}
       </span>
@@ -271,35 +296,44 @@ const ToolRow = ({
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, margin: "-40px" }}
     transition={{ duration: 0.4, delay: i * 0.06 }}
-    className="group flex items-center gap-4 py-3.5 border-b border-[#334155]/60 hover:bg-white/[0.015] px-2 -mx-2 rounded-lg transition-all duration-200 cursor-default"
+    className="group flex items-center gap-4 py-3.5 border-b border-[#334155]/60 hover:bg-white/[0.03] px-2 -mx-2 rounded-lg transition-colors duration-200 cursor-default select-none"
   >
-    {/* Logo */}
-    <div className="w-7 h-7 relative shrink-0">
+    {/* Logo tile */}
+    <div
+      className="w-8 h-8 relative shrink-0 rounded-lg
+        bg-gradient-to-b from-white/[0.12] to-white/[0.03]
+        border border-white/10
+        shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-2px_3px_rgba(0,0,0,0.35)]"
+    >
       <Image
         src={tool.logo}
         alt={tool.name}
         fill
-        className="object-contain grayscale group-hover:grayscale-0 transition-all duration-400"
+        className="object-contain p-1.5 grayscale group-hover:grayscale-0 transition-all duration-500"
         unoptimized
       />
     </div>
 
     {/* Name + use case */}
     <div className="flex-1 min-w-0">
-      <span className="text-[11px] font-black text-[#e2e8f0] uppercase tracking-wide">
+      <span className="text-xs font-black text-[#e2e8f0] uppercase tracking-wide">
         {tool.name}
       </span>
-      <span className="hidden sm:inline text-[#94a3b8] text-[10px] ml-3">
+      <span className="hidden sm:inline text-[#94a3b8] text-[11px] ml-3">
         — {tool.useCase}
       </span>
     </div>
 
-    {/* Category pill */}
-    <span className="text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-[#334155] bg-[#121212] text-[#94a3b8] shrink-0">
+    {/* Category pill (neutral glass) */}
+    <span
+      className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
+        text-slate-300 bg-white/[0.06] border border-white/15
+        shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+    >
       {tool.category}
     </span>
 
-    {/* Dot indicator */}
+    {/* Check indicator */}
     <CheckCircle
       size={12}
       className="text-[#38bdf8]/40 group-hover:text-[#38bdf8] transition-colors duration-300 shrink-0"
@@ -314,12 +348,14 @@ const SkillSection = () => {
   const active = techCategories.find((c) => c.id === activeTab)!;
 
   return (
-    <section id="skills" className="relative py-16 bg-[#050505] overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(56,189,248,0.03)_0%,transparent_60%)] pointer-events-none -z-10" />
+    <section
+      id="skills"
+      className="relative py-16 bg-[#050505] overflow-hidden"
+    >
+      {/* Subtle background glow (now visible: isolate + higher opacity) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(56,189,248,0.08)_0%,transparent_60%)] pointer-events-none -z-10" />
 
       <div className="relative z-10">
-
         {/* ── TECHNICAL STACK ─────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -328,32 +364,38 @@ const SkillSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase bg-[#38bdf8]/10 border border-[#38bdf8]/30 rounded-full">
-            Technical Stack
-          </span>
+          <SectionBadge>Technical Stack</SectionBadge>
           <div className="flex items-end justify-between">
             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">
               ARCHITECTURE <span className="text-[#94a3b8]">CANVAS</span>
             </h2>
-            <p className="hidden sm:block text-[#94a3b8] text-[11px] max-w-[260px] text-right leading-relaxed">
+            <p className="hidden sm:block text-[#94a3b8] text-xs max-w-[260px] text-right leading-relaxed">
               Full-stack toolchain for web, mobile & backend systems.
             </p>
           </div>
         </motion.div>
 
         {/* Tab switcher */}
-        <div className="flex gap-2 mb-6 p-1.5 rounded-2xl bg-[#121212] border border-[#334155] w-fit">
+        <div
+          role="tablist"
+          className="flex gap-2 mb-6 p-1.5 rounded-2xl w-fit max-w-full overflow-x-auto
+            bg-[#0B0E13] border border-[#334155]
+            shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)]"
+        >
           {techCategories.map((cat) => {
             const isActive = cat.id === activeTab;
             return (
               <button
                 key={cat.id}
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => setActiveTab(cat.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-250 ${
-                  isActive
-                    ? "bg-[#38bdf8] text-[#050505]"
-                    : "text-[#94a3b8] hover:text-[#e2e8f0]"
-                }`}
+                className={`flex shrink-0 items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest
+                  transition-all duration-200 cursor-pointer select-none
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isActive
+                    ? "text-[#04121C] bg-gradient-to-b from-[#7DD3FC] to-[#38BDF8] shadow-[inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-2px_4px_rgba(3,60,100,0.3)]"
+                    : "text-[#94a3b8] hover:text-[#e2e8f0] hover:bg-white/5"
+                  }`}
               >
                 {cat.icon}
                 {cat.label}
@@ -363,13 +405,20 @@ const SkillSection = () => {
         </div>
 
         {/* Tech cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-16 min-h-[180px]">
-          <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12 min-h-[180px]"
+          >
             {active.techs.map((tech, i) => (
               <TechCard key={`${activeTab}-${tech.name}`} tech={tech} i={i} />
             ))}
-          </AnimatePresence>
-        </div>
+          </motion.div>
+        </AnimatePresence>
 
         {/* ── UTILITIES MATRIX ─────────────────────────────────── */}
         <div className="border-t border-[#334155]/60 pt-12">
@@ -380,9 +429,7 @@ const SkillSection = () => {
             transition={{ duration: 0.55 }}
             className="mb-8"
           >
-            <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase bg-[#38bdf8]/10 border border-[#38bdf8]/30 rounded-full">
-              Utilities Matrix
-            </span>
+            <SectionBadge>Utilities Matrix</SectionBadge>
             <div className="flex items-end justify-between">
               <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">
                 DEV <span className="text-[#94a3b8]">PIPELINES</span>

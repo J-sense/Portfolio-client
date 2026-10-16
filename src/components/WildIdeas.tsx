@@ -62,6 +62,10 @@ const IDEAS: Idea[] = [
   },
 ];
 
+// Neutral glass pill (reads cleanly on black)
+const glassPill =
+  "text-slate-300 bg-white/[0.06] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]";
+
 const IdeaCard = ({ idea, index }: { idea: Idea; index: number }) => {
   const [votes, setVotes] = useState(idea.initialVotes);
   const [hasVoted, setHasVoted] = useState(false);
@@ -84,33 +88,42 @@ const IdeaCard = ({ idea, index }: { idea: Idea; index: number }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative group rounded-3xl border border-[#334155] bg-[#121212] p-6 sm:p-7 flex flex-col justify-between shadow-2xl hover:border-[#38bdf8]/50 transition-all duration-300"
+      className="relative group rounded-3xl p-6 sm:p-7 flex flex-col justify-between
+        bg-gradient-to-b from-[#1A1F29] to-[#0C0F14]
+        border border-[#334155] hover:border-[#38bdf8]/50
+        shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-3px_6px_rgba(0,0,0,0.45)]
+        transition-colors duration-300"
     >
       {/* Top Bar */}
       <div>
         <div className="flex items-center justify-between gap-3 mb-4">
-          <span className={`text-[9px] font-black uppercase tracking-[0.25em] px-3 py-1 rounded-full border ${idea.tagColor}`}>
+          <span
+            className={`text-[10px] font-black uppercase tracking-[0.25em] px-3 py-1 rounded-full select-none ${glassPill}`}
+          >
             {idea.category}
           </span>
 
           <button
             onClick={handleVote}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-full border text-[10px] font-black transition-all duration-300 ${
-              hasVoted
-                ? "bg-[#38bdf8] text-[#050505] border-[#38bdf8] shadow-md shadow-[#38bdf8]/30"
-                : "bg-[#050505] text-[#94a3b8] border-[#334155] hover:text-[#e2e8f0] hover:border-[#38bdf8]/50"
-            }`}
+            aria-pressed={hasVoted}
+            aria-label={hasVoted ? "Remove vote" : "Vote for this idea"}
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-black select-none cursor-pointer
+              transition-all duration-200 active:scale-95
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${hasVoted
+                ? "text-white bg-gradient-to-b from-[#007AFF] to-[#0B60BD] border border-[#007AFF4D] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-3px_6px_rgba(0,0,0,0.35)] [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]"
+                : "text-[#94a3b8] hover:text-[#e2e8f0] bg-gradient-to-b from-[#1E2530] to-[#0B0E13] border border-[#334155] hover:border-[#38bdf8]/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-3px_6px_rgba(0,0,0,0.4)]"
+              }`}
           >
-            <ThumbsUp size={11} className={hasVoted ? "fill-[#050505]" : ""} />
+            <ThumbsUp size={12} className={hasVoted ? "fill-white" : ""} />
             <span>{votes}</span>
           </button>
         </div>
 
         {/* Title & Subtitle */}
-        <h3 className="text-xl sm:text-2xl font-black text-[#e2e8f0] group-hover:text-[#38bdf8] transition-colors duration-300 uppercase tracking-tight mb-1">
+        <h3 className="text-xl sm:text-2xl font-black text-[#e2e8f0] group-hover:text-[#38bdf8] transition-colors duration-300 uppercase tracking-tight mb-1 [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
           {idea.title}
         </h3>
-        <p className="text-[10px] font-bold uppercase tracking-widest text-[#94a3b8] mb-4">
+        <p className="text-[11px] font-bold uppercase tracking-widest text-[#94a3b8] mb-4">
           {idea.subtitle}
         </p>
 
@@ -140,9 +153,9 @@ const IdeaCard = ({ idea, index }: { idea: Idea; index: number }) => {
                 {idea.techStack.map((tech, i) => (
                   <span
                     key={i}
-                    className="flex items-center gap-1 text-[9px] font-bold text-[#94a3b8] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#050505] border border-[#334155]"
+                    className={`flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full select-none ${glassPill}`}
                   >
-                    <Code2 size={9} className="text-[#38bdf8]" />
+                    <Code2 size={10} className="text-[#38bdf8]" />
                     {tech}
                   </span>
                 ))}
@@ -154,7 +167,9 @@ const IdeaCard = ({ idea, index }: { idea: Idea; index: number }) => {
         {/* Expand / Collapse Button */}
         <button
           onClick={() => setExpanded((v) => !v)}
-          className="flex items-center gap-1.5 mt-4 text-[9px] font-black uppercase tracking-widest text-[#94a3b8] hover:text-[#38bdf8] transition-colors duration-200"
+          aria-expanded={expanded}
+          className="flex items-center gap-1.5 mt-4 text-[10px] font-black uppercase tracking-widest text-[#94a3b8] hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer select-none
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 rounded"
         >
           {expanded ? (
             <>
@@ -173,10 +188,10 @@ const IdeaCard = ({ idea, index }: { idea: Idea; index: number }) => {
 
 const WildIdeas = () => {
   return (
-    <section id="wild-ideas" className="relative py-16 bg-[#050505] overflow-hidden pointer-events-auto border-t border-[#334155]/40">
-      {/* Ambient glow */}
-      <div className="absolute top-[30%] right-[-10%] w-96 h-96 bg-[#38bdf8]/[0.03] blur-[140px] rounded-full -z-10 pointer-events-none" />
-
+    <section
+      id="wild-ideas"
+      className="relative py-16 bg-[#050505] overflow-hidden pointer-events-auto border-t border-[#334155]/40"
+    >
       <div className="relative z-10">
         {/* Section Header */}
         <motion.div
@@ -186,7 +201,12 @@ const WildIdeas = () => {
           transition={{ duration: 0.6 }}
           className="mb-10 text-left"
         >
-          <span className="inline-flex items-center gap-2 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase bg-[#38bdf8]/10 border border-[#38bdf8]/30 px-3 py-1 rounded-full mb-3">
+          <span
+            className="inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
+              text-[10px] font-bold tracking-[0.3em] uppercase text-slate-200
+              bg-white/[0.06] border border-white/15
+              shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+          >
             <Sparkles size={11} className="text-[#38bdf8]" />
             LAB & BRAINSTORMS
           </span>

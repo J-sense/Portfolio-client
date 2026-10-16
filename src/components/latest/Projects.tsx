@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,6 +20,10 @@ type Project = {
   status: string;
 };
 
+// Neutral glass pill (reads cleanly on black)
+const glassPill =
+  "text-slate-300 bg-white/[0.06] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]";
+
 const ProjectRow = ({
   project,
   index,
@@ -27,7 +31,7 @@ const ProjectRow = ({
   project: Project;
   index: number;
 }) => {
-  const [hovered, setHovered] = useState(false);
+  const isCompleted = project.status === "Completed";
 
   return (
     <motion.div
@@ -35,8 +39,6 @@ const ProjectRow = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay: index * 0.1 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       className="group relative"
     >
       {/* Top divider */}
@@ -44,15 +46,17 @@ const ProjectRow = ({
 
       <div className="flex items-center gap-6 py-6 cursor-default">
         {/* Index number */}
-        <span className="text-[11px] font-black text-[#94a3b8] uppercase tracking-[0.2em] w-6 shrink-0 select-none">
+        <span className="text-xs font-black text-[#94a3b8] uppercase tracking-[0.2em] w-6 shrink-0 select-none">
           {String(index + 1).padStart(2, "0")}
         </span>
 
-        {/* Thumbnail — slides in on hover */}
+        {/* Thumbnail: slides in on hover */}
         <div
-          className={`relative overflow-hidden rounded-xl shrink-0 transition-all duration-500 ease-out border border-[#334155] ${
-            hovered ? "w-28 h-16 opacity-100" : "w-0 h-16 opacity-0"
-          }`}
+          className="relative overflow-hidden rounded-xl shrink-0 h-16 w-0 opacity-0
+            border border-[#334155]
+            shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]
+            transition-all duration-500 ease-out
+            group-hover:w-28 group-hover:opacity-100"
         >
           <Image
             src={project.image}
@@ -67,33 +71,31 @@ const ProjectRow = ({
         <div className="flex flex-1 items-center gap-6 min-w-0">
           {/* Left: category + title + description */}
           <div className="flex-1 min-w-0">
-            <p className="text-[9px] font-black uppercase tracking-[0.25em] text-[#38bdf8] mb-1.5">
+            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#38bdf8] mb-1.5">
               {project.category}
             </p>
-            <h3
-              className={`font-black uppercase tracking-tight transition-colors duration-300 leading-none truncate ${
-                hovered ? "text-[#38bdf8]" : "text-[#e2e8f0]"
-              } text-xl md:text-2xl`}
-            >
+            <h3 className="font-black uppercase tracking-tight transition-colors duration-300 leading-none truncate text-[#e2e8f0] group-hover:text-[#38bdf8] text-xl md:text-2xl">
               {project.title}
             </h3>
-            <p className="text-[#94a3b8] text-[11px] leading-relaxed mt-2 line-clamp-1 max-w-sm">
+            <p className="text-[#94a3b8] text-xs leading-relaxed mt-2 line-clamp-1 max-w-sm">
               {project.description}
             </p>
           </div>
 
-          {/* Tech pills — hidden on small, visible on md+ */}
+          {/* Tech pills: hidden on small, visible on md+ */}
           <div className="hidden md:flex flex-wrap gap-1.5 shrink-0 max-w-[220px]">
             {project.technologies.slice(0, 3).map((tech, i) => (
               <span
                 key={i}
-                className="px-2.5 py-1 text-[8px] font-bold bg-[#121212] border border-[#334155] text-[#94a3b8] rounded-full uppercase tracking-wider"
+                className={`px-2.5 py-1 text-[9px] font-bold rounded-full uppercase tracking-wider select-none ${glassPill}`}
               >
                 {tech}
               </span>
             ))}
             {project.technologies.length > 3 && (
-              <span className="px-2 py-1 text-[8px] font-bold text-[#38bdf8] border border-[#38bdf8]/30 bg-[#38bdf8]/10 rounded-full">
+              <span
+                className={`px-2 py-1 text-[9px] font-bold rounded-full select-none text-sky-300 bg-white/[0.06] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]`}
+              >
                 +{project.technologies.length - 3}
               </span>
             )}
@@ -101,18 +103,11 @@ const ProjectRow = ({
 
           {/* Status badge */}
           <span
-            className={`hidden lg:flex shrink-0 items-center gap-1 text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border ${
-              project.status === "Completed"
-                ? "text-[#38bdf8] border-[#38bdf8]/30 bg-[#38bdf8]/10"
-                : "text-[#e2e8f0] border-[#334155] bg-[#121212]"
-            }`}
+            className={`hidden lg:flex shrink-0 items-center gap-1.5 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full select-none ${glassPill}`}
           >
             <span
-              className={`w-1.5 h-1.5 rounded-full ${
-                project.status === "Completed"
-                  ? "bg-[#38bdf8]"
-                  : "bg-[#94a3b8] animate-pulse"
-              }`}
+              className={`w-1.5 h-1.5 rounded-full ${isCompleted ? "bg-[#38bdf8]" : "bg-[#94a3b8] animate-pulse"
+                }`}
             />
             {project.status}
           </span>
@@ -124,7 +119,16 @@ const ProjectRow = ({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-full border border-[#334155] bg-[#121212] text-[#94a3b8] group-hover:bg-[#38bdf8] group-hover:text-[#050505] group-hover:border-transparent transition-all duration-300 shadow-md"
+                aria-label={`Open ${project.title} live site`}
+                className="flex items-center justify-center w-10 h-10 rounded-full select-none
+                  text-[#94a3b8] group-hover:text-[#04121C]
+                  bg-gradient-to-b from-[#1E2530] to-[#0B0E13]
+                  group-hover:from-[#7DD3FC] group-hover:to-[#38BDF8]
+                  border border-[#334155] group-hover:border-white/30
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-3px_6px_rgba(0,0,0,0.4)]
+                  group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-2px_4px_rgba(3,60,100,0.3)]
+                  transition-all duration-300 active:scale-95
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
               >
                 <ArrowUpRight
                   size={16}
@@ -132,7 +136,10 @@ const ProjectRow = ({
                 />
               </Link>
             ) : (
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#334155]/60 bg-[#121212] text-[#94a3b8]/40">
+              <div
+                aria-hidden="true"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-[#334155]/60 bg-[#121212] text-[#94a3b8]/40"
+              >
                 <ArrowUpRight size={16} />
               </div>
             )}
@@ -143,7 +150,13 @@ const ProjectRow = ({
   );
 };
 
-const Projects = ({ pr, showAll = false }: { pr: Project[]; showAll?: boolean }) => {
+const Projects = ({
+  pr,
+  showAll = false,
+}: {
+  pr: Project[];
+  showAll?: boolean;
+}) => {
   if (!pr || pr.length === 0) return null;
 
   const displayProjects = showAll ? pr : pr.slice(0, 3);
@@ -153,9 +166,6 @@ const Projects = ({ pr, showAll = false }: { pr: Project[]; showAll?: boolean })
       id="projects"
       className="relative py-16 bg-[#050505] overflow-hidden"
     >
-      {/* Subtle ambient */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-[#38bdf8]/[0.03] blur-[100px] rounded-full -z-10 pointer-events-none" />
-
       {/* Section header */}
       <motion.div
         className="mb-10"
@@ -166,7 +176,13 @@ const Projects = ({ pr, showAll = false }: { pr: Project[]; showAll?: boolean })
       >
         <div className="flex items-end justify-between">
           <div>
-            <span className="inline-block px-3 py-1 mb-3 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase bg-[#38bdf8]/10 border border-[#38bdf8]/30 rounded-full">
+            <span
+              className="inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
+                text-[10px] font-bold tracking-[0.3em] uppercase text-slate-200
+                bg-white/[0.06] border border-white/15
+                shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
               {showAll ? "Showcase" : "Selected Works"}
             </span>
             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">

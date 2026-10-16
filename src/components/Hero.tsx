@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Terminal, ArrowUpRight, Award, FolderGit } from "lucide-react";
+import { Terminal, ArrowUpRight, Award, FolderGit, Download } from "lucide-react";
 
 const Hero = () => {
   const [totalDays, setTotalDays] = useState<number>(0);
@@ -35,10 +35,11 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <span className="inline-flex items-center gap-2 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase mb-4 border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-3 py-1 rounded-full w-fit">
-          CORE FOCUS
+        <span className="inline-flex w-fit mb-4 p-px rounded-full bg-gradient-to-r from-sky-400 via-sky-400/30 to-transparent select-none">
+          <span className="inline-flex items-center gap-2 rounded-full bg-black px-3.5 py-1.5 text-[10px] font-bold tracking-[0.3em] uppercase text-sky-300">
+            CORE FOCUS
+          </span>
         </span>
-
         {/* Title */}
         <h1 className="font-bricolage text-4xl sm:text-6xl font-black uppercase tracking-tighter text-[#e2e8f0] leading-[1.05] mb-6">
           FRONTEND FOCUSED<br />
@@ -113,21 +114,38 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <Link
-          href="/jishan's-resume.pdf"
-          download
-          className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#38bdf8] text-[#050505] font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#e2e8f0] transition-all duration-300 shadow-lg shadow-[#38bdf8]/20"
+        <a
+          href="/jishan-resume.pdf"
+          download="Jishan-Resume.pdf"
+          className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full select-none
+    text-[#04121C] font-black text-xs uppercase tracking-[0.2em]
+    bg-gradient-to-b from-[#7DD3FC] to-[#0EA5E9]
+    border border-white/30
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-3px_6px_rgba(3,60,100,0.35)]
+    [text-shadow:0_1px_0_rgba(255,255,255,0.4)]
+    transition-all duration-200 hover:brightness-110 active:scale-[0.97]
+    focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
         >
-          <Terminal size={12} />
+          <Download size={14} className="transition-transform duration-200 group-hover:translate-y-0.5" />
           Download Resume
-        </Link>
+        </a>
 
         <Link
           href="/contact"
-          className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#334155] bg-[#121212]/80 hover:bg-[#121212] hover:border-[#38bdf8]/50 text-[#e2e8f0] font-bold text-xs uppercase tracking-[0.15em] transition-all duration-300 group"
+          className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full select-none
+    text-[#e2e8f0] hover:text-white font-bold text-xs uppercase tracking-[0.15em]
+    bg-gradient-to-b from-[#1E2530] to-[#0B0E13]
+    border border-[#334155] hover:border-[#38bdf8]/50
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-3px_6px_rgba(0,0,0,0.45)]
+    [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]
+    transition-all duration-300 hover:brightness-110 active:scale-[0.97]
+    focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
         >
           <span>Get in Touch</span>
-          <ArrowUpRight size={14} className="text-[#94a3b8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUpRight
+            size={14}
+            className="text-[#94a3b8] group-hover:text-sky-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+          />
         </Link>
       </motion.div>
     </div>
