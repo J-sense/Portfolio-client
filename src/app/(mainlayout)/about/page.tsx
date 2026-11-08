@@ -2,7 +2,8 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Coffee, GraduationCap, Clock } from "lucide-react";
+import { Coffee, GraduationCap, Clock, GitCommit } from "lucide-react";
+import ContributionGrid from "@/components/ContributionGrid";
 
 const AboutPage = () => {
   return (
@@ -100,6 +101,21 @@ const AboutPage = () => {
               Since mid-2025, I have worked as a Frontend Developer at Join Venture AI, designing responsive client interfaces with React and Next.js, integrating socket-driven real-time communications, and working alongside cross-functional teams to build enterprise-grade portals.
             </p>
           </div>
+        </motion.div>
+
+        {/* Real-time GitHub Activity */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="space-y-4"
+        >
+          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-[#38bdf8] flex items-center gap-2 mb-2">
+            <GitCommit size={16} />
+            GitHub Contributions
+          </h2>
+
+          <ContributionGrid />
         </motion.div>
 
         {/* Coffee CTA */}

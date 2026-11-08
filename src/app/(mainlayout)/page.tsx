@@ -1,5 +1,6 @@
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
+import ContributionGrid from "@/components/ContributionGrid";
 import LatestProjects from "@/components/LatestProject/LatestProjects";
 import Work from "@/components/Work";
 import WildIdeas from "@/components/WildIdeas";
@@ -10,6 +11,7 @@ const Home = () => {
   return (
     <div className="flex flex-col gap-12 w-full">
       <Hero />
+      <ContributionGrid showSectionHeader />
       <Grid />
       <LatestProjects />
       <Work />
