@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 const Home = () => {
   return (
-    <div className="flex flex-col gap-12 w-full">
+    <div className="flex flex-col w-full">
       <Hero />
       <ContributionGrid showSectionHeader />
       <Grid />

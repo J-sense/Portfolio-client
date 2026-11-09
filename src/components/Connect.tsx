@@ -100,7 +100,7 @@ const Connect = () => {
                 <div className="flex flex-col">
                   <span className="font-space text-[8px] font-bold text-white/80 uppercase tracking-[0.22em]">Location</span>
                   <span className="font-syne text-sm font-bold text-white">
-                    Feni, Bangladesh
+                    Dhaka, Bangladesh
                   </span>
                 </div>
               </div>

@@ -42,36 +42,31 @@
   }
 
   body {
-    /* Exact Studio KAIL (kail.studio) Dreamy Multi-Stop Mesh Gradient Background */
-    background-color: #3B43B8;
+    /* Figma Build Spec 1.2 Page Background */
+    background-color: #4350F7;
     background-image:
-      radial-gradient(circle at 10% 15%, #1728F4 0%, transparent 52%),
-      radial-gradient(circle at 88% 12%, #9996FE 0%, transparent 48%),
-      radial-gradient(circle at 50% 45%, #5E64FD 0%, transparent 58%),
-      radial-gradient(circle at 85% 85%, #575DA7 0%, transparent 55%),
-      radial-gradient(circle at 14% 88%, #9996FE 0%, transparent 52%),
-      radial-gradient(circle at 68% 28%, rgba(188, 237, 52, 0.22) 0%, transparent 38%),
-      linear-gradient(135deg, #1728F4 0%, #5E64FD 36%, #575DA7 70%, #9996FE 100%);
+      radial-gradient(900px 700px at 100% 100%, rgba(160, 160, 250, 0.40) 0%, rgba(160, 160, 250, 0) 100%),
+      radial-gradient(900px 600px at 0% 0%, rgba(14, 20, 230, 0.55) 0%, rgba(14, 20, 230, 0) 100%),
+      linear-gradient(105deg, #1B2BF4 0%, #4350F7 30%, #7A7EF1 62%, #8C8AEE 100%);
     background-attachment: fixed;
     background-size: cover;
     color: #FFFFFF;
     font-family: var(--font-outfit), var(--font-inter), sans-serif;
-    letter-spacing: -0.01em;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: 0;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-syne), sans-serif;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
   }
 
   h4,
   h5,
   h6 {
-    font-family: var(--font-bricolage), var(--font-outfit), sans-serif;
-    letter-spacing: -0.02em;
+    font-family: var(--font-syne), sans-serif;
+    letter-spacing: -0.015em;
   }
 
   button {
@@ -86,12 +81,12 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(23, 40, 244, 0.25);
+  background: rgba(27, 43, 244, 0.25);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.34);
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
@@ -105,7 +100,7 @@
 /* Firefox scrollbar styling */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.4) rgba(23, 40, 244, 0.25);
+  scrollbar-color: rgba(255, 255, 255, 0.34) rgba(27, 43, 244, 0.25);
 }
 
 @layer utilities {
@@ -115,37 +110,482 @@
 
   .black-gradient {
     background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.22) 0%,
-      rgba(87, 93, 167, 0.35) 100%
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 100%
     );
   }
 
-  /* Studio KAIL Translucent Frosted Glassmorphism Surfaces (No black tint) */
+  /* Figma Build Spec 1.4 & 1.5 — GlassCard (Fill/Glass + Effect/Glass Card) */
   .kail-glass {
-    background: linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.20) 0%,
-      rgba(205, 205, 231, 0.12) 50%,
-      rgba(87, 93, 167, 0.24) 100%
-    );
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%),
+      rgba(14, 18, 118, 0.34);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 22px;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.42),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.10),
-      0 20px 50px -12px rgba(15, 23, 95, 0.32);
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.40),
+      0 24px 44px -26px rgba(8, 8, 90, 0.70);
+    transition: border-color 0.35s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.35s ease;
   }
 
+  .kail-glass:hover {
+    border-color: rgba(188, 237, 52, 0.70);
+  }
+
+  /* Figma Build Spec 1.4 & 2.1/2.4 — Effect/Glass Pill */
   .kail-glass-pill {
-    background: rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(16px) saturate(170%);
-    -webkit-backdrop-filter: blur(16px) saturate(170%);
-    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+  }
+
+  /* Figma Build Spec 1.4 — Effect/Glass Nav */
+  .kail-glass-nav {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%),
+      rgba(14, 18, 118, 0.34);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      0 6px 18px rgba(15, 23, 95, 0.18);
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.40),
+      0 24px 44px -26px rgba(8, 8, 90, 0.70);
+  }
+
+  /* ── Figma Build Spec 1.3 Typography System ── */
+
+  /* Display/H2: Plus Jakarta Sans 800, 72px (40 at 390, 56 at 768), line 102%, tracking -3%, UPPER, drop shadow 0 2 24 #10127A at 25% */
+  .spec-display-h2 {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0 2px 24px rgba(16, 18, 122, 0.25);
+  }
+  @media (min-width: 768px) {
+    .spec-display-h2 {
+      font-size: 56px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .spec-display-h2 {
+      font-size: 72px;
+    }
+  }
+
+  /* Display/H3: Plus Jakarta Sans 700, 31px (23 at 390), line 120%, tracking -1.5%, Title, White */
+  .spec-display-h3 {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+  }
+  @media (min-width: 768px) {
+    .spec-display-h3 {
+      font-size: 31px;
+    }
+  }
+
+  /* Display/Card Title: Plus Jakarta Sans 700, 18.5px / 125%, tracking -0.5%, UPPER, White */
+  .spec-card-title {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 700;
+    font-size: 18.5px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  /* Display/Tool Title: Plus Jakarta Sans 700, 19.5px / 125%, tracking -0.5%, UPPER, White */
+  .spec-tool-title {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 700;
+    font-size: 19.5px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  /* Display/Project Title: Plus Jakarta Sans 800, 58px (36 at 390) / 105%, tracking -3%, UPPER, White */
+  .spec-project-title {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+  @media (min-width: 768px) {
+    .spec-project-title {
+      font-size: 58px;
+    }
+  }
+
+  /* Display/Counter: Plus Jakarta Sans 800, 115px (66 at 390) / 95%, tracking -3%, tabular figures, Brand/Lime */
+  .spec-counter {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 800;
+    font-size: 66px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: #BCED34;
+  }
+  @media (min-width: 768px) {
+    .spec-counter {
+      font-size: 115px;
+    }
+  }
+
+  /* Display/Unit Number: Plus Jakarta Sans 800, 30px / 100%, tracking -3%, tabular figures, White */
+  .spec-unit-number {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: #FFFFFF;
+  }
+  @media (min-width: 640px) {
+    .spec-unit-number {
+      font-size: 30px;
+    }
+  }
+
+  /* Display/Ring %: Plus Jakarta Sans 800, 15px / 100%, tracking -2%, White */
+  .spec-ring-pct {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+  }
+
+  /* Display/Icon Tile: Plus Jakarta Sans 800, 17px / 100%, tracking 0, Brand/Blue 1 (#1B2BF4) */
+  .spec-icon-tile {
+    font-family: var(--font-syne), sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #1B2BF4;
+  }
+
+  /* Body/Lead: Inter 400, 22px (19 at 390) / 165%, tracking 0, Text/Muted */
+  .spec-body-lead {
+    font-family: var(--font-outfit), sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.65;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.84);
+  }
+  @media (min-width: 768px) {
+    .spec-body-lead {
+      font-size: 22px;
+    }
+  }
+
+  /* Body/Large: Inter 400, 18px / 170%, tracking 0, Text/White */
+  .spec-body-large {
+    font-family: var(--font-outfit), sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    color: #FFFFFF;
+  }
+
+  /* Body/Card: Inter 400, 16.5px / 165%, tracking 0, Text/Muted */
+  .spec-body-card {
+    font-family: var(--font-outfit), sans-serif;
+    font-weight: 400;
+    font-size: 16.5px;
+    line-height: 1.65;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  /* Body/Project: Inter 400, 17.5px / 170%, tracking 0, Text/Muted */
+  .spec-body-project {
+    font-family: var(--font-outfit), sans-serif;
+    font-weight: 400;
+    font-size: 17.5px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  /* Body/Experience: Inter 400, 17px / 175%, tracking 0, Text/Muted */
+  .spec-body-experience {
+    font-family: var(--font-outfit), sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.75;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  /* Body/Sub: Inter 400, 17px / 160%, tracking 0, Text/Muted */
+  .spec-body-sub {
+    font-family: var(--font-outfit), sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  /* Mono/Label: JetBrains Mono 500, 13px / 140%, tracking +14%, UPPER, Text/White */
+  .spec-mono-label {
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  /* Mono/Label Lime: JetBrains Mono 500, 13px / 140%, tracking +14%, UPPER, Brand/Lime */
+  .spec-mono-label-lime {
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #BCED34;
+  }
+
+  /* Mono/Label Muted: JetBrains Mono 500, 13px / 140%, tracking +14%, UPPER, Text/Muted */
+  .spec-mono-label-muted {
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  /* Mono/Pill: JetBrains Mono 700, 12px / 100%, tracking +12%, UPPER */
+  .spec-mono-pill {
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Mono/Chip: JetBrains Mono 500, 12.5px / 100%, tracking +8%, UPPER, Text/White */
+  .spec-mono-chip {
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 12.5px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  /* Mono/Button: JetBrains Mono 700, 14px / 100%, tracking +14%, UPPER */
+  .spec-mono-button {
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Mono/Tab: JetBrains Mono 700, 13px / 100%, tracking +14%, UPPER */
+  .spec-mono-tab {
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Mono/Subtitle: JetBrains Mono 500, 12px / 140%, tracking +14%, UPPER, Text/Dim */
+  .spec-mono-subtitle {
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.70);
+  }
+
+  /* Mono/Unit: JetBrains Mono 500, 11px / 140%, tracking +8%, UPPER, Text/Dim */
+  .spec-mono-unit {
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.70);
+  }
+
+  /* Mono/Index: JetBrains Mono 700, 15px / 100%, tracking +14%, Text/Dim */
+  .spec-mono-index {
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.70);
+  }
+
+  /* Shared Figma Spec 2.1 SectionTag */
+  .spec-section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    user-select: none;
+  }
+
+  /* Shared Figma Spec 2.4 PillB Default & Lime */
+  .spec-pill-default {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+
+  .spec-pill-lime {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 14px;
+    border-radius: 9999px;
+    background: #BCED34;
+    border: 1px solid #BCED34;
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #10127A;
+    white-space: nowrap;
+  }
+
+  /* Shared Figma Spec 2.5 Chip */
+  .spec-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    font-family: var(--font-space), monospace;
+    font-weight: 500;
+    font-size: 12.5px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+
+  /* Shared Figma Spec 2.6 Buttons */
+  .spec-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 58px;
+    padding: 0 32px;
+    border-radius: 9999px;
+    background: #BCED34;
+    border: 1px solid #BCED34;
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #10127A;
+    transition: all 0.25s ease;
+  }
+  .spec-btn-primary:hover {
+    background: #D2F760;
+    border-color: #D2F760;
+  }
+
+  .spec-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 58px;
+    padding: 0 32px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: var(--font-space), monospace;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    transition: all 0.25s ease;
+  }
+  .spec-btn-secondary:hover {
+    border-color: #BCED34;
+    color: #BCED34;
   }
 
   /* Studio KAIL Glows */
@@ -158,7 +598,7 @@
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
   }
 
-  /* Studio Display & Editorial Typography Utilities */
+  /* Font Family Helpers */
   .font-bricolage {
     font-family: var(--font-bricolage), sans-serif;
   }

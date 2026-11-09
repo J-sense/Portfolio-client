@@ -2,15 +2,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, ShieldCheck, Database, CheckCircle } from "lucide-react";
+import { Check } from "lucide-react";
 
-// ─── DATA ──────────────────────────────────────────────────────────────────────
+// ─── DATA (Figma Build Spec 3.2 & 3.3) ─────────────────────────────────────────
 
 const techCategories = [
   {
     id: "frontend",
-    label: "Frontend",
-    icon: <Monitor size={14} />,
+    label: "FRONTEND",
     techs: [
       {
         name: "React & Next.js",
@@ -44,57 +43,69 @@ const techCategories = [
   },
   {
     id: "auth",
-    label: "Auth & State",
-    icon: <ShieldCheck size={14} />,
+    label: "AUTH & STATE",
     techs: [
       {
-        name: "Redux & RTK Query",
-        logo: "https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo-title-dark.png",
-        role: "State & Query Cache",
-        level: 90,
-        badge: "Core",
-      },
-      {
-        name: "NextAuth.js",
+        name: "NextAuth / JWT",
         logo: "https://next-auth.js.org/img/logo/logo-sm.png",
-        role: "Session Shield",
+        role: "Authentication",
         level: 85,
-        badge: "Stable",
+        badge: "Solid",
       },
       {
-        name: "JWT Validation",
-        logo: "https://jwt.io/img/pic_logo.svg",
-        role: "API Protection",
-        level: 95,
-        badge: "Core",
+        name: "Redux & Zustand",
+        logo: "https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo-title-dark.png",
+        role: "State Management",
+        level: 88,
+        badge: "Solid",
+      },
+      {
+        name: "Socket.io",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
+        role: "Real-time State",
+        level: 85,
+        badge: "Solid",
+      },
+      {
+        name: "React Query",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        role: "Server State",
+        level: 88,
+        badge: "Solid",
       },
     ],
   },
   {
     id: "backend",
-    label: "Backend & DB",
-    icon: <Database size={14} />,
+    label: "BACKEND & DB",
     techs: [
       {
-        name: "Node.js & Express",
+        name: "Node.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-        role: "REST API Servers",
-        level: 90,
-        badge: "Core",
+        role: "Server Runtime",
+        level: 80,
+        badge: "Solid",
       },
       {
-        name: "MongoDB & Mongoose",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-        role: "NoSQL DB & ODM",
-        level: 90,
-        badge: "Core",
+        name: "Prisma ORM",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
+        role: "Type-safe SQL",
+        level: 82,
+        badge: "Solid",
       },
       {
-        name: "Firebase Cloud",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-        role: "Cloud Storage & Auth",
-        level: 85,
-        badge: "Stable",
+        name: "PostgreSQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+        role: "Relational Data",
+        level: 78,
+        badge: "Working",
+      },
+      {
+        name: "REST APIs",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+        role: "Integrations",
+        level: 90,
+        badge: "Core",
       },
     ],
   },
@@ -151,72 +162,47 @@ const tools = [
   },
 ];
 
-// ─── SECTION BADGE (Studio KAIL frosted glass pill) ───────────────────────────
-
-const SectionBadge = ({ children }: { children: React.ReactNode }) => (
-  <span
-    className="kail-glass-pill font-space inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
-      text-[10px] font-bold tracking-[0.28em] uppercase text-white"
-  >
-    <span className="w-1.5 h-1.5 rounded-full bg-[#BCED34] shadow-[0_0_8px_#BCED34]" />
-    {children}
-  </span>
-);
-
-// ─── RADIAL PROFICIENCY RING ───────────────────────────────────────────────────
+// ─── RADIAL PROFICIENCY RING (Figma Spec 3.2: 66 × 66, stroke width 4) ────────
 
 const ProficiencyRing = ({ level }: { level: number }) => {
-  const r = 18;
+  const r = 28;
   const circ = 2 * Math.PI * r;
   const dash = (level / 100) * circ;
-  const accent = "#BCED34";
 
   return (
-    <svg width="44" height="44" className="shrink-0 -rotate-90">
-      <circle
-        cx="22"
-        cy="22"
-        r={r}
-        fill="none"
-        stroke="rgba(255,255,255,0.2)"
-        strokeWidth="3"
-      />
-      <motion.circle
-        cx="22"
-        cy="22"
-        r={r}
-        fill="none"
-        stroke={accent}
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeDasharray={circ}
-        initial={{ strokeDashoffset: circ }}
-        whileInView={{ strokeDashoffset: circ - dash }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      />
-      <text
-        x="22"
-        y="22"
-        textAnchor="middle"
-        dominantBaseline="central"
-        className="rotate-90"
-        style={{
-          fill: "#FFFFFF",
-          fontSize: "7px",
-          fontWeight: 800,
-          fontFamily: "var(--font-space), sans-serif",
-          transform: "rotate(90deg)",
-          transformOrigin: "22px 22px",
-        }}
-      >
+    <div className="relative w-[66px] h-[66px] shrink-0 flex items-center justify-center">
+      <svg width="66" height="66" className="-rotate-90">
+        <circle
+          cx="33"
+          cy="33"
+          r={r}
+          fill="none"
+          stroke="rgba(255, 255, 255, 0.22)"
+          strokeWidth="4"
+        />
+        <motion.circle
+          cx="33"
+          cy="33"
+          r={r}
+          fill="none"
+          stroke="#BCED34"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeDasharray={circ}
+          initial={{ strokeDashoffset: circ }}
+          whileInView={{ strokeDashoffset: circ - dash }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        />
+      </svg>
+      <span className="spec-ring-pct absolute inset-0 flex items-center justify-center">
         {level}%
-      </text>
-    </svg>
+      </span>
+    </div>
   );
 };
 
-// ─── TECH CARD ─────────────────────────────────────────────────────────────────
+// ─── SKILL CARD (Figma Spec 3.2: padding 26, gap 18, IconTile Square 56) ──────
 
 const TechCard = ({
   tech,
@@ -227,52 +213,42 @@ const TechCard = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: i * 0.07 }}
-      className="kail-glass group flex items-center gap-4 p-4 rounded-2xl select-none
-        hover:border-white/50 transition-colors duration-300"
+      transition={{ duration: 0.45, delay: i * 0.08 }}
+      className="kail-glass group flex items-center gap-[18px] p-[26px] select-none hover:-translate-y-[3px]"
     >
-      {/* Logo tile */}
-      <div
-        className="w-10 h-10 relative shrink-0 rounded-xl flex items-center justify-center
-          bg-white/15 border border-white/25
-          shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]"
-      >
+      {/* 1. IconTile Square (56 × 56, radius 16, Fill/White 88) */}
+      <div className="w-[56px] h-[56px] relative shrink-0 rounded-[16px] flex items-center justify-center bg-white/[0.88]">
         <Image
           src={tech.logo}
           alt={tech.name}
           fill
-          className="object-contain p-2 grayscale group-hover:grayscale-0 transition-all duration-500"
+          className="object-contain p-3"
           unoptimized
         />
       </div>
 
-      {/* Info */}
-      <div className="flex-1 min-w-0">
-        <h4 className="font-syne text-xs font-extrabold text-white uppercase tracking-tight truncate">
+      {/* 2. Text stack: Title (Display/Card Title), Subtitle (Mono/Subtitle, margin 4 0 12), PillB Default */}
+      <div className="flex-1 min-w-0 flex flex-col items-start">
+        <h4 className="spec-card-title truncate max-w-full">
           {tech.name}
         </h4>
-        <p className="font-space text-[10px] text-white/80 uppercase tracking-wider truncate mt-0.5">
+        <p className="spec-mono-subtitle mt-[4px] mb-[12px] truncate max-w-full">
           {tech.role}
         </p>
+        <span className="spec-pill-default">
+          {tech.badge}
+        </span>
       </div>
 
-      {/* Badge */}
-      <span
-        className="kail-glass-pill font-space text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
-          text-white"
-      >
-        {tech.badge}
-      </span>
-
-      {/* Ring */}
+      {/* 3. Ring 66 × 66 */}
       <ProficiencyRing level={tech.level} />
     </motion.div>
   );
 };
 
-// ─── TOOL ROW ──────────────────────────────────────────────────────────────────
+// ─── TOOL ROW (Figma Spec 3.3: padding 28 / 6, IconTile Circle 52) ────────────
 
 const ToolRow = ({
   tool,
@@ -282,49 +258,40 @@ const ToolRow = ({
   i: number;
 }) => (
   <motion.div
-    initial={{ opacity: 0, x: -12 }}
-    whileInView={{ opacity: 1, x: 0 }}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-40px" }}
-    transition={{ duration: 0.4, delay: i * 0.06 }}
-    className="group flex items-center gap-4 py-3.5 border-b border-white/20 hover:bg-white/10 px-2.5 -mx-2.5 rounded-xl transition-colors duration-200 cursor-default select-none"
+    transition={{ duration: 0.45, delay: i * 0.07 }}
+    className="group flex items-start gap-[18px] py-[28px] px-[6px] border-b border-white/[0.20] hover:bg-white/[0.08] transition-colors duration-200 cursor-default select-none"
   >
-    {/* Logo tile */}
-    <div
-      className="w-8 h-8 relative shrink-0 rounded-lg
-        bg-white/15 border border-white/25
-        shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]"
-    >
+    {/* 1. IconTile Circle (52 × 52, radius 50%, Fill/White 88) */}
+    <div className="w-[52px] h-[52px] relative shrink-0 rounded-full bg-white/[0.88] flex items-center justify-center">
       <Image
         src={tool.logo}
         alt={tool.name}
         fill
-        className="object-contain p-1.5 grayscale group-hover:grayscale-0 transition-all duration-500"
+        className="object-contain p-3"
         unoptimized
       />
     </div>
 
-    {/* Name + use case */}
-    <div className="flex-1 min-w-0">
-      <span className="font-syne text-xs font-bold text-white uppercase tracking-tight">
+    {/* 2. Stack: Title (Display/Tool Title), Description (Body/Card, margin 6 0 14), PillB Default */}
+    <div className="flex-1 min-w-0 flex flex-col items-start">
+      <h4 className="spec-tool-title">
         {tool.name}
-      </span>
-      <span className="font-outfit hidden sm:inline text-white/80 text-[11px] ml-3 font-normal">
-        — {tool.useCase}
+      </h4>
+      <p className="spec-body-card mt-[6px] mb-[14px]">
+        {tool.useCase}
+      </p>
+      <span className="spec-pill-default">
+        {tool.category}
       </span>
     </div>
 
-    {/* Category pill */}
-    <span
-      className="kail-glass-pill font-space text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
-        text-white"
-    >
-      {tool.category}
-    </span>
-
-    {/* Check indicator */}
-    <CheckCircle
-      size={12}
-      className="text-white/60 group-hover:text-[#BCED34] transition-colors duration-300 shrink-0"
+    {/* 3. Check icon, 18 px, Brand/Lime */}
+    <Check
+      size={18}
+      className="text-[#BCED34] shrink-0 mt-1"
     />
   </motion.div>
 );
@@ -336,34 +303,41 @@ const SkillSection = () => {
   const active = techCategories.find((c) => c.id === activeTab)!;
 
   return (
-    <section
-      id="skills"
-      className="relative py-16 bg-transparent overflow-hidden"
-    >
-      <div className="relative z-10">
-        {/* ── TECHNICAL STACK ─────────────────────────────────── */}
+    <div className="flex flex-col">
+      {/* ── 3.2 ARCHITECTURE CANVAS ─────────────────────────────────── */}
+      <section
+        id="skills"
+        className="relative pb-24 md:pb-[128px] bg-transparent"
+      >
+        {/* Header: Tag: TECHNICAL STACK. Title: ARCHITECTURE / CANVAS. Right: Sub */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-[46px]"
         >
-          <SectionBadge>Technical Stack</SectionBadge>
-          <div className="flex items-end justify-between">
-            <h2 className="font-syne text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
-              ARCHITECTURE <span className="text-[#BCED34]">CANVAS</span>
+          <div className="flex flex-col items-start">
+            <div className="spec-section-tag">
+              <span className="w-[7px] h-[7px] rounded-full bg-[#BCED34] shadow-[0_0_10px_#BCED34]" />
+              <span>TECHNICAL STACK</span>
+            </div>
+            <h2 className="spec-display-h2 mt-[18px]">
+              ARCHITECTURE
+              <br />
+              <span className="text-[#BCED34]">CANVAS</span>
             </h2>
-            <p className="font-outfit hidden sm:block text-white/85 text-xs max-w-[260px] text-right leading-relaxed font-normal">
-              Full-stack toolchain for web, mobile & backend systems.
-            </p>
           </div>
+
+          <p className="spec-body-sub max-w-[340px] md:text-right">
+            Full-stack toolchain for web, mobile & backend systems.
+          </p>
         </motion.div>
 
-        {/* Tab switcher */}
+        {/* Tabs (component TabBar): padding 6, gap 4, radius 99, Fill/White 12, stroke Line/Strong */}
         <div
           role="tablist"
-          className="kail-glass flex gap-2 mb-6 p-1.5 rounded-2xl w-fit max-w-full overflow-x-auto"
+          className="inline-flex flex-wrap gap-[4px] mb-[20px] p-[6px] rounded-full bg-white/[0.12] border border-white/[0.34] backdrop-blur-[12px]"
         >
           {techCategories.map((cat) => {
             const isActive = cat.id === activeTab;
@@ -373,66 +347,70 @@ const SkillSection = () => {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveTab(cat.id)}
-                className={`font-space flex shrink-0 items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-[0.18em]
-                  transition-all duration-200 cursor-pointer select-none
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BCED34] ${
-                    isActive
-                      ? "text-[#1728F4] bg-[#BCED34] shadow-[0_8px_20px_rgba(188,237,52,0.35)]"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                  }`}
+                className={`spec-mono-tab h-[48px] px-[24px] rounded-full transition-all duration-300 cursor-pointer select-none ${
+                  isActive
+                    ? "bg-[#BCED34] text-[#10127A]"
+                    : "text-white/[0.84] hover:text-white"
+                }`}
               >
-                {cat.icon}
                 {cat.label}
               </button>
             );
           })}
         </div>
 
-        {/* Tech cards grid */}
+        {/* Grid: 2 columns, gap 14 */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12 min-h-[180px]"
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-[14px]"
           >
             {active.techs.map((tech, i) => (
               <TechCard key={`${activeTab}-${tech.name}`} tech={tech} i={i} />
             ))}
           </motion.div>
         </AnimatePresence>
+      </section>
 
-        {/* ── UTILITIES MATRIX ─────────────────────────────────── */}
-        <div className="border-t border-white/20 pt-12">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="mb-8"
-          >
-            <SectionBadge>Utilities Matrix</SectionBadge>
-            <div className="flex items-end justify-between">
-              <h3 className="font-syne text-2xl md:text-3xl font-extrabold tracking-tight text-white uppercase leading-none">
-                DEV <span className="text-[#BCED34]">PIPELINES</span>
-              </h3>
-              <span className="font-space text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
-                {tools.length} Tools Active
-              </span>
+      {/* ── 3.3 DEV PIPELINES ───────────────────────────────────────── */}
+      <section className="relative pb-24 md:pb-[128px] bg-transparent">
+        {/* Header: Tag: UTILITIES MATRIX. Title: DEV / PIPELINES. Right: Count, 8 TOOLS ACTIVE */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-[46px]"
+        >
+          <div className="flex flex-col items-start">
+            <div className="spec-section-tag">
+              <span className="w-[7px] h-[7px] rounded-full bg-[#BCED34] shadow-[0_0_10px_#BCED34]" />
+              <span>UTILITIES MATRIX</span>
             </div>
-          </motion.div>
-
-          {/* Two-column tool list */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-            {tools.map((tool, i) => (
-              <ToolRow key={tool.name} tool={tool} i={i} />
-            ))}
+            <h2 className="spec-display-h2 mt-[18px]">
+              DEV
+              <br />
+              <span className="text-[#BCED34]">PIPELINES</span>
+            </h2>
           </div>
+
+          <span className="spec-mono-label-muted">
+            {tools.length} TOOLS ACTIVE
+          </span>
+        </motion.div>
+
+        {/* Grid: 2 columns, column gap 30, no row gap */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[30px]">
+          {tools.map((tool, i) => (
+            <ToolRow key={tool.name} tool={tool} i={i} />
+          ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

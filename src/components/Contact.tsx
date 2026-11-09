@@ -1,169 +1,131 @@
 "use client";
 import React, { useState } from "react";
 import { CONTACT } from "@/lib/data";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { Mail, Phone, Copy, Check } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export const SOCIAL_MEDIA_LINKS = [
   {
-    name: "Facebook",
+    name: "FACEBOOK",
     href: "https://www.facebook.com/mdnajmulhasan.jishan/",
     icon: <FaFacebook />,
-    color: "hover:text-[#9996FE] hover:border-[#5E64FD]/50",
   },
   {
-    name: "GitHub",
+    name: "GITHUB",
     href: "https://github.com/j-sense/",
     icon: <FaGithub />,
-    color: "hover:text-[#F4F4FE] hover:border-white/40",
   },
   {
-    name: "LinkedIn",
+    name: "LINKEDIN",
     href: "https://www.linkedin.com/in/najmul-hasan-222b43273/",
     icon: <FaLinkedin />,
-    color: "hover:text-[#9996FE] hover:border-[#5E64FD]/50",
   },
   {
-    name: "Instagram",
+    name: "X",
     href: "https://x.com/",
     icon: <FaInstagram />,
-    color: "hover:text-[#BCED34] hover:border-[#BCED34]/50",
   },
 ];
 
-const ContactCard = ({ 
-  icon: Icon, 
-  label, 
-  value
-}: { 
-  icon: any; 
-  label: string; 
-  value: string; 
+// Figma Build Spec 3.7 — Component CopyCard (GlassCard, padding 34, vertical)
+const CopyCard = ({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
 }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(value);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      className="relative group cursor-pointer w-full"
+      whileHover={{ y: -3 }}
       onClick={handleCopy}
+      className="kail-glass p-6 sm:p-[34px] flex flex-col items-start text-left cursor-pointer select-none"
     >
-      <div className="absolute -inset-px bg-gradient-to-r from-[#5E64FD]/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      <div className="relative p-6 sm:p-8 rounded-3xl kail-glass flex flex-col items-center text-center transition-all duration-500 shrink-0 h-full">
-        <div className="w-12 h-12 mb-4 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 bg-white/15 border border-white/25 text-white group-hover:text-[#BCED34] group-hover:border-[#BCED34]/50">
-          <Icon size={20} />
-        </div>
-        
-        <span className="font-space text-[9px] font-bold uppercase tracking-[0.25em] text-white/80 mb-1">
-          {label}
-        </span>
-        
-        <h3 className={cn(
-          "font-syne text-base font-extrabold text-white mb-4 tracking-tight transition-colors duration-300 break-all px-2 uppercase",
-          copied ? "text-[#BCED34]" : "group-hover:text-[#BCED34]"
-        )}>
-          {value}
-        </h3>
+      {/* label in Mono/Label Muted (E-MAIL ADDRESS / PHONE NUMBER) */}
+      <span className="spec-mono-label-muted">
+        {label}
+      </span>
 
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full kail-glass-pill font-space text-[9px] font-bold text-white/85 uppercase tracking-[0.2em] transition-all duration-300 group-hover:text-white mt-auto">
-          <AnimatePresence mode="wait">
-            {copied ? (
-              <motion.div
-                key="check"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0 }}
-                className="flex items-center gap-1.5 text-[#BCED34]"
-              >
-                <Check size={10} />
-                Copied!
-              </motion.div>
-            ) : (
-              <motion.div
-                key="copy"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0 }}
-                className="flex items-center gap-1.5"
-              >
-                <Copy size={10} />
-                Click to Copy
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
+      {/* value in Display/H3 at 29 (margin 12 / 16, break anywhere) */}
+      <h3 className="spec-display-h3 !text-[22px] sm:!text-[29px] mt-[12px] mb-[16px] break-all">
+        {value}
+      </h3>
+
+      {/* hint in Mono/Label Lime reading CLICK TO COPY / COPIED ✓ */}
+      <span className="spec-mono-label-lime mt-auto">
+        {copied ? "COPIED ✓" : "CLICK TO COPY"}
+      </span>
     </motion.div>
   );
 };
 
 const Contact = () => {
   return (
-    <section id="contact-info" className="relative py-16 px-4 bg-transparent overflow-hidden pointer-events-auto border-t border-white/20 mt-12">
-      <div className="container mx-auto max-w-4xl relative z-10 p-0">
-        <div className="flex flex-col items-center text-center mb-12">
-          <span className="inline-flex items-center gap-2 font-space text-[10px] font-bold tracking-[0.28em] text-[#BCED34] uppercase mb-4 kail-glass-pill px-3.5 py-1.5 rounded-full w-fit">
-            COMMUNICATION
-          </span>
-          
-          <h2 className="font-syne text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight uppercase">
-            DIRECT <span className="text-[#BCED34]">CHANNELS</span>
-          </h2>
-          
-          <p className="font-outfit text-white/85 text-xs max-w-md leading-relaxed">
-            {CONTACT.text}
-          </p>
+    <section
+      id="contact-info"
+      className="relative bg-transparent pointer-events-auto"
+    >
+      {/* 3.7 Direct Channels Header (no right slot): Tag: COMMUNICATION. Title: DIRECT / CHANNELS, 20 px below tag block */}
+      <div className="flex flex-col items-start text-left">
+        <div className="spec-section-tag">
+          <span className="w-[7px] h-[7px] rounded-full bg-[#BCED34] shadow-[0_0_10px_#BCED34]" />
+          <span>COMMUNICATION</span>
         </div>
 
-        {/* Contact Interaction Area */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 max-w-xl mx-auto items-stretch">
-          <ContactCard 
-            icon={Mail} 
-            label="E-mail Address" 
-            value={CONTACT.email} 
-          />
-          <ContactCard 
-            icon={Phone} 
-            label="Phone Number" 
-            value={CONTACT.phone} 
-          />
-        </div>
+        <h2 className="spec-display-h2 mt-[18px] mb-[20px]">
+          DIRECT
+          <br />
+          <span className="text-[#BCED34]">CHANNELS</span>
+        </h2>
 
-        {/* Social Connect Sector */}
-        <div className="flex flex-col items-center">
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            {SOCIAL_MEDIA_LINKS.map((link, index) => (
-              <motion.a
-                key={index}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ y: -3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="p-3 text-lg kail-glass-pill rounded-xl transition-all duration-300 text-white hover:text-[#BCED34] hover:border-[#BCED34]/50 hover:bg-white/20"
-              >
-                {link.icon}
-              </motion.a>
-            ))}
-          </div>
-        </div>
-
-        <p className="mt-16 text-center font-space text-white/70 text-[9px] font-bold uppercase tracking-[0.35em]">
-          &copy; {new Date().getFullYear()} JISHAN HASSAN. ALL RIGHTS RESERVED.
+        {/* Paragraph in Body/Lead */}
+        <p className="spec-body-lead">
+          {CONTACT.text}
         </p>
       </div>
+
+      {/* Cards: 2 columns, gap 14, margin top 30 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[14px] mt-[30px]">
+        <CopyCard label="E-MAIL ADDRESS" value={CONTACT.email} />
+        <CopyCard label="PHONE NUMBER" value={CONTACT.phone} />
+      </div>
+
+      {/* Social row: margin top 24, gap 8. SocialPill: height 40, padding 0 / 17, radius 99 */}
+      <div className="flex flex-wrap items-center gap-[8px] mt-[24px]">
+        {SOCIAL_MEDIA_LINKS.map((link) => (
+          <a
+            key={link.name}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center h-[40px] px-[17px] rounded-full
+              bg-white/[0.10] border border-white/[0.34]
+              font-space font-semibold text-[12.5px] tracking-[0.10em] uppercase text-white
+              hover:bg-[#BCED34] hover:border-[#BCED34] hover:text-[#10127A]
+              transition-all duration-200 select-none"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+
+      {/* 3.8 Footer: Top border 1 px Line/Soft, padding top 22, margin top 40 */}
+      <footer className="border-t border-white/[0.20] pt-[22px] mt-[40px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <span className="spec-mono-label !text-white/70">
+          &copy; {new Date().getFullYear()} JISHAN HASSAN. ALL RIGHTS RESERVED.
+        </span>
+        <span className="spec-mono-label !text-white/70">
+          JISHAN. — SYS_ONLINE
+        </span>
+      </footer>
     </section>
   );
 };

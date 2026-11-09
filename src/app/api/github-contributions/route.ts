@@ -25,9 +25,9 @@ const GRAPHQL_QUERY = `
 
 const LEVEL_COLORS: Record<number, string> = {
   0: 'rgba(255, 255, 255, 0.14)',
-  1: '#9996FE',
-  2: '#CDCDE7',
-  3: '#96B739',
+  1: 'rgba(188, 237, 52, 0.28)',
+  2: 'rgba(188, 237, 52, 0.50)',
+  3: 'rgba(188, 237, 52, 0.78)',
   4: '#BCED34',
 };
 

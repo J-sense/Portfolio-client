@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -20,132 +19,90 @@ type Project = {
   status: string;
 };
 
-// Studio KAIL frosted glass pill
-const glassPill = "kail-glass-pill text-white";
-
+// Figma Build Spec 3.4 — ProjectRow
 const ProjectRow = ({
   project,
   index,
+  isLast,
 }: {
   project: Project;
   index: number;
+  isLast: boolean;
 }) => {
-  const isCompleted = project.status === "Completed";
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, delay: index * 0.1 }}
-      className="group relative"
+      transition={{ duration: 0.55, delay: index * 0.08 }}
+      className={`group relative border-t border-white/[0.20] ${
+        isLast ? "border-b border-white/[0.20]" : ""
+      } py-[40px] px-[10px] hover:bg-white/[0.10] transition-colors duration-300`}
     >
-      {/* Top divider */}
-      <div className="h-px w-full bg-white/20 group-hover:bg-[#BCED34]/70 transition-colors duration-500" />
-
-      <div className="flex items-center gap-6 py-6 px-3 -mx-3 rounded-2xl group-hover:bg-white/10 transition-colors duration-300 cursor-default">
-        {/* Index number */}
-        <span className="font-space text-xs font-bold text-white/75 uppercase tracking-[0.2em] w-6 shrink-0 select-none">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-[26px]">
+        {/* 1. Index: Mono/Index, aligned to the top with 6 px top padding (01, 02, 03), width 56 */}
+        <span className="spec-mono-index pt-[6px] w-[56px] shrink-0 self-start select-none">
           {String(index + 1).padStart(2, "0")}
         </span>
 
-        {/* Thumbnail: slides in on hover */}
-        <div
-          className="relative overflow-hidden rounded-xl shrink-0 h-16 w-0 opacity-0
-            border border-white/30
-            shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]
-            transition-all duration-500 ease-out
-            group-hover:w-28 group-hover:opacity-100"
-        >
-          <Image
-            src={project.image}
-            fill
-            alt={project.title}
-            className="object-cover"
-            unoptimized
-          />
-        </div>
+        {/* 2. Content stack: Category in Mono/Label Lime (mb 8), Title in Display/Project Title (mb 10), Description in Body/Project (max-w 56ch, mb 16, full text), Chip row (gap 8, wrap) */}
+        <div className="flex-1 min-w-0 flex flex-col items-start">
+          <p className="spec-mono-label-lime mb-[8px]">
+            {project.category}
+          </p>
 
-        {/* Main content */}
-        <div className="flex flex-1 items-center gap-6 min-w-0">
-          {/* Left: category + title + description */}
-          <div className="flex-1 min-w-0">
-            <p className="font-space text-[10px] font-bold uppercase tracking-[0.24em] text-[#BCED34] mb-1.5">
-              {project.category}
-            </p>
-            <h3 className="font-syne font-extrabold uppercase tracking-tight transition-colors duration-300 leading-none truncate text-white group-hover:text-[#BCED34] text-xl md:text-2xl">
-              {project.title}
-            </h3>
-            <p className="font-outfit text-white/80 text-xs font-normal leading-relaxed mt-2 line-clamp-1 max-w-sm">
-              {project.description}
-            </p>
-          </div>
+          <h3 className="spec-project-title mb-[10px]">
+            {project.title}
+          </h3>
 
-          {/* Tech pills: hidden on small, visible on md+ */}
-          <div className="hidden md:flex flex-wrap gap-1.5 shrink-0 max-w-[220px]">
+          <p className="spec-body-project max-w-[56ch] mb-[16px]">
+            {project.description}
+          </p>
+
+          <div className="flex flex-wrap gap-[8px]">
             {project.technologies.slice(0, 3).map((tech, i) => (
-              <span
-                key={i}
-                className={`font-space px-2.5 py-1 text-[9px] font-semibold rounded-full uppercase tracking-wider select-none ${glassPill}`}
-              >
+              <span key={i} className="spec-chip">
                 {tech}
               </span>
             ))}
             {project.technologies.length > 3 && (
-              <span
-                className={`font-space px-2 py-1 text-[9px] font-semibold rounded-full select-none ${glassPill}`}
-              >
+              <span className="spec-chip">
                 +{project.technologies.length - 3}
               </span>
             )}
           </div>
+        </div>
 
-          {/* Status badge */}
-          <span
-            className={`font-space hidden lg:flex shrink-0 items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full select-none ${glassPill}`}
-          >
-            <span
-              className={`w-1.5 h-1.5 rounded-full ${
-                isCompleted
-                  ? "bg-[#BCED34] shadow-[0_0_8px_#BCED34]"
-                  : "bg-white animate-pulse"
-              }`}
-            />
+        {/* 3. Right column, vertical, gap 16, align right: PillB Lime with status, then ArrowButton: 58 × 58 circle */}
+        <div className="flex sm:flex-col items-center sm:items-end justify-between gap-[16px] shrink-0">
+          <span className="spec-pill-lime">
             {project.status}
           </span>
 
-          {/* Arrow CTA */}
-          <div className="shrink-0">
-            {project.liveUrl ? (
-              <Link
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${project.title} live site`}
-                className="flex items-center justify-center w-10 h-10 rounded-full select-none
-                  text-white group-hover:text-[#1728F4]
-                  bg-white/15 backdrop-blur-xl
-                  group-hover:bg-[#BCED34]
-                  border border-white/25 group-hover:border-transparent
-                  shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]
-                  group-hover:shadow-[0_0_20px_rgba(188,237,52,0.4)]
-                  transition-all duration-300 active:scale-95
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BCED34]"
-              >
-                <ArrowUpRight
-                  size={16}
-                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
-                />
-              </Link>
-            ) : (
-              <div
-                aria-hidden="true"
-                className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/10 text-white/40"
-              >
-                <ArrowUpRight size={16} />
-              </div>
-            )}
-          </div>
+          {project.liveUrl ? (
+            <Link
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${project.title} live site`}
+              className="flex items-center justify-center w-[58px] h-[58px] rounded-full select-none
+                text-white bg-white/[0.14] border border-white/[0.34]
+                group-hover:bg-[#BCED34] group-hover:border-[#BCED34] group-hover:text-[#10127A]
+                transition-all duration-300"
+            >
+              <ArrowUpRight
+                size={22}
+                className="group-hover:rotate-45 transition-transform duration-300"
+              />
+            </Link>
+          ) : (
+            <div
+              aria-hidden="true"
+              className="flex items-center justify-center w-[58px] h-[58px] rounded-full border border-white/[0.20] bg-white/[0.08] text-white/40"
+            >
+              <ArrowUpRight size={22} />
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
@@ -166,50 +123,54 @@ const Projects = ({
   return (
     <section
       id="projects"
-      className="relative py-16 bg-transparent overflow-hidden"
+      className="relative pb-24 md:pb-[128px] bg-transparent"
     >
-      {/* Section header */}
+      {/* Figma Build Spec 3.4 — Header: Tag: SELECTED WORKS. Title: RECENT / PROJECTS. Right: Count */}
       <motion.div
-        className="mb-10"
-        initial={{ opacity: 0, y: 16 }}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-[46px]"
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div className="flex items-end justify-between">
-          <div>
-            <span
-              className="kail-glass-pill font-space inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
-                text-[10px] font-bold tracking-[0.28em] uppercase text-white"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#BCED34] shadow-[0_0_8px_#BCED34]" />
-              {showAll ? "Showcase" : "Selected Works"}
-            </span>
-            <h2 className="font-syne text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
-              {showAll ? (
-                <>
-                  ALL <span className="text-[#BCED34]">WORKS</span>
-                </>
-              ) : (
-                <>
-                  RECENT <span className="text-[#BCED34]">PROJECTS</span>
-                </>
-              )}
-            </h2>
+        <div className="flex flex-col items-start">
+          <div className="spec-section-tag">
+            <span className="w-[7px] h-[7px] rounded-full bg-[#BCED34] shadow-[0_0_10px_#BCED34]" />
+            <span>{showAll ? "SHOWCASE" : "SELECTED WORKS"}</span>
           </div>
-          <span className="font-space text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
-            {displayProjects.length} Projects
-          </span>
+
+          <h2 className="spec-display-h2 mt-[18px]">
+            {showAll ? (
+              <>
+                ALL
+                <br />
+                <span className="text-[#BCED34]">WORKS</span>
+              </>
+            ) : (
+              <>
+                RECENT
+                <br />
+                <span className="text-[#BCED34]">PROJECTS</span>
+              </>
+            )}
+          </h2>
         </div>
+
+        <span className="spec-mono-label-muted">
+          {displayProjects.length} PROJECTS
+        </span>
       </motion.div>
 
       {/* Project rows */}
-      <div>
+      <div className="flex flex-col">
         {displayProjects.map((project, index) => (
-          <ProjectRow key={project.id} project={project} index={index} />
+          <ProjectRow
+            key={project.id}
+            project={project}
+            index={index}
+            isLast={index === displayProjects.length - 1}
+          />
         ))}
-        {/* Bottom border */}
-        <div className="h-px w-full bg-white/20" />
       </div>
     </section>
   );
