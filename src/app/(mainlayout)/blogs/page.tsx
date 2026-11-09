@@ -10,12 +10,12 @@ const Blogs = () => {
         
         {/* Page Header */}
         <div>
-          <span className="inline-flex items-center gap-2 text-[9px] font-black tracking-[0.3em] text-[#38bdf8] uppercase mb-4 border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-3 py-1 rounded-full w-fit">
+          <span className="inline-flex items-center gap-2 font-space text-[9px] font-bold tracking-[0.28em] text-[#BCED34] uppercase mb-4 kail-glass-pill px-3.5 py-1.5 rounded-full w-fit">
             Writing
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter text-[#e2e8f0] leading-none">
+          <h1 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-[#F4F4FE] leading-[1.04]">
             DESIGN &<br />
-            <span className="text-[#94a3b8]">TECH THOUGHTS</span>
+            <span className="text-[#9996FE]">TECH THOUGHTS</span>
           </h1>
         </div>
 

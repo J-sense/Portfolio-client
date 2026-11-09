@@ -27,7 +27,7 @@ const BlogDetailPage = async ({
         {/* Back Link */}
         <Link 
           href="/blogs"
-          className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#998f8f] hover:text-white transition-colors w-fit group"
+          className="flex items-center gap-2 font-space text-[10px] font-bold uppercase tracking-[0.2em] text-[#8E92BC] hover:text-[#F4F4FE] transition-colors w-fit group"
         >
           <ArrowLeft size={12} className="group-hover:-translate-x-0.5 transition-transform" />
           <span>Back to Articles</span>
@@ -35,24 +35,24 @@ const BlogDetailPage = async ({
 
         {/* Header Metadata */}
         <div className="flex items-center gap-3">
-          <span className="text-[9px] font-black uppercase tracking-[0.25em] text-[#c5ff41] px-2.5 py-0.5 rounded-full bg-[#c5ff41]/5 border border-[#c5ff41]/20">
+          <span className="font-space text-[9px] font-bold uppercase tracking-[0.22em] text-[#BCED34] px-3 py-1 rounded-full kail-glass-pill">
             {blog.category}
           </span>
-          <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
-          <div className="flex items-center gap-1 text-[#998f8f] text-[9px] font-bold uppercase tracking-wider">
+          <div className="w-1.5 h-1.5 rounded-full bg-white/15" />
+          <div className="flex items-center gap-1 font-space text-[#8E92BC] text-[9px] font-bold uppercase tracking-wider">
             <Clock size={10} />
             <span>{readingTime} min read</span>
           </div>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter text-white leading-tight">
+        <h1 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-[#F4F4FE] leading-tight">
           {blog.title}
         </h1>
 
         {/* Date */}
-        <div className="flex items-center gap-2 text-[#998f8f] text-[10px] font-bold uppercase tracking-wider pb-6 border-b border-white/[0.06]">
-          <Calendar size={11} className="text-[#f46c38]" />
+        <div className="flex items-center gap-2 font-space text-[#8E92BC] text-[10px] font-bold uppercase tracking-wider pb-6 border-b border-white/10">
+          <Calendar size={11} className="text-[#BCED34]" />
           <span>
             {new Date(blog.createdAt).toLocaleDateString("en-US", {
               month: "long",
@@ -63,7 +63,7 @@ const BlogDetailPage = async ({
         </div>
 
         {/* Feature Image */}
-        <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-white/[0.05] bg-[#1b1918]">
+        <div className="relative w-full aspect-video rounded-3xl overflow-hidden kail-glass">
           <Image
             src={blog.image}
             alt={blog.title}
@@ -75,8 +75,8 @@ const BlogDetailPage = async ({
         </div>
 
         {/* Detailed Body Paragraphs */}
-        <div className="text-white/80 text-sm leading-relaxed space-y-6 pt-4">
-          <p className="font-semibold text-white/95 text-base leading-relaxed">
+        <div className="font-outfit text-[#CDCDE7] text-sm leading-relaxed space-y-6 pt-4">
+          <p className="font-semibold text-[#F4F4FE] text-base leading-relaxed">
             {blog.content}
           </p>
           
@@ -88,8 +88,8 @@ const BlogDetailPage = async ({
             Key components of this architecture revolve around modular components, atomic folder hierarchies, and strict dependency boundaries. Design systems should serve as standard specifications that frontend engines consume seamlessly, leaving logic operations isolated from visual elements. By doing so, code remains clean, predictable, and highly testable.
           </p>
 
-          <p className="border-l-2 border-[#c5ff41] pl-4 py-1 italic text-white/90 bg-[#c5ff41]/[0.02]">
-            "Decoupling the visual representation from business state operations is the foundation of structural stability in contemporary web layers."
+          <p className="border-l-2 border-[#9996FE] pl-4 py-2 italic text-[#F4F4FE] bg-[#5E64FD]/[0.06] rounded-r-xl">
+            &ldquo;Decoupling the visual representation from business state operations is the foundation of structural stability in contemporary web layers.&rdquo;
           </p>
 
           <p>

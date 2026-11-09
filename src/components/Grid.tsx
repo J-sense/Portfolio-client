@@ -11,7 +11,6 @@ const techCategories = [
     id: "frontend",
     label: "Frontend",
     icon: <Monitor size={14} />,
-    color: "lime" as const,
     techs: [
       {
         name: "React & Next.js",
@@ -47,7 +46,6 @@ const techCategories = [
     id: "auth",
     label: "Auth & State",
     icon: <ShieldCheck size={14} />,
-    color: "orange" as const,
     techs: [
       {
         name: "Redux & RTK Query",
@@ -76,7 +74,6 @@ const techCategories = [
     id: "backend",
     label: "Backend & DB",
     icon: <Database size={14} />,
-    color: "lime" as const,
     techs: [
       {
         name: "Node.js & Express",
@@ -154,16 +151,14 @@ const tools = [
   },
 ];
 
-// ─── SECTION BADGE (neutral glass, reads cleanly on black) ─────────────────────
+// ─── SECTION BADGE (Studio KAIL frosted glass pill) ───────────────────────────
 
 const SectionBadge = ({ children }: { children: React.ReactNode }) => (
   <span
-    className="inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
-      text-[10px] font-bold tracking-[0.3em] uppercase text-slate-200
-      bg-white/[0.06] border border-white/15
-      shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+    className="kail-glass-pill font-space inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
+      text-[10px] font-bold tracking-[0.28em] uppercase text-white"
   >
-    <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+    <span className="w-1.5 h-1.5 rounded-full bg-[#BCED34] shadow-[0_0_8px_#BCED34]" />
     {children}
   </span>
 );
@@ -174,7 +169,7 @@ const ProficiencyRing = ({ level }: { level: number }) => {
   const r = 18;
   const circ = 2 * Math.PI * r;
   const dash = (level / 100) * circ;
-  const accent = "#38bdf8";
+  const accent = "#BCED34";
 
   return (
     <svg width="44" height="44" className="shrink-0 -rotate-90">
@@ -183,7 +178,7 @@ const ProficiencyRing = ({ level }: { level: number }) => {
         cy="22"
         r={r}
         fill="none"
-        stroke="rgba(255,255,255,0.08)"
+        stroke="rgba(255,255,255,0.2)"
         strokeWidth="3"
       />
       <motion.circle
@@ -207,10 +202,10 @@ const ProficiencyRing = ({ level }: { level: number }) => {
         dominantBaseline="central"
         className="rotate-90"
         style={{
-          fill: accent,
+          fill: "#FFFFFF",
           fontSize: "7px",
-          fontWeight: 900,
-          fontFamily: "inherit",
+          fontWeight: 800,
+          fontFamily: "var(--font-space), sans-serif",
           transform: "rotate(90deg)",
           transformOrigin: "22px 22px",
         }}
@@ -235,18 +230,14 @@ const TechCard = ({
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: i * 0.07 }}
-      className="group flex items-center gap-4 p-4 rounded-2xl select-none
-        bg-gradient-to-b from-[#1A1F29] to-[#0C0F14]
-        border border-[#334155] hover:border-[#38bdf8]/50
-        shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-3px_6px_rgba(0,0,0,0.45)]
-        transition-colors duration-300"
+      className="kail-glass group flex items-center gap-4 p-4 rounded-2xl select-none
+        hover:border-white/50 transition-colors duration-300"
     >
       {/* Logo tile */}
       <div
         className="w-10 h-10 relative shrink-0 rounded-xl flex items-center justify-center
-          bg-gradient-to-b from-white/[0.12] to-white/[0.03]
-          border border-white/10
-          shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-2px_4px_rgba(0,0,0,0.35)]"
+          bg-white/15 border border-white/25
+          shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]"
       >
         <Image
           src={tech.logo}
@@ -259,19 +250,18 @@ const TechCard = ({
 
       {/* Info */}
       <div className="flex-1 min-w-0">
-        <h4 className="text-xs font-black text-[#e2e8f0] uppercase tracking-wide truncate">
+        <h4 className="font-syne text-xs font-extrabold text-white uppercase tracking-tight truncate">
           {tech.name}
         </h4>
-        <p className="text-[10px] text-[#94a3b8] uppercase tracking-wider truncate mt-0.5">
+        <p className="font-space text-[10px] text-white/80 uppercase tracking-wider truncate mt-0.5">
           {tech.role}
         </p>
       </div>
 
-      {/* Badge (neutral glass) */}
+      {/* Badge */}
       <span
-        className="text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
-          text-slate-300 bg-white/[0.06] border border-white/15
-          shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+        className="kail-glass-pill font-space text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
+          text-white"
       >
         {tech.badge}
       </span>
@@ -296,14 +286,13 @@ const ToolRow = ({
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, margin: "-40px" }}
     transition={{ duration: 0.4, delay: i * 0.06 }}
-    className="group flex items-center gap-4 py-3.5 border-b border-[#334155]/60 hover:bg-white/[0.03] px-2 -mx-2 rounded-lg transition-colors duration-200 cursor-default select-none"
+    className="group flex items-center gap-4 py-3.5 border-b border-white/20 hover:bg-white/10 px-2.5 -mx-2.5 rounded-xl transition-colors duration-200 cursor-default select-none"
   >
     {/* Logo tile */}
     <div
       className="w-8 h-8 relative shrink-0 rounded-lg
-        bg-gradient-to-b from-white/[0.12] to-white/[0.03]
-        border border-white/10
-        shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-2px_3px_rgba(0,0,0,0.35)]"
+        bg-white/15 border border-white/25
+        shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]"
     >
       <Image
         src={tool.logo}
@@ -316,19 +305,18 @@ const ToolRow = ({
 
     {/* Name + use case */}
     <div className="flex-1 min-w-0">
-      <span className="text-xs font-black text-[#e2e8f0] uppercase tracking-wide">
+      <span className="font-syne text-xs font-bold text-white uppercase tracking-tight">
         {tool.name}
       </span>
-      <span className="hidden sm:inline text-[#94a3b8] text-[11px] ml-3">
+      <span className="font-outfit hidden sm:inline text-white/80 text-[11px] ml-3 font-normal">
         — {tool.useCase}
       </span>
     </div>
 
-    {/* Category pill (neutral glass) */}
+    {/* Category pill */}
     <span
-      className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
-        text-slate-300 bg-white/[0.06] border border-white/15
-        shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+      className="kail-glass-pill font-space text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0
+        text-white"
     >
       {tool.category}
     </span>
@@ -336,7 +324,7 @@ const ToolRow = ({
     {/* Check indicator */}
     <CheckCircle
       size={12}
-      className="text-[#38bdf8]/40 group-hover:text-[#38bdf8] transition-colors duration-300 shrink-0"
+      className="text-white/60 group-hover:text-[#BCED34] transition-colors duration-300 shrink-0"
     />
   </motion.div>
 );
@@ -350,11 +338,8 @@ const SkillSection = () => {
   return (
     <section
       id="skills"
-      className="relative py-16 bg-[#050505] overflow-hidden"
+      className="relative py-16 bg-transparent overflow-hidden"
     >
-      {/* Subtle background glow (now visible: isolate + higher opacity) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(56,189,248,0.08)_0%,transparent_60%)] pointer-events-none -z-10" />
-
       <div className="relative z-10">
         {/* ── TECHNICAL STACK ─────────────────────────────────── */}
         <motion.div
@@ -366,10 +351,10 @@ const SkillSection = () => {
         >
           <SectionBadge>Technical Stack</SectionBadge>
           <div className="flex items-end justify-between">
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">
-              ARCHITECTURE <span className="text-[#94a3b8]">CANVAS</span>
+            <h2 className="font-syne text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
+              ARCHITECTURE <span className="text-[#BCED34]">CANVAS</span>
             </h2>
-            <p className="hidden sm:block text-[#94a3b8] text-xs max-w-[260px] text-right leading-relaxed">
+            <p className="font-outfit hidden sm:block text-white/85 text-xs max-w-[260px] text-right leading-relaxed font-normal">
               Full-stack toolchain for web, mobile & backend systems.
             </p>
           </div>
@@ -378,9 +363,7 @@ const SkillSection = () => {
         {/* Tab switcher */}
         <div
           role="tablist"
-          className="flex gap-2 mb-6 p-1.5 rounded-2xl w-fit max-w-full overflow-x-auto
-            bg-[#0B0E13] border border-[#334155]
-            shadow-[inset_0_2px_4px_rgba(0,0,0,0.45)]"
+          className="kail-glass flex gap-2 mb-6 p-1.5 rounded-2xl w-fit max-w-full overflow-x-auto"
         >
           {techCategories.map((cat) => {
             const isActive = cat.id === activeTab;
@@ -390,11 +373,12 @@ const SkillSection = () => {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveTab(cat.id)}
-                className={`flex shrink-0 items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest
+                className={`font-space flex shrink-0 items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-[0.18em]
                   transition-all duration-200 cursor-pointer select-none
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isActive
-                    ? "text-[#04121C] bg-gradient-to-b from-[#7DD3FC] to-[#38BDF8] shadow-[inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-2px_4px_rgba(3,60,100,0.3)]"
-                    : "text-[#94a3b8] hover:text-[#e2e8f0] hover:bg-white/5"
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BCED34] ${
+                    isActive
+                      ? "text-[#1728F4] bg-[#BCED34] shadow-[0_8px_20px_rgba(188,237,52,0.35)]"
+                      : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
               >
                 {cat.icon}
@@ -421,7 +405,7 @@ const SkillSection = () => {
         </AnimatePresence>
 
         {/* ── UTILITIES MATRIX ─────────────────────────────────── */}
-        <div className="border-t border-[#334155]/60 pt-12">
+        <div className="border-t border-white/20 pt-12">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -431,10 +415,10 @@ const SkillSection = () => {
           >
             <SectionBadge>Utilities Matrix</SectionBadge>
             <div className="flex items-end justify-between">
-              <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">
-                DEV <span className="text-[#94a3b8]">PIPELINES</span>
+              <h3 className="font-syne text-2xl md:text-3xl font-extrabold tracking-tight text-white uppercase leading-none">
+                DEV <span className="text-[#BCED34]">PIPELINES</span>
               </h3>
-              <span className="text-[10px] font-black uppercase tracking-widest text-[#94a3b8]">
+              <span className="font-space text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
                 {tools.length} Tools Active
               </span>
             </div>

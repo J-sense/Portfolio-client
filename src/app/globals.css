@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%; /* #050505 Pure OLED Black */
-    --foreground: 210 40% 98%;
+    --background: 235 66% 44%; /* Studio KAIL Indigo-Blue Gradient Base */
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 7%; /* #121212 Deep Charcoal */
-    --card-foreground: 210 40% 98%;
+    --card: 236 52% 52%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 2%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 235 62% 38%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 199 89% 60%; /* Ice Blue #38bdf8 */
-    --primary-foreground: 0 0% 2%;
+    --primary: 238 98% 68%; /* #5E64FD Studio KAIL Electric Indigo */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 20% 65%; /* Slate Gray #94a3b8 */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 36% 86%; /* #CDCDE7 Soft Periwinkle */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 215 20% 65%; /* Subtle Slate #94a3b8 */
-    --muted-foreground: 215 16% 47%;
+    --muted: 240 45% 92%;
+    --muted-foreground: 240 40% 88%;
 
-    --accent: 199 89% 60%;
-    --accent-foreground: 0 0% 2%;
+    --accent: 76 84% 57%; /* #BCED34 Studio KAIL Neon Lime */
+    --accent-foreground: 235 90% 25%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 25% 27%; /* Slate Border #334155 */
-    --input: 215 25% 27%;
-    --ring: 199 89% 60%;
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 76 84% 57%;
 
     --radius: 1.5rem;
   }
@@ -38,22 +38,40 @@
 
 @layer base {
   * {
-    @apply border-border !scroll-smooth;
+    @apply border-white/20 !scroll-smooth;
   }
 
   body {
-    @apply text-foreground;
-    background-color: #050505;
-    font-family: var(--font-inter), sans-serif;
+    /* Exact Studio KAIL (kail.studio) Dreamy Multi-Stop Mesh Gradient Background */
+    background-color: #3B43B8;
+    background-image:
+      radial-gradient(circle at 10% 15%, #1728F4 0%, transparent 52%),
+      radial-gradient(circle at 88% 12%, #9996FE 0%, transparent 48%),
+      radial-gradient(circle at 50% 45%, #5E64FD 0%, transparent 58%),
+      radial-gradient(circle at 85% 85%, #575DA7 0%, transparent 55%),
+      radial-gradient(circle at 14% 88%, #9996FE 0%, transparent 52%),
+      radial-gradient(circle at 68% 28%, rgba(188, 237, 52, 0.22) 0%, transparent 38%),
+      linear-gradient(135deg, #1728F4 0%, #5E64FD 36%, #575DA7 70%, #9996FE 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    color: #FFFFFF;
+    font-family: var(--font-outfit), var(--font-inter), sans-serif;
+    letter-spacing: -0.01em;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   h1,
   h2,
-  h3,
+  h3 {
+    font-family: var(--font-syne), sans-serif;
+    letter-spacing: -0.025em;
+  }
+
   h4,
   h5,
   h6 {
-    font-family: var(--font-bricolage), var(--font-poppins), sans-serif;
+    font-family: var(--font-bricolage), var(--font-outfit), sans-serif;
+    letter-spacing: -0.02em;
   }
 
   button {
@@ -61,70 +79,100 @@
   }
 }
 
-/* Futuristic Ultra-Cool Custom Scrollbars */
+/* Studio KAIL Glassy Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(12, 14, 23, 0.6);
+  background: rgba(23, 40, 244, 0.25);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 9999px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.6);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  background: #BCED34;
+  box-shadow: 0 0 12px rgba(188, 237, 52, 0.65);
 }
 
 /* Firefox scrollbar styling */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(56, 189, 248, 0.3) rgba(12, 14, 23, 0.6);
+  scrollbar-color: rgba(255, 255, 255, 0.4) rgba(23, 40, 244, 0.25);
 }
 
 @layer utilities {
   .heading {
-    @apply font-bold text-4xl md:text-5xl text-center;
+    @apply font-syne font-extrabold text-4xl md:text-5xl text-center tracking-tight;
   }
 
   .black-gradient {
-    background: linear-gradient(90deg, #121212 0%, #050505 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(87, 93, 167, 0.35) 100%
+    );
   }
 
-  /* Sleek Ice Blue Glows */
+  /* Studio KAIL Translucent Frosted Glassmorphism Surfaces (No black tint) */
+  .kail-glass {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.20) 0%,
+      rgba(205, 205, 231, 0.12) 50%,
+      rgba(87, 93, 167, 0.24) 100%
+    );
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.42),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.10),
+      0 20px 50px -12px rgba(15, 23, 95, 0.32);
+  }
+
+  .kail-glass-pill {
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(16px) saturate(170%);
+    -webkit-backdrop-filter: blur(16px) saturate(170%);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      0 6px 18px rgba(15, 23, 95, 0.18);
+  }
+
+  /* Studio KAIL Glows */
   .glow-ice,
   .glow-primary {
-    box-shadow: 0 0 45px -5px rgba(56, 189, 248, 0.35);
+    box-shadow: 0 0 45px -5px rgba(153, 150, 254, 0.45);
   }
 
-  /* Neon Text Shadow Effects */
   .text-neon-ice {
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
   }
 
-  /* Fancy Display Fonts */
+  /* Studio Display & Editorial Typography Utilities */
   .font-bricolage {
-    font-family: var(--font-bricolage), var(--font-poppins), sans-serif;
+    font-family: var(--font-bricolage), sans-serif;
   }
 
   .font-syne {
-    font-family: var(--font-syne), var(--font-poppins), sans-serif;
+    font-family: var(--font-syne), sans-serif;
   }
 
   .font-space {
-    font-family: var(--font-space), var(--font-inter), sans-serif;
+    font-family: var(--font-space), monospace;
   }
 
   .font-outfit {
-    font-family: var(--font-outfit), var(--font-poppins), sans-serif;
+    font-family: var(--font-outfit), var(--font-inter), sans-serif;
   }
 }
 

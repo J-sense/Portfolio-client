@@ -34,14 +34,20 @@ const Card = ({ project }: { project: ProjectType }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
-      className="group relative flex flex-col rounded-3xl border border-[#334155] bg-[#121212] transition-all duration-500 hover:border-[#38bdf8]/50 overflow-hidden isolate shadow-2xl w-full h-full"
+      className="group relative flex flex-col rounded-3xl kail-glass transition-all duration-500 overflow-hidden isolate w-full h-full"
     >
       {/* Background Hover Glow Accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.03)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at center, rgba(94, 100, 253, 0.12) 0%, transparent 70%)",
+        }}
+      />
 
       {/* Image box with padding */}
       <div className="p-4">
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black/40 border border-[#334155]">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black/40 border border-white/10">
           <Image
             src={project.image || "/images/about-me.png"}
             fill
@@ -49,18 +55,18 @@ const Card = ({ project }: { project: ProjectType }) => {
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] grayscale group-hover:grayscale-0"
             unoptimized
           />
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#07080E]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             {destinationLive !== "#" ? (
               <a
                 href={destinationLive}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3.5 bg-black/85 backdrop-blur-md rounded-full border border-[#334155] text-[#38bdf8]"
+                className="p-3.5 kail-glass-pill rounded-full text-[#BCED34] hover:scale-105 transition-transform"
               >
                 <ExternalLink size={20} />
               </a>
             ) : (
-              <div className="p-3.5 bg-black/85 backdrop-blur-md rounded-full border border-[#334155] text-[#94a3b8]">
+              <div className="p-3.5 kail-glass-pill rounded-full text-[#8E92BC]">
                 <Info size={20} />
               </div>
             )}
@@ -71,15 +77,15 @@ const Card = ({ project }: { project: ProjectType }) => {
       {/* Body Content */}
       <div className="p-6 pt-2 flex-1 flex flex-col">
         <div className="mb-4">
-          <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#38bdf8]">
+          <span className="font-space text-[9px] font-bold uppercase tracking-[0.22em] text-[#BCED34]">
             {project.category || "Showcase Project"}
           </span>
-          <h3 className="text-xl font-black text-[#e2e8f0] group-hover:text-[#38bdf8] transition-colors duration-300 tracking-tight uppercase mt-1">
+          <h3 className="font-syne text-xl font-extrabold text-[#F4F4FE] group-hover:text-[#9996FE] transition-colors duration-300 tracking-tight uppercase mt-1">
             {project.title}
           </h3>
         </div>
 
-        <p className="text-[#94a3b8] text-xs leading-relaxed mb-6 line-clamp-3">
+        <p className="font-outfit text-[#8E92BC] text-xs leading-relaxed mb-6 line-clamp-3">
           {project.description}
         </p>
 
@@ -88,39 +94,39 @@ const Card = ({ project }: { project: ProjectType }) => {
           {project.technologies?.slice(0, 4).map((tech: string, idx: number) => (
             <span
               key={idx}
-              className="px-3 py-1 text-[8px] font-bold bg-[#050505] border border-[#334155] text-[#94a3b8] rounded-full uppercase tracking-wider"
+              className="px-3 py-1 font-space text-[8px] font-bold kail-glass-pill text-[#CDCDE7] rounded-full uppercase tracking-[0.18em]"
             >
               {tech}
             </span>
           ))}
           {project.technologies?.length > 4 && (
-            <span className="px-2.5 py-1 text-[8px] font-bold bg-[#38bdf8]/10 border border-[#38bdf8]/30 text-[#38bdf8] rounded-full">
+            <span className="px-2.5 py-1 font-space text-[8px] font-bold bg-[#5E64FD]/15 border border-[#9996FE]/30 text-[#9996FE] rounded-full">
               +{project.technologies.length - 4} MORE
             </span>
           )}
         </div>
 
         {/* Actions Bottom */}
-        <div className="mt-auto pt-4 border-t border-[#334155]/60 flex items-center justify-between">
+        <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
           {destinationLive !== "#" ? (
             <a
               href={destinationLive}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#e2e8f0] hover:text-[#38bdf8] transition-colors group/link"
+              className="flex items-center gap-1.5 font-space text-[10px] font-bold uppercase tracking-[0.2em] text-[#F4F4FE] hover:text-[#BCED34] transition-colors group/link"
             >
               <span>Live Project</span>
               <ArrowUpRight size={12} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
             </a>
           ) : (
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#94a3b8]">
+            <span className="font-space text-[10px] font-bold uppercase tracking-[0.2em] text-[#8E92BC]">
               Coming Soon
             </span>
           )}
 
           <Link
             href={specificationUrl}
-            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#94a3b8] hover:text-[#e2e8f0] transition-colors"
+            className="flex items-center gap-1.5 font-space text-[10px] font-bold uppercase tracking-[0.2em] text-[#8E92BC] hover:text-[#9996FE] transition-colors"
           >
             <Info size={12} />
             <span>Specifications</span>

@@ -41,8 +41,8 @@ const Connect = () => {
 
   return (
     <section id="contact" className="relative py-12 bg-transparent overflow-hidden pointer-events-auto w-full">
-      {/* Background neon light glow */}
-      <div className="absolute bottom-0 right-[-10%] w-[500px] h-[500px] bg-[#38bdf8]/5 blur-[150px] rounded-full -z-10" />
+      {/* Background accent glow */}
+      <div className="absolute bottom-0 right-[-10%] w-[500px] h-[500px] bg-[#5E64FD]/10 blur-[150px] rounded-full -z-10" />
 
       <div className="w-full relative z-10">
         
@@ -51,16 +51,16 @@ const Connect = () => {
           
           {/* Left Column: Contact details & Callout */}
           <div className="lg:col-span-5 flex flex-col text-left">
-            <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.3em] text-[#38bdf8] uppercase mb-4 border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-3 py-1 rounded-full w-fit">
+            <span className="inline-flex items-center gap-2 font-space text-[10px] font-bold tracking-[0.28em] text-[#BCED34] uppercase mb-4 kail-glass-pill px-3.5 py-1.5 rounded-full w-fit">
               Get in Touch
             </span>
             
-            <h2 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-black mb-8 tracking-tighter text-[#e2e8f0] uppercase leading-none">
+            <h2 className="font-syne text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold mb-8 tracking-tight text-white uppercase leading-[1.02]">
               LET&apos;S WORK<br />
-              <span className="text-[#94a3b8]">TOGETHER</span>
+              <span className="text-[#BCED34]">TOGETHER</span>
             </h2>
             
-            <p className="text-[#94a3b8] text-sm leading-relaxed mb-10 max-w-sm">
+            <p className="font-outfit text-white/85 text-sm leading-relaxed mb-10 max-w-sm">
               I am always excited to collaborate on new and challenging projects. Feel free to reach out to discuss how we can work together to achieve your goals.
             </p>
 
@@ -68,12 +68,12 @@ const Connect = () => {
             <div className="space-y-6">
               {/* Email */}
               <div className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-full border border-[#334155] bg-[#121212] flex items-center justify-center text-[#38bdf8]">
+                <div className="w-10 h-10 rounded-full kail-glass-pill flex items-center justify-center text-white group-hover:text-[#BCED34] transition-colors">
                   <Mail size={16} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[8px] font-bold text-[#94a3b8] uppercase tracking-widest">Email me</span>
-                  <a href="mailto:jishan1873@gmail.com" className="text-sm font-bold text-[#e2e8f0] hover:text-[#38bdf8] transition-colors">
+                  <span className="font-space text-[8px] font-bold text-white/80 uppercase tracking-[0.22em]">Email me</span>
+                  <a href="mailto:jishan1873@gmail.com" className="font-syne text-sm font-bold text-white hover:text-[#BCED34] transition-colors">
                     jishan1873@gmail.com
                   </a>
                 </div>
@@ -81,12 +81,12 @@ const Connect = () => {
 
               {/* Phone */}
               <div className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-full border border-[#334155] bg-[#121212] flex items-center justify-center text-[#38bdf8]">
+                <div className="w-10 h-10 rounded-full kail-glass-pill flex items-center justify-center text-white group-hover:text-[#BCED34] transition-colors">
                   <Phone size={16} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[8px] font-bold text-[#94a3b8] uppercase tracking-widest">Call me</span>
-                  <a href="tel:+8801914667297" className="text-sm font-bold text-[#e2e8f0] hover:text-[#38bdf8] transition-colors">
+                  <span className="font-space text-[8px] font-bold text-white/80 uppercase tracking-[0.22em]">Call me</span>
+                  <a href="tel:+8801914667297" className="font-syne text-sm font-bold text-white hover:text-[#BCED34] transition-colors">
                     +880 1914-667297
                   </a>
                 </div>
@@ -94,12 +94,12 @@ const Connect = () => {
 
               {/* Location */}
               <div className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-full border border-[#334155] bg-[#121212] flex items-center justify-center text-[#38bdf8]">
+                <div className="w-10 h-10 rounded-full kail-glass-pill flex items-center justify-center text-white group-hover:text-[#BCED34] transition-colors">
                   <MapPin size={16} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[8px] font-bold text-[#94a3b8] uppercase tracking-widest">Location</span>
-                  <span className="text-sm font-bold text-[#e2e8f0]">
+                  <span className="font-space text-[8px] font-bold text-white/80 uppercase tracking-[0.22em]">Location</span>
+                  <span className="font-syne text-sm font-bold text-white">
                     Feni, Bangladesh
                   </span>
                 </div>
@@ -109,15 +109,15 @@ const Connect = () => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7 w-full">
-            <div className="relative p-6 sm:p-10 rounded-[2rem] border border-[#334155] bg-[#121212] shadow-2xl">
+            <div className="relative p-6 sm:p-10 rounded-[2rem] kail-glass">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 
                 {/* Name */}
                 <div className="flex flex-col text-left">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-[#94a3b8] mb-2">Name</label>
+                  <label className="font-space text-[9px] font-bold uppercase tracking-[0.22em] text-white/85 mb-2">Name</label>
                   <input
                     type="text"
-                    className="w-full p-4 rounded-2xl bg-[#050505] border border-[#334155] text-sm text-[#e2e8f0] focus:outline-none focus:border-[#38bdf8] transition-colors"
+                    className="w-full p-4 rounded-2xl bg-white/10 border border-white/25 font-outfit text-sm text-white placeholder-white/60 focus:outline-none focus:border-[#BCED34] focus:bg-white/15 transition-all"
                     placeholder="Your Name"
                     {...register("name", { required: "Name is required" })}
                   />
@@ -125,10 +125,10 @@ const Connect = () => {
 
                 {/* Email */}
                 <div className="flex flex-col text-left">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-[#94a3b8] mb-2">Email Address</label>
+                  <label className="font-space text-[9px] font-bold uppercase tracking-[0.22em] text-white/85 mb-2">Email Address</label>
                   <input
                     type="email"
-                    className="w-full p-4 rounded-2xl bg-[#050505] border border-[#334155] text-sm text-[#e2e8f0] focus:outline-none focus:border-[#38bdf8] transition-colors"
+                    className="w-full p-4 rounded-2xl bg-white/10 border border-white/25 font-outfit text-sm text-white placeholder-white/60 focus:outline-none focus:border-[#BCED34] focus:bg-white/15 transition-all"
                     placeholder="Your Email"
                     {...register("email", {
                       required: "Email is required",
@@ -142,7 +142,7 @@ const Connect = () => {
 
                 {/* Budget Range selector */}
                 <div className="flex flex-col text-left">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-[#94a3b8] mb-3">Project Budget</label>
+                  <label className="font-space text-[9px] font-bold uppercase tracking-[0.22em] text-white/85 mb-3">Project Budget</label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-2.5">
                     {budgetOptions.map((option) => {
                       const isSelected = selectedBudget === option;
@@ -151,10 +151,10 @@ const Connect = () => {
                           key={option}
                           type="button"
                           onClick={() => setSelectedBudget(option)}
-                          className={`py-3 px-2 rounded-2xl text-[10px] font-bold uppercase tracking-wider text-center border transition-all duration-300 ${
+                          className={`py-3 px-2 rounded-2xl font-space text-[10px] font-bold uppercase tracking-[0.16em] text-center border transition-all duration-300 ${
                             isSelected
-                              ? "bg-[#38bdf8] text-[#050505] border-transparent shadow-lg shadow-[#38bdf8]/20"
-                              : "bg-[#050505] text-[#94a3b8] border-[#334155] hover:text-[#e2e8f0] hover:border-[#38bdf8]/50"
+                              ? "bg-[#BCED34] text-[#1728F4] border-transparent shadow-[0_8px_24px_rgba(188,237,52,0.35)]"
+                              : "bg-white/10 text-white/85 border-white/25 hover:text-white hover:border-white/50"
                           }`}
                         >
                           {option}
@@ -166,10 +166,10 @@ const Connect = () => {
 
                 {/* Message */}
                 <div className="flex flex-col text-left">
-                  <label className="text-[9px] font-black uppercase tracking-widest text-[#94a3b8] mb-2">Message</label>
+                  <label className="font-space text-[9px] font-bold uppercase tracking-[0.22em] text-white/85 mb-2">Message</label>
                   <textarea
                     rows={4}
-                    className="w-full p-4 rounded-2xl bg-[#050505] border border-[#334155] text-sm text-[#e2e8f0] focus:outline-none focus:border-[#38bdf8] transition-colors resize-none"
+                    className="w-full p-4 rounded-2xl bg-white/10 border border-white/25 font-outfit text-sm text-white placeholder-white/60 focus:outline-none focus:border-[#BCED34] focus:bg-white/15 transition-all resize-none"
                     placeholder="Write details about your project..."
                     {...register("message", { required: "Message is required" })}
                   />
@@ -179,7 +179,7 @@ const Connect = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 py-4 bg-[#38bdf8] text-[#050505] font-black text-xs uppercase tracking-[0.25em] rounded-full hover:bg-[#e2e8f0] transition-all duration-300 disabled:opacity-50 shadow-lg shadow-[#38bdf8]/20"
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-[#BCED34] hover:bg-white text-[#1728F4] font-space font-bold text-xs uppercase tracking-[0.22em] rounded-full transition-all duration-300 disabled:opacity-50 shadow-[0_12px_32px_rgba(188,237,52,0.35)]"
                 >
                   {isSubmitting ? "Sending..." : "Submit Inquiry"}
                   <ArrowUpRight size={14} />

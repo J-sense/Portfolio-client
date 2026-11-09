@@ -7,7 +7,7 @@ import Image from "next/image";
 import React from "react";
 
 const MicroLabel = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <span className={cn("text-[10px] font-black uppercase tracking-[0.4em] text-[#94a3b8]", className)}>
+  <span className={cn("font-space text-[10px] font-bold uppercase tracking-[0.35em] text-white/80", className)}>
     {children}
   </span>
 );
@@ -18,21 +18,21 @@ const HighlightCard = ({ icon: Icon, title, desc, delay }: { icon: any; title: s
     whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay }}
-    className="relative group p-6 rounded-2xl border border-[#334155] bg-[#121212] backdrop-blur-2xl transition-all duration-300 hover:border-[#38bdf8]/50 shadow-2xl"
+    className="relative group p-6 rounded-2xl kail-glass transition-all duration-300"
   >
-    <div className="w-10 h-10 mb-4 rounded-xl bg-[#38bdf8]/10 border border-[#38bdf8]/30 flex items-center justify-center text-[#38bdf8]">
+    <div className="w-10 h-10 mb-4 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center text-white group-hover:text-[#BCED34] group-hover:border-[#BCED34]/50 transition-colors">
       <Icon size={18} />
     </div>
-    <h4 className="text-[#e2e8f0] text-xs font-black uppercase tracking-widest mb-2">{title}</h4>
-    <p className="text-[#94a3b8] text-[10px] leading-relaxed tracking-wider">{desc}</p>
+    <h4 className="font-syne text-white text-xs font-extrabold uppercase tracking-widest mb-2">{title}</h4>
+    <p className="font-outfit text-white/80 text-[11px] leading-relaxed">{desc}</p>
   </motion.div>
 );
 
 const About = () => {
   return (
-    <section id="about" className="relative py-20 px-6 sm:px-12 lg:px-24 bg-[#050505] overflow-hidden pointer-events-auto">
+    <section id="about" className="relative py-20 px-6 sm:px-12 lg:px-24 bg-transparent overflow-hidden pointer-events-auto">
       {/* Background Glow */}
-      <div className="absolute top-[20%] left-[-10%] w-[350px] h-[350px] bg-[#38bdf8]/[0.05] blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-[20%] left-[-10%] w-[350px] h-[350px] bg-white/10 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
@@ -47,15 +47,21 @@ const About = () => {
           >
             <div className="relative aspect-[4/5] max-w-md mx-auto group">
                 {/* GLOW */}
-                <div className="absolute -inset-10 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.12)_0%,transparent_70%)] blur-[80px] rounded-full z-0 pointer-events-none" />
+                <div
+                  className="absolute -inset-10 blur-[80px] rounded-full z-0 pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%)",
+                  }}
+                />
 
                 {/* Technical Corner Markers */}
-                <div className="absolute -top-3 -left-3 w-6 h-6 border-t-[1.5px] border-l-[1.5px] border-[#38bdf8] z-30" />
-                <div className="absolute -top-3 -right-3 w-6 h-6 border-t-[1.5px] border-r-[1.5px] border-[#38bdf8] z-30" />
-                <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-[1.5px] border-l-[1.5px] border-[#38bdf8] z-30" />
-                <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-[1.5px] border-r-[1.5px] border-[#38bdf8] z-30" />
+                <div className="absolute -top-3 -left-3 w-6 h-6 border-t-[1.5px] border-l-[1.5px] border-[#BCED34] z-30" />
+                <div className="absolute -top-3 -right-3 w-6 h-6 border-t-[1.5px] border-r-[1.5px] border-[#BCED34] z-30" />
+                <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-[1.5px] border-l-[1.5px] border-[#BCED34] z-30" />
+                <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-[1.5px] border-r-[1.5px] border-[#BCED34] z-30" />
 
-                <div className="relative h-full overflow-hidden rounded-2xl border border-[#334155] bg-[#121212] backdrop-blur-3xl group">
+                <div className="relative h-full overflow-hidden rounded-2xl kail-glass group">
                    <Image
                      src="/images/my-profile-card.png"
                      alt="Najmul Hassan Jishan"
@@ -66,18 +72,18 @@ const About = () => {
                    {/* Technical Overlay Markers */}
                    <div className="absolute top-6 right-6 flex flex-col items-end gap-1 z-30">
                       <MicroLabel>Access: Granted</MicroLabel>
-                      <div className="w-12 h-[1px] bg-[#38bdf8]/40" />
+                      <div className="w-12 h-[1px] bg-[#BCED34]/50" />
                    </div>
                 </div>
 
                 {/* System Status Display */}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-30 px-6 py-2 rounded-full bg-[#121212] border border-[#334155] flex items-center gap-4 shadow-2xl">
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-30 px-6 py-2 rounded-full kail-glass-pill flex items-center gap-4 shadow-2xl">
                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-ping" />
-                      <span className="text-[9px] font-black tracking-[0.2em] text-[#e2e8f0]">SYS_ONLINE</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#BCED34] animate-ping" />
+                      <span className="font-space text-[9px] font-bold tracking-[0.2em] text-white">SYS_ONLINE</span>
                    </div>
-                   <div className="h-2 w-[1px] bg-[#334155]" />
-                   <span className="text-[9px] font-black tracking-[0.2em] text-[#94a3b8]">FULL STACK</span>
+                   <div className="h-2 w-[1px] bg-white/25" />
+                   <span className="font-space text-[9px] font-bold tracking-[0.2em] text-[#BCED34]">FULL STACK</span>
                 </div>
             </div>
           </motion.div>
@@ -90,9 +96,9 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <MicroLabel className="text-[#38bdf8] mb-6 block">Case Study: Human Interface</MicroLabel>
-              <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter text-[#e2e8f0] uppercase leading-tight">
-                ENGINEERING <span className="text-[#94a3b8]">DIGITAL</span> ARCHITECTURE
+              <MicroLabel className="text-[#BCED34] mb-6 block">Case Study: Human Interface</MicroLabel>
+              <h2 className="font-syne text-3xl md:text-5xl font-extrabold mb-8 tracking-tight text-white uppercase leading-tight">
+                ENGINEERING <span className="text-[#BCED34]">DIGITAL</span> ARCHITECTURE
               </h2>
             </motion.div>
 
@@ -101,10 +107,10 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative p-8 border-l border-[#334155] mb-12 group hover:border-[#38bdf8]/50 transition-colors"
+              className="relative p-8 border-l border-white/25 mb-12 group hover:border-[#BCED34]/70 transition-colors"
             >
-              <div className="absolute top-0 left-0 w-[2px] h-10 bg-[#38bdf8]" />
-              <p className="text-[#94a3b8] text-xs md:text-sm leading-relaxed font-medium tracking-wide">
+              <div className="absolute top-0 left-0 w-[2px] h-10 bg-[#BCED34]" />
+              <p className="font-outfit text-white/90 text-xs md:text-sm leading-relaxed">
                 {ABOUT}
               </p>
             </motion.div>

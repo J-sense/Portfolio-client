@@ -20,9 +20,8 @@ type Project = {
   status: string;
 };
 
-// Neutral glass pill (reads cleanly on black)
-const glassPill =
-  "text-slate-300 bg-white/[0.06] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]";
+// Studio KAIL frosted glass pill
+const glassPill = "kail-glass-pill text-white";
 
 const ProjectRow = ({
   project,
@@ -42,19 +41,19 @@ const ProjectRow = ({
       className="group relative"
     >
       {/* Top divider */}
-      <div className="h-px w-full bg-[#334155]/60 group-hover:bg-[#38bdf8]/40 transition-colors duration-500" />
+      <div className="h-px w-full bg-white/20 group-hover:bg-[#BCED34]/70 transition-colors duration-500" />
 
-      <div className="flex items-center gap-6 py-6 cursor-default">
+      <div className="flex items-center gap-6 py-6 px-3 -mx-3 rounded-2xl group-hover:bg-white/10 transition-colors duration-300 cursor-default">
         {/* Index number */}
-        <span className="text-xs font-black text-[#94a3b8] uppercase tracking-[0.2em] w-6 shrink-0 select-none">
+        <span className="font-space text-xs font-bold text-white/75 uppercase tracking-[0.2em] w-6 shrink-0 select-none">
           {String(index + 1).padStart(2, "0")}
         </span>
 
         {/* Thumbnail: slides in on hover */}
         <div
           className="relative overflow-hidden rounded-xl shrink-0 h-16 w-0 opacity-0
-            border border-[#334155]
-            shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]
+            border border-white/30
+            shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]
             transition-all duration-500 ease-out
             group-hover:w-28 group-hover:opacity-100"
         >
@@ -71,13 +70,13 @@ const ProjectRow = ({
         <div className="flex flex-1 items-center gap-6 min-w-0">
           {/* Left: category + title + description */}
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#38bdf8] mb-1.5">
+            <p className="font-space text-[10px] font-bold uppercase tracking-[0.24em] text-[#BCED34] mb-1.5">
               {project.category}
             </p>
-            <h3 className="font-black uppercase tracking-tight transition-colors duration-300 leading-none truncate text-[#e2e8f0] group-hover:text-[#38bdf8] text-xl md:text-2xl">
+            <h3 className="font-syne font-extrabold uppercase tracking-tight transition-colors duration-300 leading-none truncate text-white group-hover:text-[#BCED34] text-xl md:text-2xl">
               {project.title}
             </h3>
-            <p className="text-[#94a3b8] text-xs leading-relaxed mt-2 line-clamp-1 max-w-sm">
+            <p className="font-outfit text-white/80 text-xs font-normal leading-relaxed mt-2 line-clamp-1 max-w-sm">
               {project.description}
             </p>
           </div>
@@ -87,14 +86,14 @@ const ProjectRow = ({
             {project.technologies.slice(0, 3).map((tech, i) => (
               <span
                 key={i}
-                className={`px-2.5 py-1 text-[9px] font-bold rounded-full uppercase tracking-wider select-none ${glassPill}`}
+                className={`font-space px-2.5 py-1 text-[9px] font-semibold rounded-full uppercase tracking-wider select-none ${glassPill}`}
               >
                 {tech}
               </span>
             ))}
             {project.technologies.length > 3 && (
               <span
-                className={`px-2 py-1 text-[9px] font-bold rounded-full select-none text-sky-300 bg-white/[0.06] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]`}
+                className={`font-space px-2 py-1 text-[9px] font-semibold rounded-full select-none ${glassPill}`}
               >
                 +{project.technologies.length - 3}
               </span>
@@ -103,11 +102,14 @@ const ProjectRow = ({
 
           {/* Status badge */}
           <span
-            className={`hidden lg:flex shrink-0 items-center gap-1.5 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full select-none ${glassPill}`}
+            className={`font-space hidden lg:flex shrink-0 items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full select-none ${glassPill}`}
           >
             <span
-              className={`w-1.5 h-1.5 rounded-full ${isCompleted ? "bg-[#38bdf8]" : "bg-[#94a3b8] animate-pulse"
-                }`}
+              className={`w-1.5 h-1.5 rounded-full ${
+                isCompleted
+                  ? "bg-[#BCED34] shadow-[0_0_8px_#BCED34]"
+                  : "bg-white animate-pulse"
+              }`}
             />
             {project.status}
           </span>
@@ -121,14 +123,14 @@ const ProjectRow = ({
                 rel="noopener noreferrer"
                 aria-label={`Open ${project.title} live site`}
                 className="flex items-center justify-center w-10 h-10 rounded-full select-none
-                  text-[#94a3b8] group-hover:text-[#04121C]
-                  bg-gradient-to-b from-[#1E2530] to-[#0B0E13]
-                  group-hover:from-[#7DD3FC] group-hover:to-[#38BDF8]
-                  border border-[#334155] group-hover:border-white/30
-                  shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-3px_6px_rgba(0,0,0,0.4)]
-                  group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-2px_4px_rgba(3,60,100,0.3)]
+                  text-white group-hover:text-[#1728F4]
+                  bg-white/15 backdrop-blur-xl
+                  group-hover:bg-[#BCED34]
+                  border border-white/25 group-hover:border-transparent
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]
+                  group-hover:shadow-[0_0_20px_rgba(188,237,52,0.4)]
                   transition-all duration-300 active:scale-95
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BCED34]"
               >
                 <ArrowUpRight
                   size={16}
@@ -138,7 +140,7 @@ const ProjectRow = ({
             ) : (
               <div
                 aria-hidden="true"
-                className="flex items-center justify-center w-10 h-10 rounded-full border border-[#334155]/60 bg-[#121212] text-[#94a3b8]/40"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/10 text-white/40"
               >
                 <ArrowUpRight size={16} />
               </div>
@@ -164,7 +166,7 @@ const Projects = ({
   return (
     <section
       id="projects"
-      className="relative py-16 bg-[#050505] overflow-hidden"
+      className="relative py-16 bg-transparent overflow-hidden"
     >
       {/* Section header */}
       <motion.div
@@ -177,19 +179,25 @@ const Projects = ({
         <div className="flex items-end justify-between">
           <div>
             <span
-              className="inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
-                text-[10px] font-bold tracking-[0.3em] uppercase text-slate-200
-                bg-white/[0.06] border border-white/15
-                shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+              className="kail-glass-pill font-space inline-flex items-center gap-2 w-fit mb-3 px-3.5 py-1.5 rounded-full select-none
+                text-[10px] font-bold tracking-[0.28em] uppercase text-white"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BCED34] shadow-[0_0_8px_#BCED34]" />
               {showAll ? "Showcase" : "Selected Works"}
             </span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-[#e2e8f0] uppercase leading-none">
-              {showAll ? "ALL WORKS" : "RECENT PROJECTS"}
+            <h2 className="font-syne text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
+              {showAll ? (
+                <>
+                  ALL <span className="text-[#BCED34]">WORKS</span>
+                </>
+              ) : (
+                <>
+                  RECENT <span className="text-[#BCED34]">PROJECTS</span>
+                </>
+              )}
             </h2>
           </div>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#94a3b8]">
+          <span className="font-space text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
             {displayProjects.length} Projects
           </span>
         </div>
@@ -201,7 +209,7 @@ const Projects = ({
           <ProjectRow key={project.id} project={project} index={index} />
         ))}
         {/* Bottom border */}
-        <div className="h-px w-full bg-[#334155]/60" />
+        <div className="h-px w-full bg-white/20" />
       </div>
     </section>
   );

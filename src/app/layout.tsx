@@ -1,51 +1,40 @@
 import type { Metadata } from "next";
-import { Poppins, Inter, Geist, Geist_Mono, Syne, Space_Grotesk, Outfit, Bricolage_Grotesque } from "next/font/google";
+import {
+  Sora,
+  Plus_Jakarta_Sans,
+  JetBrains_Mono,
+  DM_Sans,
+} from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
-  subsets: ["latin"],
-  weight: ["700", "800"],
-});
-
-const syne = Syne({
+const sora = Sora({
   variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space",
+const bricolage = Sora({
+  variable: "--font-bricolage",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const outfit = Outfit({
+const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-space",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -62,7 +51,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         cz-shortcut-listen="true"
-        className={`${poppins.variable} ${inter.variable} ${bricolage.variable} ${syne.variable} ${spaceGrotesk.variable} ${outfit.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-[#050505] text-white`}
+        className={`${sora.variable} ${bricolage.variable} ${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased text-white selection:bg-[#BCED34] selection:text-[#1728F4]`}
       >
         {children}
       </body>

@@ -24,11 +24,11 @@ const GRAPHQL_QUERY = `
 `;
 
 const LEVEL_COLORS: Record<number, string> = {
-  0: '#161b22',
-  1: '#0e4429',
-  2: '#006d32',
-  3: '#26a641',
-  4: '#39d353',
+  0: 'rgba(255, 255, 255, 0.14)',
+  1: '#9996FE',
+  2: '#CDCDE7',
+  3: '#96B739',
+  4: '#BCED34',
 };
 
 async function fetchPublicContributionsFallback(username: string) {
@@ -63,7 +63,7 @@ async function fetchPublicContributionsFallback(username: string) {
     currentWeek.push({
       date: item.date,
       contributionCount: item.count,
-      color: LEVEL_COLORS[item.level] ?? '#161b22',
+      color: LEVEL_COLORS[item.level] ?? 'rgba(255, 255, 255, 0.05)',
     });
 
     if (currentWeek.length === 7) {

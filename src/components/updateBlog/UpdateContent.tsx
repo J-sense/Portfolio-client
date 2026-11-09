@@ -17,28 +17,28 @@ export default function UpdateContent({ id }: { id: string }) {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+    <div className="min-h-screen flex items-center justify-center bg-[#07080E] text-[#F4F4FE]">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md"
+        className="kail-glass p-6 sm:p-8 rounded-3xl w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Update Content</h2>
+        <h2 className="font-syne text-2xl font-extrabold mb-4 text-center text-[#F4F4FE]">Update Content</h2>
 
-        <label className="block mb-2">Title:</label>
+        <label className="block mb-2 font-space text-xs uppercase tracking-wider text-[#8E92BC]">Title:</label>
         <input
           {...register("title", { required: true })}
-          className="w-full p-2 rounded bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 rounded-xl bg-white/[0.04] border border-white/12 text-[#F4F4FE] focus:outline-none focus:border-[#9996FE]"
         />
 
-        <label className="block mt-4 mb-2">Content:</label>
+        <label className="block mt-4 mb-2 font-space text-xs uppercase tracking-wider text-[#8E92BC]">Content:</label>
         <textarea
           {...register("content", { required: true })}
-          className="w-full p-2 rounded bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 rounded-xl bg-white/[0.04] border border-white/12 text-[#F4F4FE] focus:outline-none focus:border-[#9996FE]"
         />
 
         <button
           type="submit"
-          className="mt-4 w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded transition"
+          className="mt-6 w-full bg-[#5E64FD] hover:bg-[#BCED34] text-[#F4F4FE] hover:text-[#07080E] font-space font-bold uppercase tracking-widest text-xs py-3.5 rounded-full transition"
         >
           Update
         </button>

@@ -8,23 +8,23 @@ const Message = async () => {
   const data = messages?.data || [];
 
   return (
-    <div className="p-20">
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-3">
+    <div className="p-8 md:p-16">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
         {data.length > 0 ? (
           data.map((message: TMessage, index: string) => (
             <div
               key={index}
-              className="bg-zinc-900 border rounded-md p-4 space-y-3"
+              className="kail-glass rounded-2xl p-5 space-y-3"
             >
-              <h1 className="text-xl uppercase text-white">{message.name}</h1>
-              <h3 className="text-sm uppercase text-white">{message.email}</h3>
-              <h3 className="text-sm uppercase text-white p-3 border">
+              <h1 className="font-syne text-xl font-bold uppercase text-[#F4F4FE]">{message.name}</h1>
+              <h3 className="font-space text-xs uppercase tracking-wider text-[#9996FE]">{message.email}</h3>
+              <h3 className="font-outfit text-sm text-[#CDCDE7] p-3 bg-white/[0.04] border border-white/10 rounded-xl">
                 {message.message}
               </h3>
             </div>
           ))
         ) : (
-          <p className="text-white">No messages found</p>
+          <p className="font-outfit text-[#8E92BC]">No messages found</p>
         )}
       </div>
     </div>

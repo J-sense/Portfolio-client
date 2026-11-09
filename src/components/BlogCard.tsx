@@ -21,14 +21,20 @@ const BlogCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative flex flex-col rounded-3xl border border-[#334155] bg-[#121212] transition-all duration-500 hover:border-[#38bdf8]/50 overflow-hidden isolate shadow-2xl max-w-sm w-full mx-auto"
+      className="group relative flex flex-col rounded-3xl kail-glass transition-all duration-500 overflow-hidden isolate max-w-sm w-full mx-auto"
     >
       {/* Background Hover Accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.03)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at center, rgba(94, 100, 253, 0.12) 0%, transparent 70%)",
+        }}
+      />
 
       {/* Image container */}
       <div className="p-4">
-        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/40">
+        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/40 border border-white/10">
           <Image
             src={blog.image || "/images/about-me.png"}
             alt={blog.title}
@@ -38,12 +44,12 @@ const BlogCard = ({
             unoptimized
           />
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07080E]/85 via-transparent to-transparent" />
           
           {/* Date Badge */}
-          <div className="absolute bottom-4 left-4 z-20 px-3 py-1 bg-black/80 backdrop-blur-md rounded-full border border-[#334155] flex items-center gap-1.5">
-            <Calendar size={10} className="text-[#38bdf8]" />
-            <time className="text-[9px] font-bold text-[#e2e8f0] uppercase tracking-wider">
+          <div className="absolute bottom-4 left-4 z-20 px-3 py-1 kail-glass-pill rounded-full flex items-center gap-1.5">
+            <Calendar size={10} className="text-[#BCED34]" />
+            <time className="font-space text-[9px] font-bold text-[#F4F4FE] uppercase tracking-[0.18em]">
               {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString("en-US", {
                 month: "short",
                 day: "numeric",
@@ -58,31 +64,31 @@ const BlogCard = ({
       <div className="p-6 pt-2 flex-1 flex flex-col">
         {/* Reading stats */}
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#38bdf8]">
+          <span className="font-space text-[9px] font-bold uppercase tracking-[0.22em] text-[#BCED34]">
             Thought
           </span>
-          <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
-          <div className="flex items-center gap-1 text-[#94a3b8]">
+          <div className="w-1.5 h-1.5 rounded-full bg-white/15" />
+          <div className="flex items-center gap-1 text-[#8E92BC]">
             <Clock size={10} />
-            <span className="text-[9px] font-bold uppercase tracking-wider">{readingTime} MIN READ</span>
+            <span className="font-space text-[9px] font-bold uppercase tracking-wider">{readingTime} MIN READ</span>
           </div>
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-black text-[#e2e8f0] group-hover:text-[#38bdf8] transition-colors duration-300 tracking-tight uppercase leading-snug mb-3">
+        <h3 className="font-syne text-lg font-extrabold text-[#F4F4FE] group-hover:text-[#9996FE] transition-colors duration-300 tracking-tight uppercase leading-snug mb-3">
           {blog.title}
         </h3>
 
         {/* Description */}
-        <p className="text-[#94a3b8] text-xs leading-relaxed mb-6 line-clamp-3">
+        <p className="font-outfit text-[#8E92BC] text-xs leading-relaxed mb-6 line-clamp-3">
           {blog.content}
         </p>
 
         {/* Bottom CTA Link */}
-        <div className="mt-auto pt-4 border-t border-[#334155]/60">
+        <div className="mt-auto pt-4 border-t border-white/10">
           <Link
             href={`/blogs/${blog._id}`}
-            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#e2e8f0] hover:text-[#38bdf8] transition-colors group/link"
+            className="flex items-center gap-1.5 font-space text-[10px] font-bold uppercase tracking-[0.2em] text-[#F4F4FE] hover:text-[#BCED34] transition-colors group/link"
           >
             <span>Read Article</span>
             <ArrowUpRight size={12} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />

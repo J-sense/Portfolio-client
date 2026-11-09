@@ -257,7 +257,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
       const renderedParts = parts.map((part, pIdx) => {
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
-            <strong key={pIdx} className="font-bold text-[#38bdf8]">
+            <strong key={pIdx} className="font-bold text-[#F4F4FE]">
               {part.slice(2, -2)}
             </strong>
           );
@@ -268,7 +268,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
       if (line.trim().startsWith("- ") || line.trim().startsWith("• ")) {
         return (
           <div key={lineIdx} className="flex items-start gap-2 my-1">
-            <span className="text-[#38bdf8] font-bold">•</span>
+            <span className="text-[#BCED34] font-bold">•</span>
             <span>{renderedParts}</span>
           </div>
         );
@@ -293,7 +293,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden"
+            className="fixed inset-0 bg-[#1728F4]/35 backdrop-blur-md z-50 md:hidden"
           />
 
           {/* Elegant Floating Chat Window */}
@@ -302,23 +302,27 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 25, scale: 0.95 }}
             transition={{ type: "spring", damping: 26, stiffness: 340 }}
-            className="fixed z-50 bottom-4 right-4 left-4 md:left-auto md:right-8 md:bottom-24 w-auto md:w-[400px] h-[580px] max-h-[85vh] bg-[#0c0e17]/95 border border-[#233147]/80 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden text-[#e2e8f0]"
+            className="kail-glass fixed z-50 bottom-4 right-4 left-4 md:left-auto md:right-8 md:bottom-24 w-auto md:w-[400px] h-[580px] max-h-[85vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden text-white"
+            style={{
+              background:
+                "linear-gradient(155deg, rgba(87, 93, 167, 0.78) 0%, rgba(23, 40, 244, 0.68) 100%)",
+            }}
           >
             {/* --- HEADER --- */}
-            <div className="p-4 border-b border-[#1e293b]/70 bg-[#101422]/80 flex items-center justify-between select-none">
+            <div className="p-4 border-b border-white/20 bg-white/10 flex items-center justify-between select-none">
               <div className="flex items-center gap-3">
                 {/* Modern AI Icon Badge */}
-                <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#38bdf8] to-[#0284c7] p-0.5 flex items-center justify-center shadow-lg shadow-[#38bdf8]/20">
-                  <div className="w-full h-full bg-[#0c0e17] rounded-full flex items-center justify-center">
-                    <Sparkles size={18} className="text-[#38bdf8]" />
+                <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#9996FE] via-[#5E64FD] to-[#BCED34] p-0.5 flex items-center justify-center shadow-lg shadow-[#5E64FD]/25">
+                  <div className="w-full h-full bg-[#1728F4] rounded-full flex items-center justify-center">
+                    <Sparkles size={18} className="text-[#BCED34]" />
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-bold text-white tracking-wide">
+                  <h3 className="font-syne text-sm font-extrabold text-white tracking-wide">
                     JishAI
                   </h3>
-                  <p className="text-[10px] text-[#94a3b8]">
+                  <p className="font-space text-[9px] uppercase tracking-[0.18em] text-white/80">
                     Portfolio Copilot
                   </p>
                 </div>
@@ -329,14 +333,14 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                 <button
                   onClick={handleClearChat}
                   title="Clear conversation"
-                  className="p-2 rounded-xl text-[#94a3b8] hover:text-[#ef4444] hover:bg-white/5 transition-colors"
+                  className="p-2 rounded-xl text-white/80 hover:text-[#BCED34] hover:bg-white/10 transition-colors"
                 >
                   <Trash2 size={16} />
                 </button>
                 <button
                   onClick={onClose}
                   title="Close chat"
-                  className="p-2 rounded-xl text-[#94a3b8] hover:text-white hover:bg-white/10 transition-colors"
+                  className="p-2 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-colors"
                 >
                   <X size={18} />
                 </button>
@@ -344,7 +348,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
             </div>
 
             {/* --- MESSAGES STREAM AREA --- */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 font-outfit text-xs">
               {messages.map((msg) => {
                 const isUser = msg.role === "user";
 
@@ -356,16 +360,16 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                     className={`flex gap-2.5 ${isUser ? "justify-end" : "justify-start"}`}
                   >
                     {!isUser && (
-                      <div className="w-6 h-6 rounded-full bg-[#101422] border border-[#38bdf8]/40 flex items-center justify-center shrink-0 mt-0.5">
-                        <Sparkles size={12} className="text-[#38bdf8]" />
+                      <div className="w-6 h-6 rounded-full bg-white/[0.06] border border-[#9996FE]/40 flex items-center justify-center shrink-0 mt-0.5">
+                        <Sparkles size={12} className="text-[#BCED34]" />
                       </div>
                     )}
 
                     <div
                       className={`relative max-w-[85%] rounded-2xl p-3.5 leading-relaxed ${
                         isUser
-                          ? "bg-[#38bdf8] text-[#05060a] font-semibold rounded-tr-none shadow-md"
-                          : "bg-[#141927] border border-[#233147]/80 text-[#e2e8f0] rounded-tl-none shadow-sm"
+                          ? "bg-gradient-to-b from-[#5E64FD] to-[#1728F4] text-[#F4F4FE] font-medium rounded-tr-none shadow-md border border-[#9996FE]/30"
+                          : "bg-white/[0.05] border border-white/10 text-[#F4F4FE] rounded-tl-none shadow-sm"
                       }`}
                     >
                       {/* Message Content */}
@@ -373,8 +377,8 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                         {msg.content ? (
                           renderFormattedText(msg.content)
                         ) : (
-                          <div className="flex items-center gap-2 text-[#94a3b8]">
-                            <RefreshCw size={13} className="animate-spin text-[#38bdf8]" />
+                          <div className="flex items-center gap-2 text-[#8E92BC]">
+                            <RefreshCw size={13} className="animate-spin text-[#BCED34]" />
                             <span>Thinking...</span>
                           </div>
                         )}
@@ -382,10 +386,10 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
 
                       {/* Footer Toolbar */}
                       <div
-                        className={`flex items-center justify-between gap-2 mt-2 pt-1 border-t ${
+                        className={`flex items-center justify-between gap-2 mt-2 pt-1 border-t font-space ${
                           isUser
-                            ? "border-black/10 text-black/60 text-[9px]"
-                            : "border-[#1e293b] text-[#64748b] text-[9px]"
+                            ? "border-white/15 text-white/70 text-[9px]"
+                            : "border-white/10 text-[#8E92BC] text-[9px]"
                         }`}
                       >
                         <span>{msg.timestamp}</span>
@@ -395,22 +399,22 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                             {/* Read Aloud */}
                             <button
                               onClick={() => toggleSpeech(msg.id, msg.content)}
-                              className="hover:text-[#38bdf8] transition-colors flex items-center gap-1"
+                              className="hover:text-[#BCED34] transition-colors flex items-center gap-1"
                               title="Listen"
                             >
-                              <Volume2 size={11} className={isSpeaking && activeSpeechId === msg.id ? "text-[#38bdf8]" : ""} />
+                              <Volume2 size={11} className={isSpeaking && activeSpeechId === msg.id ? "text-[#BCED34]" : ""} />
                               <span>{isSpeaking && activeSpeechId === msg.id ? "Speaking..." : "Listen"}</span>
                             </button>
 
                             {/* Copy */}
                             <button
                               onClick={() => handleCopy(msg.id, msg.content)}
-                              className="hover:text-white transition-colors flex items-center gap-1"
+                              className="hover:text-[#F4F4FE] transition-colors flex items-center gap-1"
                               title="Copy"
                             >
                               {copiedId === msg.id ? (
                                 <>
-                                  <Check size={11} className="text-[#22c55e]" /> Copied
+                                  <Check size={11} className="text-[#BCED34]" /> Copied
                                 </>
                               ) : (
                                 <>
@@ -439,9 +443,9 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                       <button
                         key={p.label}
                         onClick={() => handleSendMessage(p.query)}
-                        className="shrink-0 text-[11px] font-medium bg-[#141927] hover:bg-[#38bdf8]/15 border border-[#233147] hover:border-[#38bdf8]/60 text-[#cbd5e1] hover:text-[#38bdf8] px-3 py-1.5 rounded-full transition-all flex items-center gap-1.5"
+                        className="shrink-0 font-space text-[10px] font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-[#5E64FD]/20 border border-white/12 hover:border-[#9996FE]/60 text-[#CDCDE7] hover:text-[#F4F4FE] px-3 py-1.5 rounded-full transition-all flex items-center gap-1.5"
                       >
-                        <IconComponent size={13} className="text-[#38bdf8]" />
+                        <IconComponent size={12} className="text-[#BCED34]" />
                         <span>{p.label}</span>
                       </button>
                     );
@@ -451,7 +455,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
             )}
 
             {/* --- MINIMALIST INPUT BAR --- */}
-            <div className="p-3 border-t border-[#1e293b] bg-[#0c0e17]">
+            <div className="p-3 border-t border-white/20 bg-white/10">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -467,7 +471,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                   className={`p-2 rounded-full transition-colors ${
                     isListening
                       ? "text-[#ef4444] bg-[#ef4444]/10"
-                      : "text-[#94a3b8] hover:text-[#38bdf8]"
+                      : "text-white/80 hover:text-[#BCED34]"
                   }`}
                 >
                   {isListening ? <MicOff size={16} /> : <Mic size={16} />}
@@ -481,7 +485,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask JishAI anything..."
                   disabled={isLoading}
-                  className="flex-1 bg-[#141927] border border-[#233147] focus:border-[#38bdf8] rounded-full py-2.5 pl-4 pr-10 text-xs text-white placeholder-[#64748b] focus:outline-none transition-all disabled:opacity-50"
+                  className="flex-1 bg-white/10 border border-white/25 focus:border-[#BCED34] rounded-full py-2.5 pl-4 pr-10 font-outfit text-xs text-white placeholder-white/60 focus:outline-none transition-all disabled:opacity-50"
                 />
 
                 {/* Send / Stop Button */}
@@ -498,7 +502,7 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                   <button
                     type="submit"
                     disabled={!input.trim()}
-                    className="absolute right-2 p-1.5 rounded-full bg-[#38bdf8] hover:bg-[#0284c7] text-[#05060a] disabled:opacity-30 transition-all"
+                    className="absolute right-2 p-1.5 rounded-full bg-[#BCED34] hover:bg-white text-[#1728F4] disabled:opacity-30 transition-all"
                   >
                     <Send size={13} />
                   </button>

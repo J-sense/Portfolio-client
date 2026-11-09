@@ -2,7 +2,7 @@ import Sidebar from "@/components/Sidebar";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex min-h-screen bg-[#000000]">
+    <div className="flex min-h-screen bg-[#07080E] text-[#F4F4FE]">
       {/* Sidebar */}
       <div className="w-64 hidden md:block">
         <Sidebar />

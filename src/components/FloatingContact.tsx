@@ -59,19 +59,19 @@ const FloatingContact = () => {
       name: "WhatsApp",
       href: "https://wa.me/8801405438389",
       icon: <MessageCircle size={18} />,
-      color: "bg-[#25D366] text-white hover:shadow-[#25D366]/40 border border-white/10",
+      color: "kail-glass-pill text-[#9996FE] hover:text-[#BCED34] hover:border-[#BCED34]/50",
     },
     {
       name: "Facebook",
       href: "https://www.facebook.com/mdnajmulhasan.jishan/",
       icon: <Facebook size={16} />,
-      color: "bg-[#1877F2] text-white hover:shadow-[#1877F2]/40 border border-white/10",
+      color: "kail-glass-pill text-[#9996FE] hover:text-[#BCED34] hover:border-[#BCED34]/50",
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/",
       icon: <Instagram size={18} />,
-      color: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white hover:shadow-[#ee2a7b]/40 border border-white/10",
+      color: "kail-glass-pill text-[#9996FE] hover:text-[#BCED34] hover:border-[#BCED34]/50",
     },
   ];
 
@@ -91,7 +91,7 @@ const FloatingContact = () => {
                 setIsChatOpen(true);
                 setShowGreeting(false);
               }}
-              className="pointer-events-auto max-w-[260px] bg-[#0c0e17]/95 border border-[#38bdf8]/50 backdrop-blur-2xl rounded-2xl p-3.5 shadow-2xl text-white cursor-pointer relative group transition-transform hover:scale-[1.02]"
+              className="pointer-events-auto max-w-[260px] kail-glass rounded-2xl p-3.5 text-[#F4F4FE] cursor-pointer relative group transition-transform hover:scale-[1.02]"
             >
               {/* Close Button */}
               <button
@@ -99,7 +99,7 @@ const FloatingContact = () => {
                   e.stopPropagation();
                   setShowGreeting(false);
                 }}
-                className="absolute top-2 right-2 p-1 text-[#94a3b8] hover:text-white rounded-lg transition-colors"
+                className="absolute top-2 right-2 p-1 text-[#8E92BC] hover:text-[#F4F4FE] rounded-lg transition-colors"
                 title="Dismiss"
               >
                 <X size={14} />
@@ -107,22 +107,22 @@ const FloatingContact = () => {
 
               <div className="flex items-start gap-3">
                 {/* Modern AI Sparkles Icon */}
-                <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-[#38bdf8] to-[#0284c7] p-0.5 flex items-center justify-center shrink-0 shadow-md">
-                  <div className="w-full h-full bg-[#0c0e17] rounded-full flex items-center justify-center">
-                    <Sparkles size={15} className="text-[#38bdf8]" />
+                <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-[#9996FE] via-[#5E64FD] to-[#BCED34] p-0.5 flex items-center justify-center shrink-0 shadow-md">
+                  <div className="w-full h-full bg-[#0E101B] rounded-full flex items-center justify-center">
+                    <Sparkles size={15} className="text-[#BCED34]" />
                   </div>
                 </div>
 
                 <div className="flex-1 pr-2">
                   <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#38bdf8]">
+                    <span className="font-space text-[10px] font-bold uppercase tracking-[0.2em] text-[#BCED34]">
                       JishAI
                     </span>
                   </div>
-                  <p className="text-xs font-semibold text-[#e2e8f0] leading-snug">
+                  <p className="font-outfit text-xs font-medium text-[#F4F4FE] leading-snug">
                     Hi! 👋 Ask JishAI anything about Jishan!
                   </p>
-                  <div className="mt-2 flex items-center gap-1 text-[10px] font-bold text-[#38bdf8] group-hover:translate-x-1 transition-transform">
+                  <div className="mt-2 flex items-center gap-1 font-space text-[10px] font-bold text-[#9996FE] group-hover:text-[#BCED34] group-hover:translate-x-1 transition-all">
                     <span>Ask JishAI</span>
                     <ArrowRight size={11} />
                   </div>
@@ -167,10 +167,10 @@ const FloatingContact = () => {
               }}
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0c0e17]/90 border border-[#38bdf8]/40 text-[#e2e8f0] text-xs font-semibold shadow-lg backdrop-blur-xl hover:border-[#38bdf8] transition-all cursor-pointer group"
+              className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full kail-glass-pill text-[#F4F4FE] font-space text-[10px] font-bold uppercase tracking-[0.18em] shadow-lg hover:border-[#9996FE]/50 transition-all cursor-pointer group"
             >
-              <Sparkles size={13} className="text-[#38bdf8]" />
-              <span className="text-[11px] text-white">Ask JishAI</span>
+              <Sparkles size={13} className="text-[#BCED34]" />
+              <span className="text-[#F4F4FE]">Ask JishAI</span>
             </motion.button>
           )}
 
@@ -182,10 +182,10 @@ const FloatingContact = () => {
               setShowGreeting(false);
             }}
             aria-label="Toggle AI Chat"
-            className="relative w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-[#38bdf8] to-[#0284c7] text-[#05060a] shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 group focus:outline-none border border-white/20"
+            className="relative w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-b from-[#9996FE] via-[#5E64FD] to-[#1728F4] text-[#F4F4FE] shadow-[0_12px_32px_rgba(94,100,253,0.45)] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 group focus:outline-none border border-white/25"
           >
             {!isChatOpen && (
-              <span className="absolute inset-0 rounded-full bg-[#38bdf8]/30 animate-ping opacity-60 pointer-events-none" />
+              <span className="absolute inset-0 rounded-full bg-[#5E64FD]/40 animate-ping opacity-60 pointer-events-none" />
             )}
 
             <AnimatePresence mode="wait">
@@ -195,12 +195,12 @@ const FloatingContact = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.15 }}
-                className="flex items-center justify-center text-[#05060a] font-black"
+                className="flex items-center justify-center text-[#F4F4FE] font-black"
               >
                 {isChatOpen ? (
                   <X size={22} />
                 ) : (
-                  <Sparkles size={24} className="text-[#05060a]" />
+                  <Sparkles size={24} className="text-[#BCED34]" />
                 )}
               </motion.div>
             </AnimatePresence>
