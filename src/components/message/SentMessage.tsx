@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import { TMessage } from "@/types/types";
@@ -10,7 +9,7 @@ export const sentMessage = async (message: TMessage) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(message), // Removed extra object wrapping
+      body: JSON.stringify(message),
     });
 
     if (!res.ok) {
@@ -21,12 +20,6 @@ export const sentMessage = async (message: TMessage) => {
     return await res.json();
   } catch (error: any) {
     console.error("Error sending message:", error);
-    return { success: false, message: error.message };
+    return null;
   }
 };
-
-const SentMessage = () => {
-  return <div></div>;
-};
-
-export default SentMessage;

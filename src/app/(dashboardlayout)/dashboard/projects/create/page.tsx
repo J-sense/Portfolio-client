@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import CreateProjects from "@/lib/actions/CretateProjects";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -53,63 +52,63 @@ export default function CreateProject() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#07080E] text-[#F4F4FE] p-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-2xl"
+        className="kail-glass p-6 sm:p-8 rounded-3xl w-full max-w-2xl"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Project Details</h2>
+        <h2 className="font-syne text-2xl font-extrabold mb-6 text-center text-[#F4F4FE]">Project Details</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block mb-2">Title:</label>
+            <label className="block mb-2 font-space text-xs uppercase tracking-wider text-[#8E92BC]">Title:</label>
             <input
               {...register("title", { required: true })}
-              className="w-full p-2 rounded bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 rounded-xl bg-white/[0.04] border border-white/12 text-[#F4F4FE] focus:outline-none focus:border-[#9996FE]"
               placeholder="Enter project title"
             />
           </div>
 
           <div>
-            <label className="block mb-2">Image URL:</label>
+            <label className="block mb-2 font-space text-xs uppercase tracking-wider text-[#8E92BC]">Image URL:</label>
             <input
               {...register("image", { required: true })}
-              className="w-full p-2 rounded bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 rounded-xl bg-white/[0.04] border border-white/12 text-[#F4F4FE] focus:outline-none focus:border-[#9996FE]"
               placeholder="Enter image URL"
             />
           </div>
 
           <div>
-            <label className="block mb-2">Live Link:</label>
+            <label className="block mb-2 font-space text-xs uppercase tracking-wider text-[#8E92BC]">Live Link:</label>
             <input
               {...register("liveLink", { required: true })}
-              className="w-full p-2 rounded bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 rounded-xl bg-white/[0.04] border border-white/12 text-[#F4F4FE] focus:outline-none focus:border-[#9996FE]"
               placeholder="Enter live project URL"
             />
           </div>
 
           <div>
-            <label className="block mb-2">
+            <label className="block mb-2 font-space text-xs uppercase tracking-wider text-[#8E92BC]">
               Technologies (comma separated):
             </label>
             <input
               {...register("technologies", { required: true })}
-              className="w-full p-2 rounded bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 rounded-xl bg-white/[0.04] border border-white/12 text-[#F4F4FE] focus:outline-none focus:border-[#9996FE]"
               placeholder="React, Node.js, MongoDB, Express"
             />
           </div>
         </div>
 
-        <label className="block mt-4 mb-2">Description:</label>
+        <label className="block mt-4 mb-2 font-space text-xs uppercase tracking-wider text-[#8E92BC]">Description:</label>
         <textarea
           {...register("description", { required: true })}
-          className="w-full p-2 rounded bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 rounded-xl bg-white/[0.04] border border-white/12 text-[#F4F4FE] focus:outline-none focus:border-[#9996FE]"
           placeholder="Enter project description"
         ></textarea>
 
         <button
           type="submit"
-          className="mt-4 w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded transition"
+          className="mt-6 w-full bg-[#5E64FD] hover:bg-[#BCED34] text-[#F4F4FE] hover:text-[#07080E] font-space font-bold uppercase tracking-widest text-xs py-3.5 rounded-full transition"
         >
           Submit
         </button>
