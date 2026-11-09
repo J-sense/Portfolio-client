@@ -1,24 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
+  Check,
+  Clock,
+  Copy,
+  Cpu,
+  Facebook,
   Github,
   Linkedin,
-  Facebook,
   Mail,
-  Copy,
-  Check,
-  Terminal,
-  Layers,
-  Sparkles,
-  Cpu,
   MapPin,
-  Clock,
   Send,
-  Zap,
+  Sparkles,
+  Terminal,
+  Zap
 } from "lucide-react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 
 type TabMode = "profile" | "terminal" | "stack";
 
@@ -82,7 +81,7 @@ export default function InteractiveSidebar() {
     <aside className="lg:sticky lg:top-20 lg:self-start flex flex-col w-full max-w-[370px] mx-auto select-none">
       {/* ── Main Unified Glass Capsule ── */}
       <div className="kail-glass p-4 sm:p-5 flex flex-col rounded-[26px] shadow-2xl relative overflow-hidden backdrop-blur-2xl border border-white/[0.30]">
-        
+
         {/* Top Control Bar: HUD Telemetry & Mode Switcher */}
         <div className="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/[0.18]">
           {/* Status Indicator */}
@@ -101,22 +100,20 @@ export default function InteractiveSidebar() {
             <button
               onClick={() => setActiveTab("profile")}
               title="ID Card Mode"
-              className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all ${
-                activeTab === "profile"
+              className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all ${activeTab === "profile"
                   ? "bg-[#BCED34] text-[#10127A] shadow-sm"
                   : "text-white/70 hover:text-white"
-              }`}
+                }`}
             >
               ID
             </button>
             <button
               onClick={() => setActiveTab("terminal")}
               title="Interactive Terminal"
-              className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all flex items-center gap-1 ${
-                activeTab === "terminal"
+              className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all flex items-center gap-1 ${activeTab === "terminal"
                   ? "bg-[#BCED34] text-[#10127A] shadow-sm"
                   : "text-white/70 hover:text-white"
-              }`}
+                }`}
             >
               <Terminal size={10} />
               CLI
@@ -124,11 +121,10 @@ export default function InteractiveSidebar() {
             <button
               onClick={() => setActiveTab("stack")}
               title="Quick Stack Matrix"
-              className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all flex items-center gap-1 ${
-                activeTab === "stack"
+              className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all flex items-center gap-1 ${activeTab === "stack"
                   ? "bg-[#BCED34] text-[#10127A] shadow-sm"
                   : "text-white/70 hover:text-white"
-              }`}
+                }`}
             >
               <Cpu size={10} />
               VIBE
