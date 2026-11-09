@@ -63,7 +63,7 @@ export default function InteractiveSidebar() {
 
     let response = `bash: command not found: ${cmd}`;
     if (cmd === "help") response = "commands: skills, contact, bio, clear, date";
-    else if (cmd === "skills") response = "core: React, Next.js 15, TypeScript, Tailwind, Node.js";
+    else if (cmd === "skills") response = "core: React, Next.js 16, TypeScript, Tailwind, Node.js";
     else if (cmd === "contact") response = "email: jishan1873@gmail.com | phone: +8801914667297";
     else if (cmd === "bio") response = "Full-stack engineer crafting high-performance interactive interfaces.";
     else if (cmd === "date") response = `system time: ${new Date().toISOString()}`;
@@ -101,8 +101,8 @@ export default function InteractiveSidebar() {
               onClick={() => setActiveTab("profile")}
               title="ID Card Mode"
               className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all ${activeTab === "profile"
-                  ? "bg-[#BCED34] text-[#10127A] shadow-sm"
-                  : "text-white/70 hover:text-white"
+                ? "bg-[#BCED34] text-[#10127A] shadow-sm"
+                : "text-white/70 hover:text-white"
                 }`}
             >
               ID
@@ -111,8 +111,8 @@ export default function InteractiveSidebar() {
               onClick={() => setActiveTab("terminal")}
               title="Interactive Terminal"
               className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all flex items-center gap-1 ${activeTab === "terminal"
-                  ? "bg-[#BCED34] text-[#10127A] shadow-sm"
-                  : "text-white/70 hover:text-white"
+                ? "bg-[#BCED34] text-[#10127A] shadow-sm"
+                : "text-white/70 hover:text-white"
                 }`}
             >
               <Terminal size={10} />
@@ -122,8 +122,8 @@ export default function InteractiveSidebar() {
               onClick={() => setActiveTab("stack")}
               title="Quick Stack Matrix"
               className={`px-2.5 py-1 rounded-full text-[9px] font-space font-bold uppercase transition-all flex items-center gap-1 ${activeTab === "stack"
-                  ? "bg-[#BCED34] text-[#10127A] shadow-sm"
-                  : "text-white/70 hover:text-white"
+                ? "bg-[#BCED34] text-[#10127A] shadow-sm"
+                : "text-white/70 hover:text-white"
                 }`}
             >
               <Cpu size={10} />
@@ -168,7 +168,7 @@ export default function InteractiveSidebar() {
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0E1276]/95 via-[#0E1276]/40 to-transparent pointer-events-none" />
 
                 {/* Floating Corner Badges */}
-                <div className="absolute bottom-2.5 inset-x-2.5 flex items-center justify-between text-[9px] font-space font-bold uppercase tracking-wider">
+                <div className="absolute bottom-2.5 inset-x-2.5 flex items-center justify-between text-[9px] font-space font-bold uppercase tracking-wider hidden">
                   <span className="px-2 py-0.5 rounded-md bg-[#1B2BF4]/80 border border-white/30 text-white backdrop-blur-md">
                     LVL.99 FULL STACK
                   </span>
@@ -181,7 +181,7 @@ export default function InteractiveSidebar() {
               {/* Title & Micro Bio */}
               <div className="flex flex-col text-left mb-3">
                 <h2 className="spec-display-h3 uppercase !text-[23px] tracking-tight leading-none mb-1 text-white">
-                  JISHAN HASSAN
+                  NAJMUL HASSAN JISHAN
                 </h2>
                 <div className="flex items-center justify-between gap-2">
                   <p className="spec-mono-subtitle !text-[11px] text-white/80">
